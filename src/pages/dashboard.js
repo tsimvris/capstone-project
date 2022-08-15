@@ -11,7 +11,6 @@ export default function HomePage() {
 				<link rel="icon" href="/Dashy.webp" />
 			</Head>
 			<h1>Home</h1>
-
 		</Layout>
 	);
 }
