@@ -12,10 +12,6 @@ export default function HomePage() {
 			</Head>
 			<h1>Home</h1>
 
-			<section>
-				<br />
-				<div>Id: </div>
-			</section>
 		</Layout>
 	);
 }
