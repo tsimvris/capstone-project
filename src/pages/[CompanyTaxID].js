@@ -2,7 +2,7 @@ import {useRouter} from 'next/router';
 
 import StyledForm from '../components/Forms/StyledComponents/styledForm';
 import StyledInput from '../components/Forms/StyledComponents/styledInput';
-import StyledSubmitButton from '../components/forms/StyledComponents/styledSubmitButton';
+import StyledSubmitButton from '../components/Forms/StyledComponents/styledSubmitButton';
 import StyledWrapper from '../components/styledClientWrapper';
 import useClientStore from '../hooks/useClientStore';
 
