@@ -3,6 +3,7 @@ import {useRouter} from 'next/router';
 import StyledLi from '../components/ClientUI/styledLi';
 import StyledSpan from '../components/ClientUI/styledSpan';
 import StyledUl from '../components/ClientUI/styledUL';
+import StyledEditButton from '../components/Forms/StyledComponents/styledEditButton';
 import StyledButton from '../components/styledButton';
 import StyledWrapper from '../components/styledClientWrapper';
 import useClientStore from '../hooks/useClientStore';
@@ -29,7 +30,7 @@ export default function ClientsPage() {
 							return (
 								<StyledLi key={client.id}>
 									<StyledSpan>{client.CompanyName}</StyledSpan>
-									<button
+									<StyledEditButton
 										onClick={() => {
 											router.push({
 												pathname: `/${client.CompanyTaxID}`,
@@ -38,7 +39,7 @@ export default function ClientsPage() {
 										}}
 									>
 										Edit
-									</button>
+									</StyledEditButton>
 								</StyledLi>
 							);
 						})}
