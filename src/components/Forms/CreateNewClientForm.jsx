@@ -25,7 +25,7 @@ export default function CreateNewClientForm() {
 		};
 		submitClientToBase(client);
 		router.push({
-			pathname: '/Clients',
+			pathname: '/clients',
 		});
 	};
 
