@@ -9,13 +9,6 @@ const useClientStore = create(
 				return {clients: [...state.clients, client]};
 			});
 		},
-		deleteClient: id => {
-			set(state => {
-				return {
-					clients: state.clients.filter(client => client.id !== id),
-				};
-			});
-		},
 	}))
 );
 

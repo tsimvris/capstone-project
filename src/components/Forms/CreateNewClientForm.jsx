@@ -1,3 +1,4 @@
+import {nanoid} from 'nanoid';
 import {useRouter} from 'next/router';
 import {useForm} from 'react-hook-form';
 
@@ -15,7 +16,7 @@ export default function CreateNewClientForm() {
 	const {register, handleSubmit} = useForm();
 	const onSubmit = data => {
 		let client = {
-			id: Date.now(),
+			id: nanoid(),
 			CompanyName: data.clientName,
 			CompanyAdress: data.Adress,
 			CompanyZipCode: data.postalCode,
@@ -24,7 +25,7 @@ export default function CreateNewClientForm() {
 		};
 		submitClientToBase(client);
 		router.push({
-			pathname: '/clients',
+			pathname: '/Clients',
 		});
 	};
 
@@ -43,7 +44,7 @@ export default function CreateNewClientForm() {
 					Postal Code
 					<StyledInput
 						type="number"
-						{...register('postalCode', {min: '00001', max: '99999'})}
+						{...register('postalCode', {required: true, min: '00001', max: '99999'})}
 					/>
 				</StyledLabel>
 				<StyledLabel>
@@ -59,8 +60,7 @@ export default function CreateNewClientForm() {
 					Tax ID
 					<StyledInput
 						type="number"
-						placeholder="Tax Id"
-						{...register('taxId', {min: '000000001', max: '999999999'})}
+						{...register('taxId', {required: true, min: '000000001', max: '999999999'})}
 					/>
 				</StyledLabel>
 
