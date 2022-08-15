@@ -11,7 +11,7 @@ import StyledLabel from './StyledComponents/styledLabel';
 import StyledSubmitButton from './StyledComponents/styledSubmitButton';
 
 export default function CreateNewClientForm() {
-	const submitClientToBase = useClientStore(state => state.addClient);
+	const addClient = useClientStore(state => state.addClient);
 	const router = useRouter();
 	const {register, handleSubmit} = useForm();
 	const onSubmit = data => {
@@ -23,7 +23,7 @@ export default function CreateNewClientForm() {
 			CompanyCity: data.city,
 			CompanyTaxID: data.taxId,
 		};
-		submitClientToBase(client);
+		addClient(client);
 		router.push({
 			pathname: '/clients',
 		});
@@ -33,7 +33,8 @@ export default function CreateNewClientForm() {
 		<StyledWrapper>
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
 				<StyledLabel>
-					Company Name <StyledInput {...register('clientName', {required: true})} />
+					Company Name
+					<StyledInput {...register('clientName', {required: true})} />
 				</StyledLabel>
 				<StyledLabel>
 					Street and Number
