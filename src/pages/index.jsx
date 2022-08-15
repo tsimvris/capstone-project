@@ -1,6 +1,7 @@
 import {useRouter} from 'next/router';
 
 import StyledLi from '../components/ClientUI/styledLi';
+import StyledSpan from '../components/ClientUI/styledSpan';
 import StyledUl from '../components/ClientUI/styledUL';
 import StyledButton from '../components/styledButton';
 import StyledWrapper from '../components/styledClientWrapper';
@@ -25,7 +26,11 @@ export default function ClientsPage() {
 					{clients
 						?.sort((a, b) => a.CompanyName.localeCompare(b.CompanyName))
 						.map(client => {
-							return <StyledLi key={client.id}>{client.CompanyName}</StyledLi>;
+							return (
+								<StyledLi key={client.id}>
+									<StyledSpan>{client.CompanyName}</StyledSpan>
+								</StyledLi>
+							);
 						})}
 				</StyledUl>
 			</StyledWrapper>

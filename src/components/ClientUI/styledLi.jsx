@@ -9,12 +9,6 @@ const StyledLi = styled.li`
 	margin: 10px 5px;
 	border-radius: 15px;
 	background-color: #fc814a;
-	color: #19647e;
-	font-size: 20px;
-	font-weight: 600;
-	&::first-letter {
-		color: #f9f6ee;
-	}
 `;
 
 export default StyledLi;
