@@ -1,3 +1,4 @@
+import {ErrorMessage} from '@hookform/error-message';
 import {nanoid} from 'nanoid';
 import {useRouter} from 'next/router';
 import {useForm} from 'react-hook-form';
@@ -13,7 +14,13 @@ import StyledSubmitButton from './StyledComponents/styledSubmitButton';
 export default function CreateNewClientForm() {
 	const addClient = useClientStore(state => state.addClient);
 	const router = useRouter();
-	const {register, handleSubmit} = useForm();
+	const {
+		register,
+		formState: {errors},
+		handleSubmit,
+	} = useForm({
+		criteriaMode: 'all',
+	});
 	const onSubmit = data => {
 		let client = {
 			id: nanoid(),
@@ -40,13 +47,13 @@ export default function CreateNewClientForm() {
 					Street and Number
 					<StyledInput {...register('clientAdress', {required: true})} />
 				</StyledLabel>
-
 				<StyledLabel>
 					Postal Code
 					<StyledInput
 						type="number"
 						{...register('postalCode', {required: true, min: '00001', max: '99999'})}
-					/>
+					/>{' '}
+					{errors.postalCode && <p>{errors.postalCode?.message}</p>}
 				</StyledLabel>
 				<StyledLabel>
 					City
@@ -61,10 +68,33 @@ export default function CreateNewClientForm() {
 					Tax ID
 					<StyledInput
 						type="number"
-						{...register('taxId', {required: true, min: '000000001', max: '999999999'})}
+						{...register('multipleErrorInput', {
+							required: 'This is required.',
+							pattern: {
+								value: /d+/,
+								message: 'This input is number only.',
+							},
+							maxLength: {
+								value: 10,
+								message: 'This input exceed maxLength.',
+							},
+							minLength: {
+								value: 8,
+								message: 'This input requires min 8 numbers.',
+							},
+						})}
+					/>
+					<ErrorMessage
+						errors={errors}
+						name="multipleErrorInput"
+						render={({messages}) =>
+							messages &&
+							Object.entries(messages).map(([type, message]) => (
+								<p key={type}>{message}</p>
+							))
+						}
 					/>
 				</StyledLabel>
-
 				<StyledSubmitButton type="submit">Submit</StyledSubmitButton>
 			</StyledForm>
 		</StyledWrapper>
