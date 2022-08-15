@@ -41,39 +41,106 @@ export default function CreateNewClientForm() {
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
 				<StyledLabel>
 					Company Name
-					<StyledInput {...register('clientName', {required: true})} />
+					<StyledInput
+						type="text"
+						{...register('clientName', {
+							required: {value: true, message: 'This is required.'},
+							minLength: {
+								value: 3,
+								message: 'Please enter a Valid Company Name.',
+							},
+						})}
+					/>
+					<ErrorMessage
+						errors={errors}
+						name="clientName"
+						render={({messages}) =>
+							messages &&
+							Object.entries(messages).map(([type, message]) => (
+								<p key={type}>{message}</p>
+							))
+						}
+					/>
 				</StyledLabel>
 				<StyledLabel>
 					Street and Number
-					<StyledInput {...register('clientAdress', {required: true})} />
+					<StyledInput
+						type="text"
+						{...register('Adress', {
+							required: {value: true, message: 'This is required.'},
+							minLength: {
+								value: 8,
+								message: 'Please enter a existing Adress.',
+							},
+						})}
+					/>
+					<ErrorMessage
+						errors={errors}
+						name="Adress"
+						render={({messages}) =>
+							messages &&
+							Object.entries(messages).map(([type, message]) => (
+								<p key={type}>{message}</p>
+							))
+						}
+					/>
 				</StyledLabel>
 				<StyledLabel>
 					Postal Code
 					<StyledInput
 						type="number"
-						{...register('postalCode', {required: true, min: '00001', max: '99999'})}
-					/>{' '}
-					{errors.postalCode && <p>{errors.postalCode?.message}</p>}
+						{...register('postalCode', {
+							required: true,
+							maxLength: {
+								value: 5,
+								message: 'This input exceed maxLength.',
+							},
+							minLength: {
+								value: 5,
+								message: 'This input requires 5 numbers.',
+							},
+						})}
+					/>
+					<ErrorMessage
+						errors={errors}
+						name="postalCode"
+						render={({messages}) =>
+							messages &&
+							Object.entries(messages).map(([type, message]) => (
+								<p key={type}>{message}</p>
+							))
+						}
+					/>
 				</StyledLabel>
 				<StyledLabel>
 					City
 					<StyledInput
 						type="text"
 						{...register('city', {
-							required: true,
+							required: {value: true, message: 'This is required.'},
+							minLength: {
+								value: 2,
+								message: 'Please enter a existing City.',
+							},
 						})}
+					/>
+					<ErrorMessage
+						errors={errors}
+						name="city"
+						render={({messages}) =>
+							messages &&
+							Object.entries(messages).map(([type, message]) => (
+								<p key={type}>{message}</p>
+							))
+						}
 					/>
 				</StyledLabel>
 				<StyledLabel>
 					Tax ID
 					<StyledInput
 						type="number"
-						{...register('multipleErrorInput', {
-							required: 'This is required.',
-							pattern: {
-								value: /d+/,
-								message: 'This input is number only.',
-							},
+						{...register('taxId', {
+							required: true,
 							maxLength: {
 								value: 10,
 								message: 'This input exceed maxLength.',
@@ -86,7 +153,7 @@ export default function CreateNewClientForm() {
 					/>
 					<ErrorMessage
 						errors={errors}
-						name="multipleErrorInput"
+						name="taxId"
 						render={({messages}) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (

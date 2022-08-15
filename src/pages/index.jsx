@@ -25,7 +25,7 @@ export default function ClientsPage() {
 			<StyledWrapper>
 				<StyledUl>
 					{clients
-						?.sort((a, b) => a.CompanyName.localeCompare(b.CompanyName))
+						?.sort((a, b) => a.CompanyName?.localeCompare(b.CompanyName))
 						.map(client => {
 							return (
 								<StyledLi key={client.id}>
