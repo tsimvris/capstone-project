@@ -29,6 +29,16 @@ export default function ClientsPage() {
 							return (
 								<StyledLi key={client.id}>
 									<StyledSpan>{client.CompanyName}</StyledSpan>
+									<button
+										onClick={() => {
+											router.push({
+												pathname: `/${client.CompanyTaxID}`,
+												query: {keyword: 'clientTaxID'},
+											});
+										}}
+									>
+										Edit
+									</button>
 								</StyledLi>
 							);
 						})}
