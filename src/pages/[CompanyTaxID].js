@@ -9,11 +9,11 @@ import useClientStore from '../hooks/useClientStore';
 export default function EditClient() {
 	const router = useRouter();
 	const ref = router.query;
-	const ALLCLIENTS = useClientStore(state => state.clients);
-	const arr = ALLCLIENTS.filter(ele => {
+	const allClients = useClientStore(state => state.clients);
+	const ClientsArray = allClients.filter(ele => {
 		return ele.CompanyTaxID === ref.CompanyTaxID;
 	});
-	const wantedClient = arr[0];
+	const wantedClient = ClientsArray[0];
 	return (
 		<StyledWrapper>
 			<StyledForm>
