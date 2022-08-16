@@ -39,7 +39,7 @@ export default function CreateNewServiceForm() {
 		<StyledWrapper>
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
 				<StyledLabel>
-					Service Name{' '}
+					Service Name
 					<StyledInput
 						type="text"
 						{...register('serviceName', {
