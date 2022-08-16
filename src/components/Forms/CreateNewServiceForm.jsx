@@ -96,7 +96,7 @@ export default function CreateNewServiceForm() {
 							},
 							minLength: {
 								value: 1,
-								message: 'This input requires atleast 1 number.',
+								message: 'This input requires at least 1 number.',
 							},
 						})}
 					/>
