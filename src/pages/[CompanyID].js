@@ -33,7 +33,7 @@ export default function EditClient() {
 	const clientsArray = allClients.filter(ele => {
 		return ele.id === ref.CompanyID;
 	});
-	const wantedClient = ClientsArray[0];
+	const wantedClient = clientsArray[0];
 
 	return (
 		<>
