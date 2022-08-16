@@ -123,7 +123,7 @@ export default function CreateNewServiceForm() {
 							},
 							maxLength: {
 								value: 2,
-								message: 'This input exceed the maximal length.',
+								message: 'This input exceeds the maximal length.',
 							},
 						})}
 					/>
