@@ -1,8 +1,8 @@
-import CreateNewClientForm from '../components/Forms/CreateNewClientForm';
-export default function CreateNewClient() {
+import CreateNewServiceForm from '../components/Forms/CreateNewServiceForm';
+export default function CreateNewService() {
 	return (
 		<>
-			<CreateNewClientForm />
+			<CreateNewServiceForm />
 		</>
 	);
 }

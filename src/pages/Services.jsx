@@ -1,13 +1,12 @@
 import {useRouter} from 'next/router';
 
 import StyledButton from '../components/styledButton';
-import StyledWrapper from '../components/styledClientWrapper';
 
 export default function Services() {
 	const router = useRouter();
 
 	return (
-		<StyledWrapper>
+		<div>
 			<StyledButton
 				onClick={() => {
 					router.push({
@@ -17,6 +16,6 @@ export default function Services() {
 			>
 				Add new Service
 			</StyledButton>
-		</StyledWrapper>
+		</div>
 	);
 }
