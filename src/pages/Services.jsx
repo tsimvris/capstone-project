@@ -1,12 +1,17 @@
 import {useRouter} from 'next/router';
 
+import StyledLi from '../components/serviceUI/styledLi';
+import StyledUl from '../components/serviceUI/styledUL';
 import StyledButton from '../components/styledButton';
+import StyledWrapper from '../components/styledClientWrapper';
+import useServiceStore from '../hooks/useServiceStore';
 
 export default function Services() {
 	const router = useRouter();
+	const services = useServiceStore(state => state.services);
 
 	return (
-		<div>
+		<StyledWrapper>
 			<StyledButton
 				onClick={() => {
 					router.push({
@@ -16,6 +21,13 @@ export default function Services() {
 			>
 				Add new Service
 			</StyledButton>
-		</div>
+			<StyledWrapper>
+				<StyledUl>
+					{services.map(service => {
+						return <StyledLi key={service.id}>{service.serviceName}</StyledLi>;
+					})}
+				</StyledUl>
+			</StyledWrapper>
+		</StyledWrapper>
 	);
 }

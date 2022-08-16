@@ -7,13 +7,13 @@ const useServiceStore = create(
 			services: [],
 			addService: service => {
 				set(state => {
-					return {clients: [...state.services, service]};
+					return {services: [...state.services, service]};
 				});
 			},
 		}),
 		{
 			name: 'Services', // unique name
-			getStorage: () => localStorage, // (optional) by default, 'localStorage' is used
+			getStorage: () => localStorage,
 		}
 	)
 );
