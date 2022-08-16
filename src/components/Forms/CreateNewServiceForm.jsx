@@ -22,7 +22,7 @@ export default function CreateNewServiceForm() {
 		criteriaMode: 'all',
 	});
 	const onSubmit = data => {
-		let service = {
+		const service = {
 			id: nanoid(),
 			serviceName: data.serviceName,
 			serviceDescription: data.serviceDescription,
