@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import {useRouter} from 'next/router';
 
 import StyledLi from '../components/ClientUI/styledLi';
@@ -11,8 +12,11 @@ import useClientStore from '../hooks/useClientStore';
 export default function ClientsPage() {
 	const clients = useClientStore(state => state.clients);
 	const router = useRouter();
+	const DynamicWrapper = dynamic(() => import('../components/styledClientWrapper'), {
+		ssr: false,
+	});
 	return (
-		<StyledWrapper>
+		<DynamicWrapper>
 			<StyledButton
 				onClick={() => {
 					router.push({
@@ -54,6 +58,6 @@ export default function ClientsPage() {
 						})}
 				</StyledUl>
 			</StyledWrapper>
-		</StyledWrapper>
+		</DynamicWrapper>
 	);
 }

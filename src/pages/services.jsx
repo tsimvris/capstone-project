@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import {useRouter} from 'next/router';
 
 import StyledLi from '../components/serviceUI/styledLi';
@@ -9,9 +10,11 @@ import useServiceStore from '../hooks/useServiceStore';
 export default function Services() {
 	const router = useRouter();
 	const services = useServiceStore(state => state.services);
-
+	const DynamicWrapper = dynamic(() => import('../components/styledClientWrapper'), {
+		ssr: false,
+	});
 	return (
-		<StyledWrapper>
+		<DynamicWrapper>
 			<StyledButton
 				onClick={() => {
 					router.push({
@@ -37,6 +40,6 @@ export default function Services() {
 					})}
 				</StyledUl>
 			</StyledWrapper>
-		</StyledWrapper>
+		</DynamicWrapper>
 	);
 }
