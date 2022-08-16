@@ -12,13 +12,15 @@ export default function Services() {
 
 	return (
 		<StyledWrapper>
-		<StyledButton
+			<StyledButton
 				onClick={() => {
 					router.push({
 						pathname: '/',
 					});
 				}}
-			>Home</StyledButton>
+			>
+				Home
+			</StyledButton>
 			<StyledButton
 				onClick={() => {
 					router.push({

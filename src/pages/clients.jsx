@@ -42,8 +42,8 @@ export default function ClientsPage() {
 									<StyledEditButton
 										onClick={() => {
 											router.push({
-												pathname: `/${client.CompanyTaxID}`,
-												query: {keyword: 'clientTaxID'},
+												pathname: `/${client.id}`,
+												query: {keyword: 'clientId'},
 											});
 										}}
 									>

@@ -32,7 +32,7 @@ export default function CreateNewClientForm() {
 		};
 		addClient(client);
 		router.push({
-			pathname: '/',
+			pathname: '/clients',
 		});
 	};
 

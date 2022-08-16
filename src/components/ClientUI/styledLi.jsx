@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const StyledLi = styled.li`
 	display: flex;
+	position: relative;
 	align-items: center;
 	justify-content: space-around;
 	width: 350px;
