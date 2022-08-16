@@ -15,7 +15,7 @@ export default function Services() {
 			<StyledButton
 				onClick={() => {
 					router.push({
-						pathname: '/CreateNewService',
+						pathname: '/create-new-service',
 					});
 				}}
 			>
