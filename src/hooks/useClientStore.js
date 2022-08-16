@@ -14,6 +14,7 @@ const useClientStore = create(
 		{
 			name: 'Clients', // unique name
 			getStorage: () => localStorage,
+
 		}
 	)
 );

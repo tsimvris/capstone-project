@@ -11,6 +11,7 @@ import useClientStore from '../hooks/useClientStore';
 export default function ClientsPage() {
 	const clients = useClientStore(state => state.clients);
 	const router = useRouter();
+	console.log(clients);
 	return (
 		<StyledWrapper>
 			<StyledButton
@@ -33,8 +34,8 @@ export default function ClientsPage() {
 									<StyledEditButton
 										onClick={() => {
 											router.push({
-												pathname: `/${client.CompanyTaxID}`,
-												query: {keyword: 'clientTaxID'},
+												pathname: `/${client.id}`,
+												query: {keyword: 'clientID'},
 											});
 										}}
 									>
