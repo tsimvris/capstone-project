@@ -30,7 +30,7 @@ export default function EditClient() {
 	const router = useRouter();
 	const ref = router.query;
 	const allClients = useClientStore(state => state.clients);
-	const ClientsArray = allClients.filter(ele => {
+	const clientsArray = allClients.filter(ele => {
 		return ele.id === ref.CompanyID;
 	});
 	const wantedClient = ClientsArray[0];
