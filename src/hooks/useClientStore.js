@@ -10,6 +10,11 @@ const useClientStore = create(
 					return {clients: [...state.clients, client]};
 				});
 			},
+			editClient: EditedClient => {
+				set(state => {
+					return {clients: [...state.clients, EditedClient]};
+				});
+			},
 		}),
 		{
 			name: 'Clients', // unique name
