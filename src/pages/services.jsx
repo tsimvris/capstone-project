@@ -18,9 +18,7 @@ export default function Services() {
 						pathname: '/',
 					});
 				}}
-			>
-				Home
-			</StyledButton>
+			>Home</StyledButton>
 			<StyledButton
 				onClick={() => {
 					router.push({
