@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import {useRouter} from 'next/router';
 
 import StyledLi from '../components/ClientUI/styledLi';
@@ -18,6 +19,11 @@ export default function ClientsPage() {
 	});
 	return (
 		<Layout>
+			<Head>
+				<title key="title">Dashy</title>
+				<meta key="description" name="description" content="This is my Capstone project" />
+				<link rel="icon" href="/Dashy.webp" />
+			</Head>
 			<DynamicWrapper>
 				<StyledButton
 					onClick={() => {
