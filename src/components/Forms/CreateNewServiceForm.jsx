@@ -4,6 +4,9 @@ import {useRouter} from 'next/router';
 import {useForm} from 'react-hook-form';
 
 import useServiceStore from '../../hooks/useServiceStore';
+import StyledError from '../errors/styledError';
+import StyledFieldset from '../Forms/StyledComponents/StyledFieldset';
+import StyledHinweis from '../Forms/styledHinweis';
 
 import StyledForm from './StyledComponents/styledForm';
 import StyledWrapper from './StyledComponents/styledFormWrapper';
@@ -56,7 +59,7 @@ export default function CreateNewServiceForm() {
 						render={({messages}) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (
-								<p key={type}>{message}</p>
+								<StyledError key={type}>{message}</StyledError>
 							))
 						}
 					/>
@@ -79,7 +82,7 @@ export default function CreateNewServiceForm() {
 						render={({messages}) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (
-								<p key={type}>{message}</p>
+								<StyledError key={type}>{message}</StyledError>
 							))
 						}
 					/>
@@ -87,16 +90,20 @@ export default function CreateNewServiceForm() {
 				<StyledLabel>
 					Price / Hour
 					<StyledInput
-						type="number"
+						type="text"
 						{...register('servicePricePerHour', {
-							required: true,
+							required: {value: true, message: 'This is required.'},
 							maxLength: {
 								value: 4,
-								message: 'This input exceed the maximal length.',
+								message: 'This Input can be maximum 4 characters long.',
 							},
 							minLength: {
 								value: 1,
-								message: 'This input requires at least 1 number.',
+								message: 'This input requires at least 1 character.',
+							},
+							pattern: {
+								value: '[0-9]+([.,][0-9]+)?',
+								message: 'This input is number only.',
 							},
 						})}
 					/>
@@ -106,40 +113,36 @@ export default function CreateNewServiceForm() {
 						render={({messages}) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (
-								<p key={type}>{message}</p>
+								<StyledError key={type}>{message}</StyledError>
 							))
 						}
 					/>
 				</StyledLabel>
 				<StyledLabel>
 					Tax Key
-					<StyledInput
-						type="number"
-						{...register('taxKey', {
-							required: {value: true, message: 'This is required.'},
-							minLength: {
-								value: 1,
-								message: 'Please enter a valid Tax Key(7 or 19 %).',
-							},
-							maxLength: {
-								value: 2,
-								message: 'This input exceeds the maximal length.',
-							},
-						})}
-					/>
-					<ErrorMessage
-						errors={errors}
-						name="taxKey"
-						render={({messages}) =>
-							messages &&
-							Object.entries(messages).map(([type, message]) => (
-								<p key={type}>{message}</p>
-							))
-						}
-					/>
+					<StyledFieldset>
+						<label>
+							<input value="0%" name="taxKey" type="radio" {...register('taxKey')} />
+							0%
+						</label>
+						<label>
+							<input value="7%" name="taxKey" type="radio" {...register('taxKey')} />
+							7%
+						</label>
+						<label>
+							<input
+								name="taxKey"
+								type="radio"
+								value="19%"
+								checked
+								{...register('taxKey')}
+							/>
+							19%
+						</label>
+					</StyledFieldset>
 				</StyledLabel>
-
 				<StyledSubmitButton type="submit">Submit</StyledSubmitButton>
+				<StyledHinweis>*All input fields are required</StyledHinweis>
 			</StyledForm>
 		</StyledWrapper>
 	);

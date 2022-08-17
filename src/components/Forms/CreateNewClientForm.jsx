@@ -5,6 +5,7 @@ import {useForm} from 'react-hook-form';
 
 import useClientStore from '../../hooks/useClientStore';
 import StyledError from '../errors/styledError';
+import StyledHinweis from '../Forms/styledHinweis';
 
 import StyledForm from './StyledComponents/styledForm';
 import StyledWrapper from './StyledComponents/styledFormWrapper';
@@ -100,6 +101,10 @@ export default function CreateNewClientForm() {
 								value: 5,
 								message: 'This input requires 5 characters.',
 							},
+							pattern: {
+								value: '[0-9]?',
+								message: 'This input is number only.',
+							},
 						})}
 					/>
 					<ErrorMessage
@@ -139,7 +144,7 @@ export default function CreateNewClientForm() {
 				<StyledLabel>
 					Tax ID
 					<StyledInput
-						type="number"
+						type="text"
 						{...register('taxId', {
 							required: {value: true, message: 'This field is required.'},
 							maxLength: {
@@ -149,6 +154,10 @@ export default function CreateNewClientForm() {
 							minLength: {
 								value: 8,
 								message: 'Tax Id length is between 8 and 10 characters.',
+							},
+							pattern: {
+								value: '[0-9]?',
+								message: 'This input is number only.',
 							},
 						})}
 					/>
@@ -164,6 +173,7 @@ export default function CreateNewClientForm() {
 					/>
 				</StyledLabel>
 				<StyledSubmitButton type="submit">Submit</StyledSubmitButton>
+				<StyledHinweis>*All input fields are required</StyledHinweis>
 			</StyledForm>
 		</StyledWrapper>
 	);

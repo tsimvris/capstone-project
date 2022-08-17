@@ -6,7 +6,7 @@ const StyledForm = styled.form`
 	align-items: center;
 	justify-content: center;
 	width: 330px;
-	height: 500px;
+	height: 550px;
 	margin-bottom: 10px;
 	padding: 10px;
 	border-radius: 20px;
