@@ -7,6 +7,7 @@ const StyledWrapper = styled.div`
 	justify-content: space-between;
 	max-width: 100vw;
 	min-height: 100vh;
+	padding: 0;
 	background-color: #f9f6ee;
 `;
 

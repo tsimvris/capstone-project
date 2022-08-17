@@ -4,9 +4,12 @@ import {useRouter} from 'next/router';
 import StyledButton from '../components/styledButton';
 export default function Homepage() {
 	const router = useRouter();
-	const DynamicWrapper = dynamic(() => import('../components/styledClientWrapper'), {
-		ssr: false,
-	});
+	const DynamicWrapper = dynamic(
+		() => import('../components/Forms/StyledComponents/styledFormWrapper'),
+		{
+			ssr: false,
+		}
+	);
 	return (
 		<DynamicWrapper>
 			<StyledButton

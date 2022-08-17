@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledUl = styled.ul`
-	padding: 10px;
+	padding: 0;
 	list-style: none;
 `;
 
