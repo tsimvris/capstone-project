@@ -94,11 +94,11 @@ export default function CreateNewClientForm() {
 							required: {value: true, message: 'This field is required.'},
 							maxLength: {
 								value: 5,
-								message: 'This input exceed maxLength.',
+								message: 'This input requires 5 characters.',
 							},
 							minLength: {
 								value: 5,
-								message: 'This input requires 5 numbers.',
+								message: 'This input requires 5 characters.',
 							},
 						})}
 					/>
@@ -144,11 +144,11 @@ export default function CreateNewClientForm() {
 							required: {value: true, message: 'This field is required.'},
 							maxLength: {
 								value: 10,
-								message: 'This input exceed maxLength.',
+								message: 'Tax Id length is between 8 and 10 characters.',
 							},
 							minLength: {
 								value: 8,
-								message: 'This input requires min 8 numbers.',
+								message: 'Tax Id length is between 8 and 10 characters.',
 							},
 						})}
 					/>
