@@ -17,14 +17,14 @@
     "toc": "npx markdown-toc@1 README.md -i"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.0",
-    "@emotion/styled": "^11.10.0",
     "@hookform/error-message": "^2.0.0",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.10.1",
     "nanoid": "4.0.0",
     "next": "12.2.4",
+    "next-sidebar": "^1.1.1",
     "react": "18.2.0",
+    "react-bootstrap": "^2.5.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.34.1",
     "react-icons": "^4.4.0",
