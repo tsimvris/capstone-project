@@ -4,6 +4,7 @@ import {useRouter} from 'next/router';
 import {useForm} from 'react-hook-form';
 
 import useClientStore from '../../hooks/useClientStore';
+import StyledError from '../errors/styledError';
 
 import StyledForm from './StyledComponents/styledForm';
 import StyledWrapper from './StyledComponents/styledFormWrapper';
@@ -57,7 +58,7 @@ export default function CreateNewClientForm() {
 						render={({messages}) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (
-								<p key={type}>{message}</p>
+								<StyledError key={type}>{message}</StyledError>
 							))
 						}
 					/>
@@ -80,7 +81,7 @@ export default function CreateNewClientForm() {
 						render={({messages}) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (
-								<p key={type}>{message}</p>
+								<StyledError key={type}>{message}</StyledError>
 							))
 						}
 					/>
@@ -107,7 +108,7 @@ export default function CreateNewClientForm() {
 						render={({messages}) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (
-								<p key={type}>{message}</p>
+								<StyledError key={type}>{message}</StyledError>
 							))
 						}
 					/>
@@ -130,7 +131,7 @@ export default function CreateNewClientForm() {
 						render={({messages}) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (
-								<p key={type}>{message}</p>
+								<StyledError key={type}>{message}</StyledError>
 							))
 						}
 					/>
@@ -157,7 +158,7 @@ export default function CreateNewClientForm() {
 						render={({messages}) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (
-								<p key={type}>{message}</p>
+								<StyledError key={type}>{message}</StyledError>
 							))
 						}
 					/>
