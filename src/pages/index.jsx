@@ -10,6 +10,8 @@ export default function Homepage() {
 		}
 	);
 	return (
-		<Layout><DynamicWrapper></DynamicWrapper></Layout>
+		<Layout>
+			<DynamicWrapper></DynamicWrapper>
+		</Layout>
 	);
 }
