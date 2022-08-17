@@ -5,7 +5,7 @@ import {useForm} from 'react-hook-form';
 
 import useClientStore from '../../hooks/useClientStore';
 import StyledError from '../errors/styledError';
-import StyledHinweis from '../Forms/styledHinweis';
+import StyledNotice from '../Forms/StyledNotice';
 
 import StyledForm from './StyledComponents/styledForm';
 import StyledWrapper from './StyledComponents/styledFormWrapper';
@@ -173,7 +173,7 @@ export default function CreateNewClientForm() {
 					/>
 				</StyledLabel>
 				<StyledSubmitButton type="submit">Submit</StyledSubmitButton>
-				<StyledHinweis>*All input fields are required</StyledHinweis>
+				<StyledNotice>*All input fields are required</StyledNotice>
 			</StyledForm>
 		</StyledWrapper>
 	);
