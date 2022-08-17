@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+
 import Layout from '../components/Layout';
 
 export default function Homepage() {
@@ -9,9 +10,6 @@ export default function Homepage() {
 		}
 	);
 	return (
-		<Layout>
-			<DynamicWrapper>
-			</DynamicWrapper>
-		</Layout>
+		<Layout><DynamicWrapper></DynamicWrapper></Layout>
 	);
 }
