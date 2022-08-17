@@ -4,6 +4,8 @@ import {useRouter} from 'next/router';
 import {useForm} from 'react-hook-form';
 
 import useClientStore from '../../hooks/useClientStore';
+import StyledError from '../errors/styledError';
+import StyledNotice from '../Forms/StyledNotice';
 
 import StyledForm from './StyledComponents/styledForm';
 import StyledWrapper from './StyledComponents/styledFormWrapper';
@@ -32,7 +34,7 @@ export default function CreateNewClientForm() {
 		};
 		addClient(client);
 		router.push({
-			pathname: '/',
+			pathname: '/clients',
 		});
 	};
 
@@ -44,7 +46,7 @@ export default function CreateNewClientForm() {
 					<StyledInput
 						type="text"
 						{...register('clientName', {
-							required: {value: true, message: 'This is required.'},
+							required: {value: true, message: 'This field is required.'},
 							minLength: {
 								value: 3,
 								message: 'Please enter a Valid Company Name.',
@@ -57,7 +59,7 @@ export default function CreateNewClientForm() {
 						render={({messages}) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (
-								<p key={type}>{message}</p>
+								<StyledError key={type}>{message}</StyledError>
 							))
 						}
 					/>
@@ -67,7 +69,7 @@ export default function CreateNewClientForm() {
 					<StyledInput
 						type="text"
 						{...register('Adress', {
-							required: {value: true, message: 'This is required.'},
+							required: {value: true, message: 'This field is required.'},
 							minLength: {
 								value: 8,
 								message: 'Please enter a existing Adress.',
@@ -80,7 +82,7 @@ export default function CreateNewClientForm() {
 						render={({messages}) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (
-								<p key={type}>{message}</p>
+								<StyledError key={type}>{message}</StyledError>
 							))
 						}
 					/>
@@ -90,14 +92,18 @@ export default function CreateNewClientForm() {
 					<StyledInput
 						type="number"
 						{...register('postalCode', {
-							required: true,
+							required: {value: true, message: 'This field is required.'},
 							maxLength: {
 								value: 5,
-								message: 'This input exceed maxLength.',
+								message: 'This input requires 5 characters.',
 							},
 							minLength: {
 								value: 5,
-								message: 'This input requires 5 numbers.',
+								message: 'This input requires 5 characters.',
+							},
+							pattern: {
+								value: '[0-9]?',
+								message: 'This input is number only.',
 							},
 						})}
 					/>
@@ -107,7 +113,7 @@ export default function CreateNewClientForm() {
 						render={({messages}) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (
-								<p key={type}>{message}</p>
+								<StyledError key={type}>{message}</StyledError>
 							))
 						}
 					/>
@@ -117,7 +123,7 @@ export default function CreateNewClientForm() {
 					<StyledInput
 						type="text"
 						{...register('city', {
-							required: {value: true, message: 'This is required.'},
+							required: {value: true, message: 'This field is required.'},
 							minLength: {
 								value: 2,
 								message: 'Please enter a existing City.',
@@ -130,7 +136,7 @@ export default function CreateNewClientForm() {
 						render={({messages}) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (
-								<p key={type}>{message}</p>
+								<StyledError key={type}>{message}</StyledError>
 							))
 						}
 					/>
@@ -138,16 +144,20 @@ export default function CreateNewClientForm() {
 				<StyledLabel>
 					Tax ID
 					<StyledInput
-						type="number"
+						type="text"
 						{...register('taxId', {
-							required: true,
+							required: {value: true, message: 'This field is required.'},
 							maxLength: {
 								value: 10,
-								message: 'This input exceed maxLength.',
+								message: 'Tax Id length is between 8 and 10 characters.',
 							},
 							minLength: {
 								value: 8,
-								message: 'This input requires min 8 numbers.',
+								message: 'Tax Id length is between 8 and 10 characters.',
+							},
+							pattern: {
+								value: '[0-9]?',
+								message: 'This input is number only.',
 							},
 						})}
 					/>
@@ -157,12 +167,13 @@ export default function CreateNewClientForm() {
 						render={({messages}) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (
-								<p key={type}>{message}</p>
+								<StyledError key={type}>{message}</StyledError>
 							))
 						}
 					/>
 				</StyledLabel>
 				<StyledSubmitButton type="submit">Submit</StyledSubmitButton>
+				<StyledNotice>*All input fields are required</StyledNotice>
 			</StyledForm>
 		</StyledWrapper>
 	);

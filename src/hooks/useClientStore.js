@@ -13,7 +13,7 @@ const useClientStore = create(
 		}),
 		{
 			name: 'Clients', // unique name
-			getStorage: () => localStorage, // (optional) by default, 'localStorage' is used
+			getStorage: () => localStorage,
 		}
 	)
 );

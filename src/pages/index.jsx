@@ -1,51 +1,35 @@
+import dynamic from 'next/dynamic';
 import {useRouter} from 'next/router';
 
-import StyledLi from '../components/ClientUI/styledLi';
-import StyledSpan from '../components/ClientUI/styledSpan';
-import StyledUl from '../components/ClientUI/styledUL';
-import StyledEditButton from '../components/Forms/StyledComponents/styledEditButton';
 import StyledButton from '../components/styledButton';
-import StyledWrapper from '../components/styledClientWrapper';
-import useClientStore from '../hooks/useClientStore';
-
-export default function ClientsPage() {
-	const clients = useClientStore(state => state.clients);
+export default function Homepage() {
 	const router = useRouter();
-	console.log(clients);
+	const DynamicWrapper = dynamic(
+		() => import('../components/Forms/StyledComponents/styledFormWrapper'),
+		{
+			ssr: false,
+		}
+	);
 	return (
-		<StyledWrapper>
+		<DynamicWrapper>
 			<StyledButton
 				onClick={() => {
 					router.push({
-						pathname: '/CreateNewClient',
+						pathname: '/clients',
 					});
 				}}
 			>
-				Add new Client
+				Clients
 			</StyledButton>
-			<StyledWrapper>
-				<StyledUl>
-					{clients
-						?.sort((a, b) => a.CompanyName?.localeCompare(b.CompanyName))
-						.map(client => {
-							return (
-								<StyledLi key={client.id}>
-									<StyledSpan>{client.CompanyName}</StyledSpan>
-									<StyledEditButton
-										onClick={() => {
-											router.push({
-												pathname: `/${client.id}`,
-												query: {keyword: 'clientID'},
-											});
-										}}
-									>
-										Edit
-									</StyledEditButton>
-								</StyledLi>
-							);
-						})}
-				</StyledUl>
-			</StyledWrapper>
-		</StyledWrapper>
+			<StyledButton
+				onClick={() => {
+					router.push({
+						pathname: '/services',
+					});
+				}}
+			>
+				Services
+			</StyledButton>
+		</DynamicWrapper>
 	);
 }

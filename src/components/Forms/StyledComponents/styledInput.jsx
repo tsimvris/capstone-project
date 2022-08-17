@@ -11,6 +11,7 @@ const StyledInput = styled.input`
 	border: none;
 	border-radius: 13px;
 	background-color: #d9d9d9;
+	font-size: 1rem;
 `;
 
 export default StyledInput;
