@@ -6,6 +6,7 @@ import StyledSpan from '../components/ClientUI/styledSpan';
 import StyledUl from '../components/ClientUI/styledUL';
 import StyledEditButton from '../components/Forms/StyledComponents/styledEditButton';
 import StyledButton from '../components/styledButton';
+import StyledWrapper from '../components/styledClientWrapper';
 import useClientStore from '../hooks/useClientStore';
 
 export default function ClientsPage() {
@@ -34,27 +35,29 @@ export default function ClientsPage() {
 			>
 				Add new Client
 			</StyledButton>
-			<StyledUl>
-				{clients
-					?.sort((a, b) => a.CompanyName?.localeCompare(b.CompanyName))
-					.map(client => {
-						return (
-							<StyledLi key={client.id}>
-								<StyledSpan>{client.CompanyName}</StyledSpan>
-								<StyledEditButton
-									onClick={() => {
-										router.push({
-											pathname: `/${client.id}`,
-											query: {keyword: 'clientId'},
-										});
-									}}
-								>
-									Edit
-								</StyledEditButton>
-							</StyledLi>
-						);
-					})}
-			</StyledUl>
+			<StyledWrapper>
+				<StyledUl>
+					{clients
+						?.sort((a, b) => a.CompanyName?.localeCompare(b.CompanyName))
+						.map(client => {
+							return (
+								<StyledLi key={client.id}>
+									<StyledSpan>{client.CompanyName}</StyledSpan>
+									<StyledEditButton
+										onClick={() => {
+											router.push({
+												pathname: `/${client.id}`,
+												query: {keyword: 'clientId'},
+											});
+										}}
+									>
+										Edit
+									</StyledEditButton>
+								</StyledLi>
+							);
+						})}
+				</StyledUl>
+			</StyledWrapper>
 		</DynamicWrapper>
 	);
 }
