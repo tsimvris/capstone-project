@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import {useRouter} from 'next/router';
 
+import Layout from '../components/Layout';
 import StyledLi from '../components/serviceUI/styledLi';
 import StyledUl from '../components/serviceUI/styledUL';
 import StyledButton from '../components/styledButton';
@@ -14,32 +15,34 @@ export default function Services() {
 		ssr: false,
 	});
 	return (
-		<DynamicWrapper>
-			<StyledButton
-				onClick={() => {
-					router.push({
-						pathname: '/',
-					});
-				}}
-			>
-				Home
-			</StyledButton>
-			<StyledButton
-				onClick={() => {
-					router.push({
-						pathname: '/create-new-service',
-					});
-				}}
-			>
-				Add new Service
-			</StyledButton>
-			<StyledWrapper>
-				<StyledUl>
-					{services.map(service => {
-						return <StyledLi key={service.id}>{service.serviceName}</StyledLi>;
-					})}
-				</StyledUl>
-			</StyledWrapper>
-		</DynamicWrapper>
+		<Layout>
+			<DynamicWrapper>
+				<StyledButton
+					onClick={() => {
+						router.push({
+							pathname: '/',
+						});
+					}}
+				>
+					Home
+				</StyledButton>
+				<StyledButton
+					onClick={() => {
+						router.push({
+							pathname: '/create-new-service',
+						});
+					}}
+				>
+					Add new Service
+				</StyledButton>
+				<StyledWrapper>
+					<StyledUl>
+						{services.map(service => {
+							return <StyledLi key={service.id}>{service.serviceName}</StyledLi>;
+						})}
+					</StyledUl>
+				</StyledWrapper>
+			</DynamicWrapper>
+		</Layout>
 	);
 }

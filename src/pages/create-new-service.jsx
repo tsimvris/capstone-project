@@ -1,4 +1,10 @@
 import CreateNewServiceForm from '../components/Forms/CreateNewServiceForm';
+import Layout from '../components/Layout';
+
 export default function CreateNewService() {
-	return <CreateNewServiceForm />;
+	return (
+		<Layout>
+			<CreateNewServiceForm />
+		</Layout>
+	);
 }
