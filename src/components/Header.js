@@ -1,12 +1,11 @@
-import Link from 'next/link';
-
+import StyledNavBar from './menu/styledNavBar';
+import StyledNavBarButton from './menu/styledNavBarButton';
 export default function Header() {
 	return (
 		<header>
-			<nav>
-				<Link href="/">Home</Link>
-				<Link href="/about">About me</Link>
-			</nav>
+			<StyledNavBar>
+				<StyledNavBarButton></StyledNavBarButton>
+			</StyledNavBar>
 		</header>
 	);
 }
