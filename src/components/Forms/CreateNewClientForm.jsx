@@ -44,7 +44,7 @@ export default function CreateNewClientForm() {
 					<StyledInput
 						type="text"
 						{...register('clientName', {
-							required: {value: true, message: 'This is required.'},
+							required: {value: true, message: 'This field is required.'},
 							minLength: {
 								value: 3,
 								message: 'Please enter a Valid Company Name.',
@@ -67,7 +67,7 @@ export default function CreateNewClientForm() {
 					<StyledInput
 						type="text"
 						{...register('Adress', {
-							required: {value: true, message: 'This is required.'},
+							required: {value: true, message: 'This field is required.'},
 							minLength: {
 								value: 8,
 								message: 'Please enter a existing Adress.',
@@ -90,7 +90,7 @@ export default function CreateNewClientForm() {
 					<StyledInput
 						type="number"
 						{...register('postalCode', {
-							required: true,
+							required: {value: true, message: 'This field is required.'},
 							maxLength: {
 								value: 5,
 								message: 'This input exceed maxLength.',
@@ -117,7 +117,7 @@ export default function CreateNewClientForm() {
 					<StyledInput
 						type="text"
 						{...register('city', {
-							required: {value: true, message: 'This is required.'},
+							required: {value: true, message: 'This field is required.'},
 							minLength: {
 								value: 2,
 								message: 'Please enter a existing City.',
@@ -140,7 +140,7 @@ export default function CreateNewClientForm() {
 					<StyledInput
 						type="number"
 						{...register('taxId', {
-							required: true,
+							required: {value: true, message: 'This field is required.'},
 							maxLength: {
 								value: 10,
 								message: 'This input exceed maxLength.',
