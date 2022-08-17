@@ -14,24 +14,7 @@ export default function Homepage() {
 	return (
 		<Layout>
 			<DynamicWrapper>
-				<StyledButton
-					onClick={() => {
-						router.push({
-							pathname: '/clients',
-						});
-					}}
-				>
-					Clients
-				</StyledButton>
-				<StyledButton
-					onClick={() => {
-						router.push({
-							pathname: '/services',
-						});
-					}}
-				>
-					Services
-				</StyledButton>
+				
 			</DynamicWrapper>
 		</Layout>
 	);
