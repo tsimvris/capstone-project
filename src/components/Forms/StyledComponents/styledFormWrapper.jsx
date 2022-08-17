@@ -6,6 +6,7 @@ const StyledWrapper = styled.div`
 	justify-content: center;
 	width: 100%;
 	height: 667px;
+	padding: 0;
 	background-color: #f9f6ee;
 `;
 
