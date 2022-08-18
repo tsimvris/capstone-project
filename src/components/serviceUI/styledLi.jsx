@@ -5,7 +5,7 @@ const StyledLi = styled.li`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	width: 100%;
+	width: fit-content;
 	height: auto;
 	border-radius: 15px;
 	background-color: #fc814a;
