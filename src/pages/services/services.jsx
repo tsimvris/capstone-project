@@ -3,6 +3,7 @@ import Head from 'next/head';
 import {useRouter} from 'next/router';
 
 import StyledSpan from '../../components/ClientUI/styledSpan';
+import StyledDeleteButton from '../../components/Forms/StyledComponents/styledDeleteButton';
 import StyledEditButton from '../../components/Forms/StyledComponents/styledEditButton';
 import Layout from '../../components/Layout';
 import StyledLi from '../../components/serviceUI/styledLi';
@@ -14,6 +15,8 @@ import useServiceStore from '../../hooks/useServiceStore';
 export default function Services() {
 	const router = useRouter();
 	const services = useServiceStore(state => state.services);
+	const deleteService = useServiceStore(state => state.deleteService);
+
 	const DynamicWrapper = dynamic(() => import('../../components/styledClientWrapper'), {
 		ssr: false,
 	});
@@ -66,6 +69,14 @@ export default function Services() {
 									>
 										Edit
 									</StyledEditButton>
+									<StyledDeleteButton
+										type="button"
+										onClick={() => {
+											deleteService(service.id);
+										}}
+									>
+										Delete
+									</StyledDeleteButton>
 								</StyledLi>
 							);
 						})}

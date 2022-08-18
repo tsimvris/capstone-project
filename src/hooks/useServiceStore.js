@@ -10,6 +10,11 @@ const useServiceStore = create(
 					return {services: [...state.services, service]};
 				});
 			},
+			deleteService: id => {
+				set(state => {
+					return {services: state.services.filter(service => service.id !== id)};
+				});
+			},
 		}),
 		{
 			name: 'Services', // unique name
