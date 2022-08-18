@@ -122,18 +122,18 @@ export default function CreateNewServiceForm() {
 					Tax Key
 					<StyledFieldset>
 						<label>
-							<input value="0%" name="taxKey" type="radio" {...register('taxKey')} />
+							<input value={'0'} name="taxKey" type="radio" {...register('taxKey')} />
 							0%
 						</label>
 						<label>
-							<input value="7%" name="taxKey" type="radio" {...register('taxKey')} />
+							<input value={'7'} name="taxKey" type="radio" {...register('taxKey')} />
 							7%
 						</label>
 						<label>
 							<input
 								name="taxKey"
 								type="radio"
-								value="19%"
+								value="19"
 								checked
 								{...register('taxKey')}
 							/>
