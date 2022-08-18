@@ -6,13 +6,13 @@ import {useForm} from 'react-hook-form';
 import useServiceStore from '../../hooks/useServiceStore';
 import StyledError from '../errors/styledError';
 import StyledFieldset from '../Forms/StyledComponents/StyledFieldset';
-import StyledNotice from '../Forms/StyledNotice';
 
 import StyledForm from './StyledComponents/styledForm';
 import StyledWrapper from './StyledComponents/styledFormWrapper';
 import StyledInput from './StyledComponents/styledInput';
 import StyledLabel from './StyledComponents/styledLabel';
 import StyledSubmitButton from './StyledComponents/styledSubmitButton';
+import StyledNotice from './styledNotice';
 
 export default function CreateNewServiceForm() {
 	const addService = useServiceStore(state => state.addService);
