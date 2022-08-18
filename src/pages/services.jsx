@@ -4,7 +4,6 @@ import {useRouter} from 'next/router';
 
 import StyledSpan from '../components/ClientUI/styledSpan';
 import StyledEditButton from '../components/Forms/StyledComponents/styledEditButton';
-
 import Layout from '../components/Layout';
 import StyledLi from '../components/serviceUI/styledLi';
 import StyledP from '../components/serviceUI/styledP';
@@ -46,31 +45,31 @@ export default function Services() {
 					Add new Service
 				</StyledButton>
 				<StyledWrapper>
-				<StyledUl>
-					{services.map(service => {
-						return (
-							<StyledLi key={service.id}>
-								<StyledP>
-									<StyledSpan>Service Name :</StyledSpan>
-									{service.serviceName}
-								</StyledP>
-								<StyledP>
-									<StyledSpan>Service Description : </StyledSpan>
-									{service.serviceDescription}
-								</StyledP>
-								<StyledP>
-									<StyledSpan>Service Price : </StyledSpan>
-									{service.servicePricePerHour}
-								</StyledP>
-								<StyledP>
-									<StyledSpan>Service Tax Key :</StyledSpan>
-									{service.serviceTaxKey}
-								</StyledP>
-								<StyledEditButton>Edit</StyledEditButton>
-							</StyledLi>
-						);
-					})}
-				</StyledUl>
+					<StyledUl>
+						{services.map(service => {
+							return (
+								<StyledLi key={service.id}>
+									<StyledP>
+										<StyledSpan>Service Name :</StyledSpan>
+										{service.serviceName}
+									</StyledP>
+									<StyledP>
+										<StyledSpan>Service Description : </StyledSpan>
+										{service.serviceDescription}
+									</StyledP>
+									<StyledP>
+										<StyledSpan>Service Price : </StyledSpan>
+										{service.servicePricePerHour}
+									</StyledP>
+									<StyledP>
+										<StyledSpan>Service Tax Key :</StyledSpan>
+										{service.serviceTaxKey}
+									</StyledP>
+									<StyledEditButton>Edit</StyledEditButton>
+								</StyledLi>
+							);
+						})}
+					</StyledUl>
 				</StyledWrapper>
 			</DynamicWrapper>
 		</Layout>
