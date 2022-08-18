@@ -3,6 +3,7 @@ import Head from 'next/head';
 import {useRouter} from 'next/router';
 
 import StyledSpan from '../../components/ClientUI/styledSpan';
+import StyledDeleteButton from '../../components/Forms/StyledComponents/styledDeleteButton';
 import StyledEditButton from '../../components/Forms/StyledComponents/styledEditButton';
 import Layout from '../../components/Layout';
 import StyledLi from '../../components/serviceUI/styledLi';
@@ -68,14 +69,14 @@ export default function Services() {
 									>
 										Edit
 									</StyledEditButton>
-									<StyledEditButton
+									<StyledDeleteButton
 										type="button"
 										onClick={() => {
 											deleteService(service.id);
 										}}
 									>
 										Delete
-									</StyledEditButton>
+									</StyledDeleteButton>
 								</StyledLi>
 							);
 						})}
