@@ -40,7 +40,6 @@ export default function Services() {
 				<StyledUl>
 					{services.map(service => {
 						return (
-							<>
 								<StyledLi key={service.id}>
 									<StyledP>
 										<StyledSpan>Service Name :</StyledSpan>
@@ -60,7 +59,6 @@ export default function Services() {
 									</StyledP>
 									<StyledEditButton>Edit</StyledEditButton>
 								</StyledLi>
-							</>
 						);
 					})}
 				</StyledUl>
