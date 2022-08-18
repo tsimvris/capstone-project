@@ -28,15 +28,6 @@ export default function ClientsPage() {
 				<StyledButton
 					onClick={() => {
 						router.push({
-							pathname: '/',
-						});
-					}}
-				>
-					Home
-				</StyledButton>
-				<StyledButton
-					onClick={() => {
-						router.push({
 							pathname: '/clients/create-new-client',
 						});
 					}}
