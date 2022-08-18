@@ -5,7 +5,7 @@ import {useForm} from 'react-hook-form';
 
 import useClientStore from '../../hooks/useClientStore';
 import StyledError from '../errors/styledError';
-import StyledNotice from '../Forms/StyledNotice';
+import StyledNotice from '../Forms/styledNotice';
 
 import StyledForm from './StyledComponents/styledForm';
 import StyledWrapper from './StyledComponents/styledFormWrapper';
