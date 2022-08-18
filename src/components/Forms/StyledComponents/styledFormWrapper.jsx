@@ -4,8 +4,10 @@ const StyledWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 375px;
+	width: 100%;
 	height: 667px;
+	padding: 0;
+	background-color: #f9f6ee;
 `;
 
 export default StyledWrapper;

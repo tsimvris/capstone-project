@@ -13,6 +13,7 @@ import StyledWrapper from './StyledComponents/styledFormWrapper';
 import StyledInput from './StyledComponents/styledInput';
 import StyledLabel from './StyledComponents/styledLabel';
 import StyledSubmitButton from './StyledComponents/styledSubmitButton';
+import StyledNotice from './styledNotice';
 
 export default function CreateNewServiceForm() {
 	const addService = useServiceStore(state => state.addService);

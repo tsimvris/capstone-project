@@ -1,8 +1,11 @@
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import {useRouter} from 'next/router';
 
 import StyledSpan from '../components/ClientUI/styledSpan';
 import StyledEditButton from '../components/Forms/StyledComponents/styledEditButton';
+
+import Layout from '../components/Layout';
 import StyledLi from '../components/serviceUI/styledLi';
 import StyledP from '../components/serviceUI/styledP';
 import StyledUl from '../components/serviceUI/styledUL';
@@ -17,26 +20,32 @@ export default function Services() {
 	});
 
 	return (
-		<DynamicWrapper>
-			<StyledButton
-				onClick={() => {
-					router.push({
-						pathname: '/',
-					});
-				}}
-			>
-				Home
-			</StyledButton>
-			<StyledButton
-				onClick={() => {
-					router.push({
-						pathname: '/create-new-service',
-					});
-				}}
-			>
-				Add new Service
-			</StyledButton>
-			<StyledWrapper>
+		<Layout>
+			<Head>
+				<title key="title">Dashy</title>
+				<meta key="description" name="description" content="This is my Capstone project" />
+				<link rel="icon" href="/Dashy.webp" />
+			</Head>
+			<DynamicWrapper>
+				<StyledButton
+					onClick={() => {
+						router.push({
+							pathname: '/',
+						});
+					}}
+				>
+					Home
+				</StyledButton>
+				<StyledButton
+					onClick={() => {
+						router.push({
+							pathname: '/create-new-service',
+						});
+					}}
+				>
+					Add new Service
+				</StyledButton>
+				<StyledWrapper>
 				<StyledUl>
 					{services.map(service => {
 						return (
@@ -62,7 +71,8 @@ export default function Services() {
 						);
 					})}
 				</StyledUl>
-			</StyledWrapper>
-		</DynamicWrapper>
+				</StyledWrapper>
+			</DynamicWrapper>
+		</Layout>
 	);
 }
