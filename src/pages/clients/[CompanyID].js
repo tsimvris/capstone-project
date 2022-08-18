@@ -26,7 +26,7 @@ export default function EditClient() {
 		wantedClient.CompanyTaxID = data.taxId;
 		wantedClient.CompanyZipCode = data.postalCode;
 		router.push({
-			pathname: '/clients',
+			pathname: '/clients/clients',
 		});
 	};
 	const router = useRouter();
