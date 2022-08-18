@@ -49,12 +49,12 @@ export default function Services() {
 										{service.serviceDescription}
 									</StyledP>
 									<StyledP>
-										<StyledSpan>Service Price : </StyledSpan>
+										<StyledSpan>Service Price / Hour : </StyledSpan>
 										{service.servicePricePerHour}
 									</StyledP>
 									<StyledP>
 										<StyledSpan>Service Tax Key :</StyledSpan>
-										{service.serviceTaxKey}
+										{service.serviceTaxKey}%
 									</StyledP>
 									<StyledEditButton
 										onClick={() => {

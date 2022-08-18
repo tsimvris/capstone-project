@@ -173,7 +173,7 @@ export default function CreateNewClientForm() {
 					/>
 				</StyledLabel>
 				<StyledSubmitButton type="submit">Submit</StyledSubmitButton>
-				<StyledNotice>*All input fields are required</StyledNotice>
+				<StyledNotice>All input fields are required</StyledNotice>
 			</StyledForm>
 		</StyledWrapper>
 	);

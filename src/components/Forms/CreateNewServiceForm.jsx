@@ -90,7 +90,7 @@ export default function CreateNewServiceForm() {
 				<StyledLabel>
 					Price / Hour
 					<StyledInput
-						type="text"
+						type="number"
 						{...register('servicePricePerHour', {
 							required: {value: true, message: 'This is required.'},
 							maxLength: {
@@ -102,7 +102,7 @@ export default function CreateNewServiceForm() {
 								message: 'This input requires at least 1 character.',
 							},
 							pattern: {
-								value: '[0-9]+([.,][0-9]+)?',
+								value: '[0-9]+[.,]+[0-9]',
 								message: 'This input is number only.',
 							},
 						})}
@@ -142,7 +142,7 @@ export default function CreateNewServiceForm() {
 					</StyledFieldset>
 				</StyledLabel>
 				<StyledSubmitButton type="submit">Submit</StyledSubmitButton>
-				<StyledNotice>*All input fields are required</StyledNotice>
+				<StyledNotice>All input fields are required</StyledNotice>
 			</StyledForm>
 		</StyledWrapper>
 	);
