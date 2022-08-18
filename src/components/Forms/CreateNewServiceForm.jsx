@@ -34,7 +34,7 @@ export default function CreateNewServiceForm() {
 		};
 		addService(service);
 		router.push({
-			pathname: '/services',
+			pathname: '/services/services',
 		});
 	};
 
