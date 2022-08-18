@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
-import CreateNewClientForm from '../components/Forms/CreateNewClientForm';
-import Layout from '../components/Layout';
+import CreateNewClientForm from '../../components/Forms/CreateNewClientForm';
+import Layout from '../../components/Layout';
 export default function CreateNewClient() {
 	return (
 		<Layout>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import {useState} from 'react';
 import {BsFillPeopleFill} from 'react-icons/bs';
 import * as FaIcons from 'react-icons/fa';
+import {ImHome} from 'react-icons/im';
 import {MdHomeRepairService} from 'react-icons/md';
 
 import StyledLink from '../components/menu/StyledLink';
@@ -40,13 +41,19 @@ export default function Header() {
 				>
 					<StyledMenuBox>
 						<Image width="130px" height="129" src="/Dashy.svg" alt="logo" />
-						<Link href="/clients">
+						<Link href="/">
+							<StyledLink>
+								<ImHome />
+								<StyledSpan>Home</StyledSpan>
+							</StyledLink>
+						</Link>
+						<Link href="/clients/clients">
 							<StyledLink>
 								<BsFillPeopleFill />
 								<StyledSpan>Clients</StyledSpan>
 							</StyledLink>
 						</Link>
-						<Link href="/services">
+						<Link href="/services/services">
 							<StyledLink>
 								<MdHomeRepairService />
 								<StyledSpan>Services</StyledSpan>

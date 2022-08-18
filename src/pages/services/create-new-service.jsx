@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
-import CreateNewServiceForm from '../components/Forms/CreateNewServiceForm';
-import Layout from '../components/Layout';
+import CreateNewServiceForm from '../../components/Forms/CreateNewServiceForm';
+import Layout from '../../components/Layout';
 export default function CreateNewService() {
 	return (
 		<Layout>

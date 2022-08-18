@@ -5,7 +5,6 @@ import {useForm} from 'react-hook-form';
 
 import useClientStore from '../../hooks/useClientStore';
 import StyledError from '../errors/styledError';
-
 import StyledNotice from '../Forms/styledNotice';
 
 import StyledForm from './StyledComponents/styledForm';
@@ -13,7 +12,6 @@ import StyledWrapper from './StyledComponents/styledFormWrapper';
 import StyledInput from './StyledComponents/styledInput';
 import StyledLabel from './StyledComponents/styledLabel';
 import StyledSubmitButton from './StyledComponents/styledSubmitButton';
-import StyledNotice from './styledNotice';
 
 export default function CreateNewClientForm() {
 	const addClient = useClientStore(state => state.addClient);
@@ -36,7 +34,7 @@ export default function CreateNewClientForm() {
 		};
 		addClient(client);
 		router.push({
-			pathname: '/clients',
+			pathname: '/clients/clients',
 		});
 	};
 
@@ -175,7 +173,7 @@ export default function CreateNewClientForm() {
 					/>
 				</StyledLabel>
 				<StyledSubmitButton type="submit">Submit</StyledSubmitButton>
-				<StyledNotice>*All input fields are required</StyledNotice>
+				<StyledNotice>All input fields are required</StyledNotice>
 			</StyledForm>
 		</StyledWrapper>
 	);
