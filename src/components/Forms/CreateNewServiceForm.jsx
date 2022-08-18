@@ -126,7 +126,7 @@ export default function CreateNewServiceForm() {
 							0%
 						</label>
 						<label>
-							<input value={'7'} name="taxKey" type="radio" {...register('taxKey')} />
+							<input value='7' name="taxKey" type="radio" {...register('taxKey')} />
 							7%
 						</label>
 						<label>
