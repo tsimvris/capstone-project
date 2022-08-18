@@ -40,25 +40,25 @@ export default function Services() {
 				<StyledUl>
 					{services.map(service => {
 						return (
-								<StyledLi key={service.id}>
-									<StyledP>
-										<StyledSpan>Service Name :</StyledSpan>
-										{service.serviceName}
-									</StyledP>
-									<StyledP>
-										<StyledSpan>Service Description : </StyledSpan>
-										{service.serviceDescription}
-									</StyledP>
-									<StyledP>
-										<StyledSpan>Service Price : </StyledSpan>
-										{service.servicePricePerHour}
-									</StyledP>
-									<StyledP>
-										<StyledSpan>Service Tax Key :</StyledSpan>
-										{service.serviceTaxKey}
-									</StyledP>
-									<StyledEditButton>Edit</StyledEditButton>
-								</StyledLi>
+							<StyledLi key={service.id}>
+								<StyledP>
+									<StyledSpan>Service Name :</StyledSpan>
+									{service.serviceName}
+								</StyledP>
+								<StyledP>
+									<StyledSpan>Service Description : </StyledSpan>
+									{service.serviceDescription}
+								</StyledP>
+								<StyledP>
+									<StyledSpan>Service Price : </StyledSpan>
+									{service.servicePricePerHour}
+								</StyledP>
+								<StyledP>
+									<StyledSpan>Service Tax Key :</StyledSpan>
+									{service.serviceTaxKey}
+								</StyledP>
+								<StyledEditButton>Edit</StyledEditButton>
+							</StyledLi>
 						);
 					})}
 				</StyledUl>
