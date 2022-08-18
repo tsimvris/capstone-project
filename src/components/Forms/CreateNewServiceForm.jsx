@@ -6,13 +6,13 @@ import {useForm} from 'react-hook-form';
 import useServiceStore from '../../hooks/useServiceStore';
 import StyledError from '../errors/styledError';
 import StyledFieldset from '../Forms/StyledComponents/StyledFieldset';
+import StyledNotice from '../Forms/styledNotice';
 
 import StyledForm from './StyledComponents/styledForm';
 import StyledWrapper from './StyledComponents/styledFormWrapper';
 import StyledInput from './StyledComponents/styledInput';
 import StyledLabel from './StyledComponents/styledLabel';
 import StyledSubmitButton from './StyledComponents/styledSubmitButton';
-import StyledNotice from './styledNotice';
 
 export default function CreateNewServiceForm() {
 	const addService = useServiceStore(state => state.addService);
@@ -122,18 +122,18 @@ export default function CreateNewServiceForm() {
 					Tax Key
 					<StyledFieldset>
 						<label>
-							<input value="0%" name="taxKey" type="radio" {...register('taxKey')} />
+							<input value="0" name="taxKey" type="radio" {...register('taxKey')} />
 							0%
 						</label>
 						<label>
-							<input value="7%" name="taxKey" type="radio" {...register('taxKey')} />
+							<input value="7" name="taxKey" type="radio" {...register('taxKey')} />
 							7%
 						</label>
 						<label>
 							<input
 								name="taxKey"
 								type="radio"
-								value="19%"
+								value="19"
 								checked
 								{...register('taxKey')}
 							/>
