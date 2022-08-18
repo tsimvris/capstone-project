@@ -3,13 +3,13 @@ import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {useForm} from 'react-hook-form';
 
-import StyledForm from '../components/Forms/StyledComponents/styledForm';
-import StyledInput from '../components/Forms/StyledComponents/styledInput';
-import StyledLabel from '../components/Forms/StyledComponents/styledLabel';
-import StyledSubmitButton from '../components/Forms/StyledComponents/styledSubmitButton';
-import Layout from '../components/Layout';
-import StyledWrapper from '../components/styledClientWrapper';
-import useClientStore from '../hooks/useClientStore';
+import StyledForm from '../../components/Forms/StyledComponents/styledForm';
+import StyledInput from '../../components/Forms/StyledComponents/styledInput';
+import StyledLabel from '../../components/Forms/StyledComponents/styledLabel';
+import StyledSubmitButton from '../../components/Forms/StyledComponents/styledSubmitButton';
+import Layout from '../../components/Layout';
+import StyledWrapper from '../../components/styledClientWrapper';
+import useClientStore from '../../hooks/useClientStore';
 
 export default function EditClient() {
 	const {

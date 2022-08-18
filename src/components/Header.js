@@ -40,13 +40,13 @@ export default function Header() {
 				>
 					<StyledMenuBox>
 						<Image width="130px" height="129" src="/Dashy.svg" alt="logo" />
-						<Link href="/clients">
+						<Link href="/clients/clients">
 							<StyledLink>
 								<BsFillPeopleFill />
 								<StyledSpan>Clients</StyledSpan>
 							</StyledLink>
 						</Link>
-						<Link href="/services">
+						<Link href="/services/services">
 							<StyledLink>
 								<MdHomeRepairService />
 								<StyledSpan>Services</StyledSpan>
