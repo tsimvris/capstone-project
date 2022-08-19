@@ -1,7 +1,9 @@
+import {ref, uploadBytes, getDownloadURL} from 'firebase/storage';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
 import {useRouter} from 'next/router';
+import {useState} from 'react';
 
 import StyledEditButton from '../components/Forms/StyledComponents/styledEditButton';
 import Layout from '../components/Layout';
@@ -10,22 +12,41 @@ import StyledH2Container from '../components/styledH2';
 import StyledParagraph from '../components/styledParagraph';
 import StyledProfileWrapper from '../components/styledProfileWrapper';
 import StyledSpan from '../components/styledSpan';
+import {storage} from '../hooks/firebase';
 import useMyStore from '../hooks/useMyStore';
-
 export default function Profile() {
 	const router = useRouter();
-
+	const [image, setImage] = useState('');
 	const myLogo = useMyStore(state => state.myLogo);
 	const addLogo = useMyStore(state => state.addLogo);
 	const myCompany = useMyStore(state => state.companyInfo);
 	const DynamicWrapper = dynamic(() => import('../components/styledProfileWrapper'), {
 		ssr: false,
 	});
-	const defaultLogo = '/defaultLogo.svg';
 
-	function changeLogo() {
-		addLogo(defaultLogo);
-	}
+	const handleImageChange = e => {
+		if (e.target.files[0]) {
+			setImage(e.target.files[0]);
+		}
+	};
+
+	const handleSubmit = () => {
+		const imageRef = ref(storage, 'image');
+		uploadBytes(imageRef, image)
+			.then(() => {
+				getDownloadURL(imageRef)
+					.then(url => {
+						addLogo(url);
+					})
+					.catch(error => {
+						console.log(error.message, 'problem getting the URL');
+					});
+				setImage(null);
+			})
+			.catch(error => {
+				console.log(error.message, 'problem uploading the Image');
+			});
+	};
 	return (
 		<Layout>
 			<Head>
@@ -36,7 +57,8 @@ export default function Profile() {
 			<DynamicWrapper>
 				<StyledProfileWrapper>
 					<Image src={myLogo[0]} alt="Company Logo" height="150px" width="150px" />
-					<StyledChangePictureButton onClick={changeLogo}>
+					<input type="file" onChange={handleImageChange} />
+					<StyledChangePictureButton onClick={handleSubmit}>
 						Upload your Own Logo
 					</StyledChangePictureButton>
 				</StyledProfileWrapper>
