@@ -5,9 +5,15 @@ const useMyStore = create(
 	persist(
 		set => ({
 			companyInfo: [],
-			addCompanyInfo: client => {
+			myLogo: [],
+			addCompanyInfo: companyInfo => {
 				set(() => {
-					return {companyInfo: [client]};
+					return {companyInfo: [companyInfo]};
+				});
+			},
+			addLogo: logo => {
+				set(() => {
+					return {myLogo: [logo]};
 				});
 			},
 		}),
