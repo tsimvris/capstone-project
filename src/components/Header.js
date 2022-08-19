@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {useState} from 'react';
 import {BsFillPeopleFill} from 'react-icons/bs';
+import {CgProfile} from 'react-icons/cg';
 import * as FaIcons from 'react-icons/fa';
 import {ImHome} from 'react-icons/im';
 import {MdHomeRepairService} from 'react-icons/md';
@@ -57,6 +58,12 @@ export default function Header() {
 							<StyledLink>
 								<MdHomeRepairService />
 								<StyledSpan>Services</StyledSpan>
+							</StyledLink>
+						</Link>
+						<Link href="/profile">
+							<StyledLink>
+								<CgProfile />
+								<StyledSpan>Profile</StyledSpan>
 							</StyledLink>
 						</Link>
 					</StyledMenuBox>
