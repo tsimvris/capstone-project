@@ -5,7 +5,7 @@ const StyledWrapper = styled.div`
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	height: 667px;
+	height: 100vh;
 	padding: 0;
 	background-color: #f9f6ee;
 `;

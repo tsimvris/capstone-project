@@ -3,9 +3,13 @@ import Head from 'next/head';
 import Image from 'next/image';
 import {useRouter} from 'next/router';
 
+import StyledEditButton from '../components/Forms/StyledComponents/styledEditButton';
 import Layout from '../components/Layout';
 import StyledChangePictureButton from '../components/styledChangePictureButton';
+import StyledH2Container from '../components/styledH2';
+import StyledParagraph from '../components/styledParagraph';
 import StyledProfileWrapper from '../components/styledProfileWrapper';
+import StyledSpan from '../components/styledSpan';
 import useMyStore from '../hooks/useMyStore';
 
 export default function Profile() {
@@ -37,14 +41,20 @@ export default function Profile() {
 					</StyledChangePictureButton>
 				</StyledProfileWrapper>
 				<StyledProfileWrapper>
-					<p>Your Info :</p>
-					<p>{myCompany[0].myCompany}</p>
-					<p>{myCompany[0].myCompanyAdress}</p>
-					<p>{myCompany[0].myCompanyZipCode}</p>
-					<p>{myCompany[0].myCompanyCity}</p>
-					<p>{myCompany[0].myCompanyTaxID}</p>
-
-					<button
+					<StyledH2Container>
+						<h2>Your Info :</h2>
+					</StyledH2Container>
+					<div>
+						<StyledParagraph>
+							Company Name : <StyledSpan>{myCompany[0]?.myCompany}</StyledSpan>
+							Company Adress :<StyledSpan>{myCompany[0]?.myCompanyAdress}</StyledSpan>
+							Company Postal Code :
+							<StyledSpan>{myCompany[0]?.myCompanyZipCode}</StyledSpan>
+							Company City : <StyledSpan>{myCompany[0]?.myCompanyCity}</StyledSpan>
+							Company Tax Id : <StyledSpan>{myCompany[0]?.myCompanyTaxID}</StyledSpan>
+						</StyledParagraph>
+					</div>
+					<StyledEditButton
 						onClick={() => {
 							router.push({
 								pathname: '/create-my-company',
@@ -52,7 +62,7 @@ export default function Profile() {
 						}}
 					>
 						Edit your Info
-					</button>
+					</StyledEditButton>
 				</StyledProfileWrapper>
 			</DynamicWrapper>
 		</Layout>

@@ -5,6 +5,7 @@ const StyledProfileWrapper = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	width: 100%;
 	padding-top: 10px;
 	background-color: #f9f6ee;
 	gap: 20px;
