@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 
-const StyledChangePictureButton = styled.button`
+const StyledUploadLabel = styled.label`
 	width: 244px;
-	height: 46px;
+	padding: 6px 12px;
 	border: none;
-	border-radius: 15px;
+	border-radius: 13px;
 	background-color: #19647e;
 	color: #fc814a;
 	font-size: 20px;
+	text-align: center;
 	cursor: pointer;
 `;
 
-export default StyledChangePictureButton;
+export default StyledUploadLabel;

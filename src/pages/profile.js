@@ -9,9 +9,11 @@ import StyledEditButton from '../components/Forms/StyledComponents/styledEditBut
 import Layout from '../components/Layout';
 import StyledChangePictureButton from '../components/styledChangePictureButton';
 import StyledH2Container from '../components/styledH2';
+import StyledImageInput from '../components/StyledImageInput';
 import StyledParagraph from '../components/styledParagraph';
 import StyledProfileWrapper from '../components/styledProfileWrapper';
 import StyledSpan from '../components/styledSpan';
+import StyledUploadLabel from '../components/StyledUploadLabel';
 import {storage} from '../hooks/firebase';
 import useMyStore from '../hooks/useMyStore';
 export default function Profile() {
@@ -57,7 +59,10 @@ export default function Profile() {
 			<DynamicWrapper>
 				<StyledProfileWrapper>
 					<Image src={myLogo[0]} alt="Company Logo" height="150px" width="150px" />
-					<input type="file" onChange={handleImageChange} />
+					<StyledUploadLabel>
+						Search for an Image
+						<StyledImageInput type="file" onChange={handleImageChange} />
+					</StyledUploadLabel>
 					<StyledChangePictureButton onClick={handleSubmit}>
 						Upload your Own Logo
 					</StyledChangePictureButton>
