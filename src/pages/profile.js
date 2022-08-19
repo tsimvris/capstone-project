@@ -33,6 +33,7 @@ export default function Profile() {
 		if (e.target.files[0]) {
 			setImage(e.target.files[0]);
 		}
+		console.log(image);
 	};
 
 	const handleSubmit = () => {
@@ -64,8 +65,10 @@ export default function Profile() {
 					<Image src={myLogo[0]} alt="Company Logo" height="150px" width="150px" />
 					<StyledUploadLabel>
 						Search for an Image
-						<StyledImageInput type="file" onChange={handleImageChange} />
+						<StyledImageInput ref={ref} type="file" onChange={handleImageChange} />
 					</StyledUploadLabel>
+					{image.name ? <p>Your selected file : {image?.name}</p> : ''}
+
 					<StyledChangePictureButton onClick={handleSubmit}>
 						Upload your Own Logo
 					</StyledChangePictureButton>
