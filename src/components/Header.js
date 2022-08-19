@@ -1,21 +1,26 @@
 import {Drawer} from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
+import {useRouter} from 'next/router';
 import {useState} from 'react';
 import {BsFillPeopleFill} from 'react-icons/bs';
+import {CgProfile} from 'react-icons/cg';
 import * as FaIcons from 'react-icons/fa';
 import {ImHome} from 'react-icons/im';
 import {MdHomeRepairService} from 'react-icons/md';
 
 import StyledLink from '../components/menu/StyledLink';
+import useMyStore from '../hooks/useMyStore';
 
+import StyledImageContainer from './menu/StyledImageContainer';
 import StyledMenuBox from './menu/styledMenuBox';
 import StyledNavBar from './menu/styledNavBar';
 import StyledNavBarButton from './menu/styledNavBarButton';
 import StyledSpan from './menu/StyledSpan';
 export default function Header() {
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
+	const myLogo = useMyStore(state => state.myLogo);
+	const router = useRouter();
 	return (
 		<header>
 			<StyledNavBar>
@@ -26,6 +31,15 @@ export default function Header() {
 				>
 					<FaIcons.FaBars />
 				</StyledNavBarButton>
+				<StyledImageContainer
+					onClick={() => {
+						router.push({
+							pathname: '/profile',
+						});
+					}}
+				>
+					<Image src={myLogo[0]} alt="Company Logo" height="50px" width="50px" />
+				</StyledImageContainer>
 
 				<Drawer
 					PaperProps={{
@@ -57,6 +71,12 @@ export default function Header() {
 							<StyledLink>
 								<MdHomeRepairService />
 								<StyledSpan>Services</StyledSpan>
+							</StyledLink>
+						</Link>
+						<Link href="/profile">
+							<StyledLink>
+								<CgProfile />
+								<StyledSpan>Profile</StyledSpan>
 							</StyledLink>
 						</Link>
 					</StyledMenuBox>
