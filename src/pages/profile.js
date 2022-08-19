@@ -25,7 +25,10 @@ export default function Profile() {
 	const DynamicWrapper = dynamic(() => import('../components/styledProfileWrapper'), {
 		ssr: false,
 	});
-
+	const defaultLogo = '/defaultLogo.svg';
+	if (myLogo.length === 0) {
+		addLogo(defaultLogo);
+	}
 	const handleImageChange = e => {
 		if (e.target.files[0]) {
 			setImage(e.target.files[0]);
