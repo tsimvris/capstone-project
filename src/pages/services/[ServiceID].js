@@ -8,6 +8,9 @@ import StyledFieldset from '../../components/Forms/StyledComponents/StyledFields
 import StyledForm from '../../components/Forms/StyledComponents/styledForm';
 import StyledInput from '../../components/Forms/StyledComponents/styledInput';
 import StyledLabel from '../../components/Forms/StyledComponents/styledLabel';
+import StyledRadioInput0 from '../../components/Forms/StyledComponents/styledRadioInput0';
+import StyledRadioInput19 from '../../components/Forms/StyledComponents/styledRadioInput19';
+import StyledRadioInput7 from '../../components/Forms/StyledComponents/styledRadioInput7';
 import StyledSubmitButton from '../../components/Forms/StyledComponents/styledSubmitButton';
 import Layout from '../../components/Layout';
 import StyledWrapper from '../../components/styledClientWrapper';
@@ -131,34 +134,27 @@ export default function EditServices() {
 					<StyledLabel>
 						Tax Key
 						<StyledFieldset>
-							<label>
-								<input
-									value="0"
-									name="taxKey"
-									type="radio"
-									{...register('taxKey')}
-								/>
-								0%
-							</label>
-							<label>
-								<input
-									value="7"
-									name="taxKey"
-									type="radio"
-									{...register('taxKey')}
-								/>
-								7%
-							</label>
-							<label>
-								<input
-									name="taxKey"
-									type="radio"
-									value="19"
-									checked
-									{...register('taxKey')}
-								/>
-								19%
-							</label>
+							<StyledRadioInput0
+								value="0"
+								name="taxKey"
+								type="radio"
+								{...register('taxKey')}
+							/>
+
+							<StyledRadioInput7
+								value="7"
+								name="taxKey"
+								type="radio"
+								{...register('taxKey')}
+							/>
+
+							<StyledRadioInput19
+								name="taxKey"
+								type="radio"
+								value="19"
+								checked
+								{...register('taxKey')}
+							/>
 						</StyledFieldset>
 					</StyledLabel>
 					<StyledSubmitButton type="submit">Save</StyledSubmitButton>
