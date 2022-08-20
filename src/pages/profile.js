@@ -77,7 +77,7 @@ export default function Profile() {
 						Search for an Image
 						<StyledImageInput ref={ref} type="file" onChange={handleImageChange} />
 					</StyledUploadLabel>
-					{image.name ? <p>Your selected file : {image?.name}</p> : ''}
+					{image?.name ? <p>Your selected file : {image?.name}</p> : ''}
 
 					<StyledChangePictureButton onClick={handleSubmit}>
 						Click to Upload
