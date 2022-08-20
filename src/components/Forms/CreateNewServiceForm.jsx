@@ -12,6 +12,9 @@ import StyledForm from './StyledComponents/styledForm';
 import StyledWrapper from './StyledComponents/styledFormWrapper';
 import StyledInput from './StyledComponents/styledInput';
 import StyledLabel from './StyledComponents/styledLabel';
+import StyledRadioInput0 from './StyledComponents/StyledRadioInput0';
+import StyledRadioInput19 from './StyledComponents/StyledRadioInput19';
+import StyledRadioInput7 from './StyledComponents/StyledRadioInput7';
 import StyledSubmitButton from './StyledComponents/styledSubmitButton';
 
 export default function CreateNewServiceForm() {
@@ -44,6 +47,7 @@ export default function CreateNewServiceForm() {
 				<StyledLabel>
 					Service Name
 					<StyledInput
+						placeholder="Coding"
 						type="text"
 						{...register('serviceName', {
 							required: {value: true, message: 'This is required.'},
@@ -67,6 +71,7 @@ export default function CreateNewServiceForm() {
 				<StyledLabel>
 					Service Description
 					<StyledInput
+						placeholder="Javascript, HTML, CSS, etc."
 						type="text"
 						{...register('serviceDescription', {
 							required: {value: true, message: 'This is required.'},
@@ -90,6 +95,7 @@ export default function CreateNewServiceForm() {
 				<StyledLabel>
 					Price / Hour
 					<StyledInput
+						placeholder="80 €"
 						type="number"
 						{...register('servicePricePerHour', {
 							required: {value: true, message: 'This is required.'},
@@ -121,24 +127,27 @@ export default function CreateNewServiceForm() {
 				<StyledLabel>
 					Tax Key
 					<StyledFieldset>
-						<label>
-							<input value="0" name="taxKey" type="radio" {...register('taxKey')} />
-							0%
-						</label>
-						<label>
-							<input value="7" name="taxKey" type="radio" {...register('taxKey')} />
-							7%
-						</label>
-						<label>
-							<input
-								name="taxKey"
-								type="radio"
-								value="19"
-								checked
-								{...register('taxKey')}
-							/>
-							19%
-						</label>
+						<StyledRadioInput0
+							value="0"
+							name="taxKey"
+							type="radio"
+							{...register('taxKey')}
+						/>
+
+						<StyledRadioInput7
+							value="7"
+							name="taxKey"
+							type="radio"
+							{...register('taxKey')}
+						/>
+
+						<StyledRadioInput19
+							name="taxKey"
+							type="radio"
+							value="19"
+							checked
+							{...register('taxKey')}
+						/>
 					</StyledFieldset>
 				</StyledLabel>
 				<StyledSubmitButton type="submit">Submit</StyledSubmitButton>

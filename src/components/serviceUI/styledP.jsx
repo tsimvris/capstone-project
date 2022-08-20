@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledP = styled.p`
-	color: #f9f6ee;
+	color: var(--primary-font);
 	font-size: 20px;
 	text-align: center;
 `;

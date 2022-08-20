@@ -7,7 +7,7 @@ const StyledMenuBox = styled.div`
 	justify-content: flex-start;
 	width: 150px;
 	height: 100%;
-	background-color: #19647e;
+	background-color: #ecf0f3;
 `;
 
 export default StyledMenuBox;

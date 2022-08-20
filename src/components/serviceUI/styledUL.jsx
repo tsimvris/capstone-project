@@ -7,7 +7,7 @@ const StyledUl = styled.ul`
 	justify-content: center;
 	padding: 0;
 	list-style: none;
-	gap: 20px;
+	gap: 40px;
 `;
 
 export default StyledUl;

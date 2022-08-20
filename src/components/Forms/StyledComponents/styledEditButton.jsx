@@ -8,9 +8,11 @@ const StyledEditButton = styled.button`
 	height: 35px;
 	margin: 10px;
 	padding: 10px;
+	border: none;
 	border-radius: 60px;
-	background-color: #19647e;
-	color: #fc814a;
+	background-color: var(--secondary);
+	box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #fff;
+	color: var(--primary);
 	font-size: 24px;
 	font-weight: 800;
 `;

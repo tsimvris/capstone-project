@@ -8,7 +8,9 @@ const StyledLi = styled.li`
 	width: fit-content;
 	height: auto;
 	border-radius: 15px;
-	background-color: #fc814a;
+	background-color: var(--primary);
+	box-shadow: 10px 10px 20px #cbced1, -10px -10px 20px #fff;
+	color: var(--secondary);
 `;
 
 export default StyledLi;

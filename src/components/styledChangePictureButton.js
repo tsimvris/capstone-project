@@ -5,8 +5,9 @@ const StyledChangePictureButton = styled.button`
 	height: 46px;
 	border: none;
 	border-radius: 15px;
-	background-color: #19647e;
-	color: #fc814a;
+	background-color: var(--secondary);
+	box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #fff;
+	color: var(--primary);
 	font-size: 20px;
 	cursor: pointer;
 `;

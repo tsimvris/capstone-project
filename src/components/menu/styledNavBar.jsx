@@ -6,7 +6,7 @@ const StyledNavBar = styled.nav`
 	justify-content: space-between;
 	width: 100%;
 	height: 50px;
-	background-color: #fff;
+	background-color: var(--secondary);
 `;
 
 export default StyledNavBar;

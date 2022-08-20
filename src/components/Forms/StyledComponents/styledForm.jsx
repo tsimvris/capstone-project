@@ -5,12 +5,12 @@ const StyledForm = styled.form`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	width: 330px;
-	height: 550px;
+	width: 300px;
+	height: 520px;
 	margin-bottom: 10px;
 	padding: 10px;
-	border-radius: 20px;
-	background-color: #19647e;
+	border-radius: 40px;
+	box-shadow: 10px 10px 20px #cbced1, -10px -10px 20px #fff;
 `;
 
 export default StyledForm;

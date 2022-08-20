@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledNotice = styled.label`
-	color: #fc814a;
+	color: var(--primary-font);
 `;
 
 export default StyledNotice;
