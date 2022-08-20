@@ -7,7 +7,7 @@ const StyledProfileWrapper = styled.div`
 	justify-content: center;
 	width: 100%;
 	padding-top: 10px;
-	background-color: #f9f6ee;
+	background-color: #ececec;
 	gap: 20px;
 `;
 

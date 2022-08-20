@@ -7,7 +7,8 @@ const StyledWrapper = styled.div`
 	width: 100%;
 	height: 100vh;
 	padding: 0;
-	background-color: #f9f6ee;
+	background-color: var(--primary);
+	color: var(--primary-font);
 `;
 
 export default StyledWrapper;

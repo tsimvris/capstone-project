@@ -6,10 +6,17 @@ const StyledSubmitButton = styled.button`
 	margin: 10px auto;
 	border: none;
 	border-radius: 13px;
-	background-color: #fc814a;
-	color: #19647e;
+	outline: none;
+	background-color: var(--secondary);
+	box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #fff;
+	color: var(--primary);
 	font-size: 24px;
-	font-weight: 800;
+	font-weight: 700;
+	text-decoration: none;
+	cursor: pointer;
+	:hover {
+		background-color: var(--submit);
+	}
 `;
 
 export default StyledSubmitButton;

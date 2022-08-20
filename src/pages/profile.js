@@ -7,6 +7,7 @@ import {useState} from 'react';
 
 import StyledEditButton from '../components/Forms/StyledComponents/styledEditButton';
 import Layout from '../components/Layout';
+import StyledImageContainer from '../components/menu/StyledImageContainer';
 import StyledChangePictureButton from '../components/styledChangePictureButton';
 import StyledH2Container from '../components/styledH2';
 import StyledImageInput from '../components/StyledImageInput';
@@ -62,15 +63,24 @@ export default function Profile() {
 			</Head>
 			<DynamicWrapper>
 				<StyledProfileWrapper>
-					<Image src={myLogo[0]} alt="Company Logo" height="150px" width="150px" />
+					<StyledImageContainer>
+						<Image
+							src={myLogo[0]}
+							alt="Company Logo"
+							height="150px"
+							width="150px"
+							style={{borderRadius: '50%'}}
+						/>
+					</StyledImageContainer>
+
 					<StyledUploadLabel>
 						Search for an Image
 						<StyledImageInput ref={ref} type="file" onChange={handleImageChange} />
 					</StyledUploadLabel>
-					{image.name ? <p>Your selected file : {image?.name}</p> : ''}
+					{image?.name ? <p>Your selected file : {image?.name}</p> : ''}
 
 					<StyledChangePictureButton onClick={handleSubmit}>
-						Upload your Own Logo
+						Click to Upload
 					</StyledChangePictureButton>
 				</StyledProfileWrapper>
 				<StyledProfileWrapper>

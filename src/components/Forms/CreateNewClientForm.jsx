@@ -44,6 +44,7 @@ export default function CreateNewClientForm() {
 				<StyledLabel>
 					Company Name
 					<StyledInput
+						placeholder="My Company GmbH"
 						type="text"
 						{...register('clientName', {
 							required: {value: true, message: 'This field is required.'},
@@ -67,6 +68,7 @@ export default function CreateNewClientForm() {
 				<StyledLabel>
 					Street and Number
 					<StyledInput
+						placeholder="My Street 12"
 						type="text"
 						{...register('Adress', {
 							required: {value: true, message: 'This field is required.'},
@@ -90,6 +92,7 @@ export default function CreateNewClientForm() {
 				<StyledLabel>
 					Postal Code
 					<StyledInput
+						placeholder="12345"
 						type="number"
 						{...register('postalCode', {
 							required: {value: true, message: 'This field is required.'},
@@ -121,6 +124,7 @@ export default function CreateNewClientForm() {
 				<StyledLabel>
 					City
 					<StyledInput
+						placeholder="Leipzig"
 						type="text"
 						{...register('city', {
 							required: {value: true, message: 'This field is required.'},
@@ -144,6 +148,7 @@ export default function CreateNewClientForm() {
 				<StyledLabel>
 					Tax ID
 					<StyledInput
+						placeholder="12345678"
 						type="text"
 						{...register('taxId', {
 							required: {value: true, message: 'This field is required.'},

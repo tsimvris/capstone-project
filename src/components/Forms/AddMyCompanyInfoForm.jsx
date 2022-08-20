@@ -46,6 +46,7 @@ export default function CreateNewClientForm() {
 				<StyledLabel>
 					Company Name
 					<StyledInput
+						placeholder="My Company"
 						defaultValue={myCompany[0]?.myCompany}
 						type="text"
 						{...register('myCompanyName', {
@@ -70,6 +71,7 @@ export default function CreateNewClientForm() {
 				<StyledLabel>
 					Street and Number
 					<StyledInput
+						placeholder="My Street 12"
 						defaultValue={myCompany[0]?.myCompanyAdress}
 						type="text"
 						{...register('myAdress', {
@@ -94,6 +96,7 @@ export default function CreateNewClientForm() {
 				<StyledLabel>
 					Postal Code
 					<StyledInput
+						placeholder="12345"
 						defaultValue={myCompany[0]?.myCompanyZipCode}
 						type="number"
 						{...register('myPostalCode', {
@@ -126,6 +129,7 @@ export default function CreateNewClientForm() {
 				<StyledLabel>
 					City
 					<StyledInput
+						placeholder="Leipzig"
 						defaultValue={myCompany[0]?.myCompanyCity}
 						type="text"
 						{...register('myCity', {
@@ -150,6 +154,7 @@ export default function CreateNewClientForm() {
 				<StyledLabel>
 					Tax ID
 					<StyledInput
+						placeholder="123456789"
 						defaultValue={myCompany[0]?.myCompanyTaxID}
 						type="text"
 						{...register('myTaxId', {

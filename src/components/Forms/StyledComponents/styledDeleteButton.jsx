@@ -6,10 +6,11 @@ const StyledDeleteButton = styled.button`
 	margin: 10px;
 	border: none;
 	border-radius: 60px;
-	background-color: red;
-	color: #fff;
-	font-size: 24px;
-	font-weight: 500;
+	background-color: var(--delete);
+	box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #fff;
+	color: var(--primary);
+	font-size: 22px;
+	font-weight: 600;
 `;
 
 export default StyledDeleteButton;

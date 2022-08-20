@@ -8,7 +8,7 @@ const StyledWrapper = styled.div`
 	max-width: 100vw;
 	min-height: 100vh;
 	padding: 20px 0;
-	background-color: #f9f6ee;
+	background-color: #ececec;
 `;
 
 export default StyledWrapper;

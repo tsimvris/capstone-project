@@ -38,7 +38,13 @@ export default function Header() {
 						});
 					}}
 				>
-					<Image src={myLogo[0]} alt="Company Logo" height="50px" width="50px" />
+					<Image
+						src={myLogo[0]}
+						alt="Company Logo"
+						height="40px"
+						width="40px"
+						style={{borderRadius: '50%'}}
+					/>
 				</StyledImageContainer>
 
 				<Drawer
@@ -54,7 +60,7 @@ export default function Header() {
 					}}
 				>
 					<StyledMenuBox>
-						<Image width="130px" height="129" src="/Dashy.svg" alt="logo" />
+						<Image width="130px" height="130px" src="/Dashy.svg" alt="logo" />
 						<Link href="/">
 							<StyledLink>
 								<ImHome />

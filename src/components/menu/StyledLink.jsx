@@ -7,9 +7,10 @@ const StyledLink = styled.a`
 	width: 130px;
 	height: 55px;
 	margin-bottom: 42px;
+	border: none;
 	border-radius: 25px;
-	background-color: #fff;
-	color: #19647e;
+	background-color: var(--secondary);
+	color: var(--primary);
 `;
 
 export default StyledLink;
