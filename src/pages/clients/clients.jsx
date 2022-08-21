@@ -3,6 +3,7 @@ import Head from 'next/head';
 import {useRouter} from 'next/router';
 
 import StyledLi from '../../components/ClientUI/styledLi';
+import StyledSearchField from '../../components/ClientUI/styledSearchField';
 import StyledSpan from '../../components/ClientUI/styledSpan';
 import StyledUl from '../../components/ClientUI/styledUL';
 import StyledEditButton from '../../components/Forms/StyledComponents/styledEditButton';
@@ -25,6 +26,8 @@ export default function ClientsPage() {
 				<link rel="icon" href="/Dashy.webp" />
 			</Head>
 			<DynamicWrapper>
+				<StyledSearchField placeholder="Search for a Client" />
+				<p></p>
 				<StyledButton
 					onClick={() => {
 						router.push({
