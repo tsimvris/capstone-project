@@ -1,8 +1,8 @@
+import {search} from 'fast-fuzzy';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {useState} from 'react';
-import {useRef} from 'react';
 
 import StyledLi from '../../components/ClientUI/styledLi';
 import StyledSearchField from '../../components/ClientUI/styledSearchField';
@@ -18,22 +18,21 @@ import useClientStore from '../../hooks/useClientStore';
 export default function ClientsPage() {
 	const clients = useClientStore(state => state.clients);
 	const router = useRouter();
-	const inputRef = useRef(null);
 	const DynamicWrapper = dynamic(() => import('../../components/styledClientWrapper'), {
 		ssr: false,
 	});
 
 	// search function
-	const [filteredClients, setFilteredClients] = useState(clients);
-	const clientSearch = inputRef => {
-		const filtered = clients.filter(client => {
-			return client.CompanyName === inputRef.current.value;
-		});
-		setFilteredClients(filtered);
-	};
-	function handleClick() {
-		console.log(inputRef.current.value);
-		console.log(filteredClients);
+	const [inputValue, setInputValue] = useState('');
+
+	const [fuzzyResult, setFuzzyResults] = useState();
+	function fuzzy(inputValue) {
+		setFuzzyResults(
+			search(inputValue, clients, {
+				keySelector: obj => obj.CompanyName,
+			})
+		);
+		return fuzzyResult;
 	}
 	return (
 		<Layout>
@@ -47,21 +46,42 @@ export default function ClientsPage() {
 					className="form"
 					onSubmit={event => {
 						event.preventDefault();
-						clientSearch(inputRef);
+						setInputValue('');
 					}}
 				>
 					<StyledSearchField
+						defaultValue={inputValue}
 						type="search"
-						ref={inputRef}
 						placeholder="Search for a Client"
+						onChange={event => {
+							setInputValue(event.target.value);
+							fuzzy(inputValue);
+						}}
 					/>
-					<StyledSubmitButton onClick={handleClick} name="submitButton" type="submit">
+					<StyledSubmitButton name="submitButton" type="submit">
 						Search
 					</StyledSubmitButton>
 				</form>
 
 				<StyledUl>
-					{filteredClients ? (
+					{fuzzyResult?.map(result => {
+						return (
+							<StyledLi key={result.id}>
+								{result.CompanyName}
+								<StyledEditButton
+									onClick={() => {
+										router.push({
+											pathname: `/clients/${result.id}`,
+											query: {keyword: 'clientId'},
+										});
+									}}
+								>
+									Edit
+								</StyledEditButton>
+							</StyledLi>
+						);
+					})}
+					{/*{filteredClients ? (
 						<>
 							{filteredClients.map(client => {
 								return (
@@ -83,7 +103,7 @@ export default function ClientsPage() {
 						</>
 					) : (
 						''
-					)}
+					)}*/}
 				</StyledUl>
 				<StyledButton
 					onClick={() => {
