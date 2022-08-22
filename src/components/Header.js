@@ -8,6 +8,7 @@ import {CgProfile} from 'react-icons/cg';
 import * as FaIcons from 'react-icons/fa';
 import {ImHome} from 'react-icons/im';
 import {MdHomeRepairService} from 'react-icons/md';
+import {RiMoneyEuroCircleFill} from 'react-icons/ri';
 
 import StyledLink from '../components/menu/StyledLink';
 import useMyStore from '../hooks/useMyStore';
@@ -77,6 +78,12 @@ export default function Header() {
 							<StyledLink>
 								<MdHomeRepairService />
 								<StyledSpan>Services</StyledSpan>
+							</StyledLink>
+						</Link>
+						<Link href="/invoice">
+							<StyledLink>
+								<RiMoneyEuroCircleFill />
+								<StyledSpan>Invoices</StyledSpan>
 							</StyledLink>
 						</Link>
 						<Link href="/profile">
