@@ -9,7 +9,6 @@ import StyledSearchField from '../../components/ClientUI/styledSearchField';
 import StyledSpan from '../../components/ClientUI/styledSpan';
 import StyledUl from '../../components/ClientUI/styledUL';
 import StyledEditButton from '../../components/Forms/StyledComponents/styledEditButton';
-import StyledSubmitButton from '../../components/Forms/StyledComponents/StyledSubmitButton';
 import Layout from '../../components/Layout';
 import StyledButton from '../../components/styledButton';
 import StyledWrapper from '../../components/styledClientWrapper';
@@ -21,19 +20,14 @@ export default function ClientsPage() {
 	const DynamicWrapper = dynamic(() => import('../../components/styledClientWrapper'), {
 		ssr: false,
 	});
-
-	// search function
 	const [inputValue, setInputValue] = useState('');
 
-	const [fuzzyResult, setFuzzyResults] = useState();
-	function fuzzy(inputValue) {
-		setFuzzyResults(
-			search(inputValue, clients, {
-				keySelector: obj => obj.CompanyName,
-			})
-		);
-		return fuzzyResult;
-	}
+	const fuzzyResult = search(inputValue, clients, {
+		keySelector: obj => obj.CompanyName,
+		threshold: 0.9,
+		ignoreCase: true,
+	});
+
 	return (
 		<Layout>
 			<Head>
@@ -42,27 +36,14 @@ export default function ClientsPage() {
 				<link rel="icon" href="/Dashy.webp" />
 			</Head>
 			<DynamicWrapper>
-				<form
-					className="form"
-					onSubmit={event => {
-						event.preventDefault();
-						setInputValue('');
+				<StyledSearchField
+					type="search"
+					placeholder="Search for a Client"
+					onChange={event => {
+						setInputValue(event.target.value);
 					}}
-				>
-					<StyledSearchField
-						defaultValue={inputValue}
-						type="search"
-						placeholder="Search for a Client"
-						onChange={event => {
-							setInputValue(event.target.value);
-							fuzzy(inputValue);
-						}}
-					/>
-					<StyledSubmitButton name="submitButton" type="submit">
-						Search
-					</StyledSubmitButton>
-				</form>
-
+					value={inputValue}
+				/>
 				<StyledUl>
 					{fuzzyResult?.map(result => {
 						return (
@@ -81,29 +62,6 @@ export default function ClientsPage() {
 							</StyledLi>
 						);
 					})}
-					{/*{filteredClients ? (
-						<>
-							{filteredClients.map(client => {
-								return (
-									<StyledLi key={client.id}>
-										<StyledSpan>{client.CompanyName}</StyledSpan>
-										<StyledEditButton
-											onClick={() => {
-												router.push({
-													pathname: `/clients/${client.id}`,
-													query: {keyword: 'clientId'},
-												});
-											}}
-										>
-											Edit
-										</StyledEditButton>
-									</StyledLi>
-								);
-							})}
-						</>
-					) : (
-						''
-					)}*/}
 				</StyledUl>
 				<StyledButton
 					onClick={() => {
