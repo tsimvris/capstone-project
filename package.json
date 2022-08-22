@@ -17,6 +17,8 @@
     "toc": "npx markdown-toc@1 README.md -i"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
     "@hookform/error-message": "^2.0.0",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.10.1",
