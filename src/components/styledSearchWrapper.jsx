@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
-const StyledProfileWrapper = styled.div`
+const StyledSearchWrapper = styled.div`
 	display: flex;
-	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	padding-top: 10px;
+	margin-top: 30px;
+	margin-bottom: -30px;
 	background-color: var(--primary);
-	gap: 20px;
 `;
 
-export default StyledProfileWrapper;
+export default StyledSearchWrapper;
