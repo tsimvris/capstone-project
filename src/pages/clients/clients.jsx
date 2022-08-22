@@ -12,6 +12,7 @@ import StyledEditButton from '../../components/Forms/StyledComponents/styledEdit
 import Layout from '../../components/Layout';
 import StyledButton from '../../components/styledButton';
 import StyledWrapper from '../../components/styledClientWrapper';
+import StyledSearchWrapper from '../../components/styledSearchWrapper';
 import useClientStore from '../../hooks/useClientStore';
 
 export default function ClientsPage() {
@@ -35,15 +36,17 @@ export default function ClientsPage() {
 				<meta key="description" name="description" content="This is my Capstone project" />
 				<link rel="icon" href="/Dashy.webp" />
 			</Head>
-			<DynamicWrapper>
+			<StyledSearchWrapper>
 				<StyledSearchField
-					type="search"
+					value={inputValue}
+					type="text"
 					placeholder="Search for a Client"
 					onChange={event => {
 						setInputValue(event.target.value);
 					}}
-					value={inputValue}
 				/>
+			</StyledSearchWrapper>
+			<DynamicWrapper>
 				<StyledUl>
 					{fuzzyResult?.map(result => {
 						return (
