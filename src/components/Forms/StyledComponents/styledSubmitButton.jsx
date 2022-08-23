@@ -17,6 +17,11 @@ const StyledSubmitButton = styled.button`
 	:hover {
 		background-color: var(--submit);
 	}
+	a {
+		color: white;
+		font-size: 18px;
+		text-decoration: none;
+	}
 `;
 
 export default StyledSubmitButton;

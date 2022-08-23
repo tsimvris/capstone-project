@@ -27,7 +27,6 @@ export default function EditServices() {
 
 	const router = useRouter();
 	const ref = router.query;
-	console.log(ref);
 	const allServices = useServiceStore(state => state.services);
 	const servicesArray = allServices.filter(ele => {
 		return ele.id === ref.ServiceID;

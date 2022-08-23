@@ -34,7 +34,6 @@ export default function Profile() {
 		if (e.target.files[0]) {
 			setImage(e.target.files[0]);
 		}
-		console.log(image);
 	};
 
 	const handleSubmit = () => {
@@ -57,7 +56,7 @@ export default function Profile() {
 	return (
 		<Layout>
 			<Head>
-				<title key="title">Dashy</title>
+				<title key="title">Dashy Profile</title>
 				<meta key="description" name="description" content="This is my Capstone project" />
 				<link rel="icon" href="/Dashy.webp" />
 			</Head>
@@ -95,6 +94,8 @@ export default function Profile() {
 							<StyledSpan>{myCompany[0]?.myCompanyZipCode}</StyledSpan>
 							Company City : <StyledSpan>{myCompany[0]?.myCompanyCity}</StyledSpan>
 							Company Tax Id : <StyledSpan>{myCompany[0]?.myCompanyTaxID}</StyledSpan>
+							Bank : <StyledSpan>{myCompany[0]?.myBank}</StyledSpan>
+							IBAN : <StyledSpan>{myCompany[0]?.myIban}</StyledSpan>
 						</StyledParagraph>
 					</div>
 					<StyledEditButton

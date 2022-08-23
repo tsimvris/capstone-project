@@ -10,7 +10,14 @@ const useClientStore = create(
 					return {clients: [...state.clients, client]};
 				});
 			},
+			invoices: [],
+			addInvoice: invoice => {
+				set(state => {
+					return {invoices: [...state.invoices, invoice]};
+				});
+			},
 		}),
+
 		{
 			name: 'Clients', // unique name
 			getStorage: () => localStorage,
