@@ -7,7 +7,6 @@ import useClientStore from '../../hooks/useClientStore';
 import useServiceStore from '../../hooks/useServiceStore';
 import StyledError from '../errors/styledError';
 import StyledFieldset from '../Forms/StyledComponents/StyledFieldset';
-import StyledSelect from '../StyledSelect';
 
 import StyledForm from './StyledComponents/styledForm';
 import StyledWrapper from './StyledComponents/styledFormWrapper';
@@ -39,33 +38,62 @@ export default function GenerateInvoiceForm() {
 			invoiceWorkedHours: data.workedHours,
 			invoicePriceHour: data.priceHour,
 			invoiceTaxKey: data.taxKey,
-			invoiceSumUp: data.workedHours * data.priceHour,
+			invoiceSubtotal: data.workedHours * data.priceHour,
 			invoiceTaxes: (data.workedHours * data.priceHour * data.taxKey) / 100,
+			invoiceTotal:
+				(data.workedHours * data.priceHour * data.taxKey) / 100 +
+				data.workedHours * data.priceHour,
+			invoiceDate: new Date().toLocaleString(),
+			invoiceDueDate: twoWeeks.toLocaleString(),
+			invoicePaymentDue: 'Payment due within 14 days',
+			invoiceIban: 'IBAN',
+			invoiceBank: 'Bank',
+			invoiceBankAccount: 'Bank account',
+			invoicePaymentReference: data.client,
 		};
 		router.push({
 			pathname: '/invoice',
 		});
 		addInvoice(invoiceModel);
 	};
-
+	var twoWeeks = new Date();
+	twoWeeks.setDate(twoWeeks.getDate() + 14);
 	return (
 		<StyledWrapper>
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
 				<StyledLabel>
 					Select a Client
-					<StyledSelect {...register('client')}>
+					<StyledInput
+						list="clients"
+						{...register('client')}
+						placeholder="Select a Client"
+					/>
+					<datalist id="clients">
 						{clients.map(client => {
-							return <option key={client.id}>{client.CompanyName}</option>;
+							return (
+								<option key={client.id} value={client.CompanyName}>
+									{client.CompanyName}
+								</option>
+							);
 						})}
-					</StyledSelect>
+					</datalist>
 				</StyledLabel>
 				<StyledLabel>
 					Select a Service
-					<StyledSelect {...register('service')}>
+					<StyledInput
+						list="services"
+						{...register('service')}
+						placeholder="Select a Service"
+					/>
+					<datalist id="services">
 						{services.map(service => {
-							return <option key={service.id}>{service.serviceName}</option>;
+							return (
+								<option key={service.id} value={service.serviceName}>
+									{service.serviceName}
+								</option>
+							);
 						})}
-					</StyledSelect>
+					</datalist>
 				</StyledLabel>
 				<StyledLabel>
 					Worked Hours

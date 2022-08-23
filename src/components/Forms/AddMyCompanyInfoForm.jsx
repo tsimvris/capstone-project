@@ -33,6 +33,8 @@ export default function CreateNewClientForm() {
 			myCompanyZipCode: data.myPostalCode,
 			myCompanyCity: data.myCity,
 			myCompanyTaxID: data.myTaxId,
+			myBank: data.myBank,
+			myIban: data.myIban,
 		};
 		addCompanyInfo(companyInfo);
 		router.push({
@@ -176,6 +178,60 @@ export default function CreateNewClientForm() {
 					<ErrorMessage
 						errors={errors}
 						name="myTaxId"
+						render={({messages}) =>
+							messages &&
+							Object.entries(messages).map(([type, message]) => (
+								<StyledError key={type}>{message}</StyledError>
+							))
+						}
+					/>
+				</StyledLabel>
+				<StyledLabel>
+					Bank
+					<StyledInput
+						placeholder="Deutsche Bank"
+						defaultValue={myCompany[0]?.myBank}
+						type="text"
+						{...register('myBank', {
+							required: {value: true, message: 'This field is required.'},
+							minLength: {
+								value: 5,
+								message: 'Please enter a Valid Bank Name.',
+							},
+						})}
+					/>
+					<ErrorMessage
+						errors={errors}
+						name="myBank"
+						render={({messages}) =>
+							messages &&
+							Object.entries(messages).map(([type, message]) => (
+								<StyledError key={type}>{message}</StyledError>
+							))
+						}
+					/>
+				</StyledLabel>
+				<StyledLabel>
+					IBAN
+					<StyledInput
+						placeholder="DE89370400440532013000"
+						defaultValue={myCompany[0]?.myIban}
+						type="text"
+						{...register('myIban', {
+							required: {value: true, message: 'This field is required.'},
+							maxLength: {
+								value: 22,
+								message: 'Iban length is 22 characters.',
+							},
+							minLength: {
+								value: 22,
+								message: 'Iban length is 22 characters.',
+							},
+						})}
+					/>
+					<ErrorMessage
+						errors={errors}
+						name="myIban"
 						render={({messages}) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (

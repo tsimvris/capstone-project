@@ -5,6 +5,8 @@ const StyledSpan = styled.span`
 	border-radius: 20px;
 	color: var(--primary-font);
 	text-align: center;
+	white-space: pre;
+	line-break: strict;
 `;
 
 export default StyledSpan;

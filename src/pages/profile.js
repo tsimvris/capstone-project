@@ -95,6 +95,8 @@ export default function Profile() {
 							<StyledSpan>{myCompany[0]?.myCompanyZipCode}</StyledSpan>
 							Company City : <StyledSpan>{myCompany[0]?.myCompanyCity}</StyledSpan>
 							Company Tax Id : <StyledSpan>{myCompany[0]?.myCompanyTaxID}</StyledSpan>
+							Bank : <StyledSpan>{myCompany[0]?.myBank}</StyledSpan>
+							IBAN : <StyledSpan>{myCompany[0]?.myIban}</StyledSpan>
 						</StyledParagraph>
 					</div>
 					<StyledEditButton

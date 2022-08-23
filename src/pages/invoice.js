@@ -37,15 +37,20 @@ export default function Invoice() {
 						return (
 							<li key={invoice.id}>
 								<StyledParagraph>
+									Inoice Id : <StyledSpan>{invoice.id}</StyledSpan>
 									Client Name :<StyledSpan>{invoice.invoiceClient}</StyledSpan>
 									Service : <StyledSpan>{invoice.invoiceService}</StyledSpan>
 									Worked Hours :
 									<StyledSpan>{invoice.invoiceWorkedHours}</StyledSpan>
 									Price / Hour :
 									<StyledSpan> {invoice.invoicePriceHour} €</StyledSpan>
-									Tak Key:<StyledSpan>{invoice.invoiceTaxKey}%</StyledSpan>
-									Sum up:<StyledSpan>{invoice.invoiceSumUp} €</StyledSpan>
-									Taxes:<StyledSpan>{invoice.invoiceTaxes} €</StyledSpan>
+									Tak Key : <StyledSpan>{invoice.invoiceTaxKey}%</StyledSpan>
+									Subtotal : <StyledSpan>{invoice.invoiceSubtotal} €</StyledSpan>
+									Taxes : <StyledSpan>{invoice.invoiceTaxes} €</StyledSpan>
+									Invoice Total :<StyledSpan>{invoice.invoiceTotal} €</StyledSpan>
+									Invoice Date : <StyledSpan>{invoice.invoiceDate}</StyledSpan>
+									Invoice Due Date :
+									<StyledSpan>{invoice.invoiceDueDate}</StyledSpan>
 								</StyledParagraph>
 							</li>
 						);
