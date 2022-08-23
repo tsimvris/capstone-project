@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 const StyledClientDiv = styled.div`
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: flex-start;
 	justify-content: flex-start;
 	width: 100vw;
