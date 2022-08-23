@@ -116,7 +116,7 @@ export default function MyDocument() {
 	const myCompanyInfo = useMyStore(state => state.companyInfo);
 	const allInvoices = useClientStore(state => state.invoices);
 	const allClients = useClientStore(state => state.clients);
-	const DynamicWrapper = dynamic(() => import('../../components/StyledInvoiceWrapper'), {
+	const DynamicWrapper = dynamic(() => import('../../components/styledInvoiceWrapper'), {
 		ssr: false,
 	});
 	const ref = router.query;
