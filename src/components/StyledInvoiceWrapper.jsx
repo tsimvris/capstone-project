@@ -9,6 +9,15 @@ const StyledInvoiceWrapper = styled.div`
 	min-height: 100vh;
 	padding: 0;
 	background-color: var(--primary);
+
+	@media print {
+		a {
+			display: none;
+		}
+		button {
+			display: none;
+		}
+	}
 `;
 
 export default StyledInvoiceWrapper;

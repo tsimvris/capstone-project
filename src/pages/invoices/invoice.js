@@ -10,6 +10,7 @@ import StyledInvoiceParagraph from '../../components/styledInvoiceParagraph';
 import StyledShowPdfWrapper from '../../components/styledShowPdfWrapper';
 import StyledSpan from '../../components/styledSpan';
 import useClientStore from '../../hooks/useClientStore';
+
 export default function Invoice() {
 	const DynamicWrapper = dynamic(() => import('../../components/styledClientWrapper'), {
 		ssr: false,
@@ -34,6 +35,7 @@ export default function Invoice() {
 				>
 					Generate new Inoice
 				</StyledButton>
+
 				<StyledUl>
 					{invoices?.map(invoice => {
 						return (
