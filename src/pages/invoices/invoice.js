@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 
-import StyledSubmitButton from '../../components/Forms/StyledComponents/StyledSubmitButton';
+import StyledSubmitButton from '../../components/Forms/StyledComponents/styledSubmitButton';
 import Layout from '../../components/Layout';
 import StyledUl from '../../components/serviceUI/styledUL';
 import StyledButton from '../../components/styledButton';
@@ -66,7 +66,7 @@ export default function Invoice() {
 												});
 											}}
 										>
-											Show PDF
+											Download PDF
 										</StyledSubmitButton>
 									</StyledShowPdfWrapper>
 								</StyledInvoiceParagraph>

@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
 		backgroundColor: '#ecf0f3',
 	},
 	viewer: {
-		width: '90vw',
-		height: '90vh',
+		width: '99vw',
+		height: '100vh',
 	},
 	myCompany: {
 		display: 'flex',
@@ -116,7 +116,7 @@ export default function MyDocument() {
 	const myCompanyInfo = useMyStore(state => state.companyInfo);
 	const allInvoices = useClientStore(state => state.invoices);
 	const allClients = useClientStore(state => state.clients);
-	const DynamicWrapper = dynamic(() => import('../../components/styledClientWrapper'), {
+	const DynamicWrapper = dynamic(() => import('../../components/StyledInvoiceWrapper'), {
 		ssr: false,
 	});
 	const ref = router.query;
@@ -125,9 +125,8 @@ export default function MyDocument() {
 	});
 	const wantedInvoice = invoiceArray[0];
 	const wantedClient = allClients.filter(ele => {
-		return ele.CompanyName === wantedInvoice.invoiceClient;
+		return ele.CompanyName === wantedInvoice?.invoiceClient;
 	});
-	console.log(wantedClient[0]);
 	return (
 		<DynamicWrapper>
 			<Head>
@@ -135,6 +134,7 @@ export default function MyDocument() {
 				<meta key="description" name="description" content="This is my Capstone project" />
 				<link rel="icon" href="/Dashy.webp" />
 			</Head>
+
 			<StyledSubmitButton
 				onClick={() => {
 					router.push({

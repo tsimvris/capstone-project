@@ -7,6 +7,7 @@ import useClientStore from '../../hooks/useClientStore';
 import useMyStore from '../../hooks/useMyStore';
 import useServiceStore from '../../hooks/useServiceStore';
 import StyledError from '../errors/styledError';
+import StyledInvoiceError from '../errors/styledInvoiceError';
 import StyledFieldset from '../Forms/StyledComponents/StyledFieldset';
 
 import StyledForm from './StyledComponents/styledForm';
@@ -183,6 +184,11 @@ export default function GenerateInvoiceForm() {
 						/>
 					</StyledFieldset>
 				</StyledLabel>
+				<StyledInvoiceError>
+					{myCompany[0]?.myBank
+						? ''
+						: 'In order to submit you must add your Company info at the Profile Page'}
+				</StyledInvoiceError>
 				<StyledSubmitButton name="submitButton" type="submit">
 					Submit
 				</StyledSubmitButton>
