@@ -2,10 +2,12 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 
+import StyledEditButton from '../components/Forms/StyledComponents/styledEditButton';
 import Layout from '../components/Layout';
 import StyledUl from '../components/serviceUI/styledUL';
 import StyledButton from '../components/styledButton';
-import StyledParagraph from '../components/styledParagraph';
+import StyledInvoiceParagraph from '../components/styledInvoiceParagraph';
+import StyledShowPdfWrapper from '../components/styledShowPdfWrapper';
 import StyledSpan from '../components/styledSpan';
 import useClientStore from '../hooks/useClientStore';
 export default function Invoice() {
@@ -36,7 +38,7 @@ export default function Invoice() {
 					{invoices?.map(invoice => {
 						return (
 							<li key={invoice.id}>
-								<StyledParagraph>
+								<StyledInvoiceParagraph>
 									Inoice Id : <StyledSpan>{invoice.id}</StyledSpan>
 									Client Name :<StyledSpan>{invoice.invoiceClient}</StyledSpan>
 									Service : <StyledSpan>{invoice.invoiceService}</StyledSpan>
@@ -51,7 +53,14 @@ export default function Invoice() {
 									Invoice Date : <StyledSpan>{invoice.invoiceDate}</StyledSpan>
 									Invoice Due Date :
 									<StyledSpan>{invoice.invoiceDueDate}</StyledSpan>
-								</StyledParagraph>
+									Bank :<StyledSpan>{invoice.invoiceBank}</StyledSpan>
+									IBAN :<StyledSpan>{invoice.invoiceIban}</StyledSpan>
+									Payment Reference:
+									<StyledSpan>{invoice.invoicePaymentReference}</StyledSpan>
+									<StyledShowPdfWrapper>
+										<StyledEditButton>Show PDF</StyledEditButton>
+									</StyledShowPdfWrapper>
+								</StyledInvoiceParagraph>
 							</li>
 						);
 					})}

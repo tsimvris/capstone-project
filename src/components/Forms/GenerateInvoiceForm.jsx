@@ -4,6 +4,7 @@ import {useRouter} from 'next/router';
 import {useForm} from 'react-hook-form';
 
 import useClientStore from '../../hooks/useClientStore';
+import useMyStore from '../../hooks/useMyStore';
 import useServiceStore from '../../hooks/useServiceStore';
 import StyledError from '../errors/styledError';
 import StyledFieldset from '../Forms/StyledComponents/StyledFieldset';
@@ -22,6 +23,8 @@ export default function GenerateInvoiceForm() {
 	const clients = useClientStore(state => state.clients);
 	const services = useServiceStore(state => state.services);
 	const addInvoice = useClientStore(state => state.addInvoice);
+	const myCompany = useMyStore(state => state.companyInfo);
+
 	const router = useRouter();
 	const {
 		register,
@@ -46,9 +49,8 @@ export default function GenerateInvoiceForm() {
 			invoiceDate: new Date().toLocaleString(),
 			invoiceDueDate: twoWeeks.toLocaleString(),
 			invoicePaymentDue: 'Payment due within 14 days',
-			invoiceIban: 'IBAN',
-			invoiceBank: 'Bank',
-			invoiceBankAccount: 'Bank account',
+			invoiceBank: myCompany[0].myBank,
+			invoiceIban: myCompany[0].myIban,
 			invoicePaymentReference: data.client,
 		};
 		router.push({
