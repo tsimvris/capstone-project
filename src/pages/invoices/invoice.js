@@ -66,7 +66,7 @@ export default function Invoice() {
 												});
 											}}
 										>
-											Download PDF
+											Show PDF
 										</StyledSubmitButton>
 									</StyledShowPdfWrapper>
 								</StyledInvoiceParagraph>
