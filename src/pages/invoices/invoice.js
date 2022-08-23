@@ -2,16 +2,16 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 
-import StyledEditButton from '../components/Forms/StyledComponents/styledEditButton';
-import Layout from '../components/Layout';
-import StyledUl from '../components/serviceUI/styledUL';
-import StyledButton from '../components/styledButton';
-import StyledInvoiceParagraph from '../components/styledInvoiceParagraph';
-import StyledShowPdfWrapper from '../components/styledShowPdfWrapper';
-import StyledSpan from '../components/styledSpan';
-import useClientStore from '../hooks/useClientStore';
+import StyledEditButton from '../../components/Forms/StyledComponents/styledEditButton';
+import Layout from '../../components/Layout';
+import StyledUl from '../../components/serviceUI/styledUL';
+import StyledButton from '../../components/styledButton';
+import StyledInvoiceParagraph from '../../components/styledInvoiceParagraph';
+import StyledShowPdfWrapper from '../../components/styledShowPdfWrapper';
+import StyledSpan from '../../components/styledSpan';
+import useClientStore from '../../hooks/useClientStore';
 export default function Invoice() {
-	const DynamicWrapper = dynamic(() => import('../components/styledClientWrapper'), {
+	const DynamicWrapper = dynamic(() => import('../../components/styledClientWrapper'), {
 		ssr: false,
 	});
 	const invoices = useClientStore(state => state.invoices);
@@ -28,7 +28,7 @@ export default function Invoice() {
 				<StyledButton
 					onClick={() => {
 						router.push({
-							pathname: '/create-invoice',
+							pathname: '/invoices/create-invoice',
 						});
 					}}
 				>
@@ -39,14 +39,14 @@ export default function Invoice() {
 						return (
 							<li key={invoice.id}>
 								<StyledInvoiceParagraph>
-									Inoice Id : <StyledSpan>{invoice.id}</StyledSpan>
+									Invoice Id : <StyledSpan>{invoice.id}</StyledSpan>
 									Client Name :<StyledSpan>{invoice.invoiceClient}</StyledSpan>
 									Service : <StyledSpan>{invoice.invoiceService}</StyledSpan>
 									Worked Hours :
 									<StyledSpan>{invoice.invoiceWorkedHours}</StyledSpan>
 									Price / Hour :
 									<StyledSpan> {invoice.invoicePriceHour} €</StyledSpan>
-									Tak Key : <StyledSpan>{invoice.invoiceTaxKey}%</StyledSpan>
+									Tax Key : <StyledSpan>{invoice.invoiceTaxKey}%</StyledSpan>
 									Subtotal : <StyledSpan>{invoice.invoiceSubtotal} €</StyledSpan>
 									Taxes : <StyledSpan>{invoice.invoiceTaxes} €</StyledSpan>
 									Invoice Total :<StyledSpan>{invoice.invoiceTotal} €</StyledSpan>
@@ -58,7 +58,16 @@ export default function Invoice() {
 									Payment Reference:
 									<StyledSpan>{invoice.invoicePaymentReference}</StyledSpan>
 									<StyledShowPdfWrapper>
-										<StyledEditButton>Show PDF</StyledEditButton>
+										<StyledEditButton
+											onClick={() => {
+												router.push({
+													pathname: `/invoices/${invoice.id}`,
+													query: {keyword: 'InvoiceId'},
+												});
+											}}
+										>
+											Show PDF
+										</StyledEditButton>
 									</StyledShowPdfWrapper>
 								</StyledInvoiceParagraph>
 							</li>

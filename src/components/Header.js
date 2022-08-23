@@ -80,7 +80,7 @@ export default function Header() {
 								<StyledSpan>Services</StyledSpan>
 							</StyledLink>
 						</Link>
-						<Link href="/invoice">
+						<Link href="/invoices/invoice">
 							<StyledLink>
 								<RiMoneyEuroCircleFill />
 								<StyledSpan>Invoices</StyledSpan>
