@@ -7,6 +7,7 @@ import StyledSubmitButton from '../../components/Forms/StyledComponents/styledSu
 import useClientStore from '../../hooks/useClientStore';
 import useMyStore from '../../hooks/useMyStore';
 
+import StyledClientDiv from './StyledClientDiv';
 import StyledCompanyDiv from './styledCompanyDiv';
 
 const styles = StyleSheet.create({
@@ -20,34 +21,42 @@ const styles = StyleSheet.create({
 		width: '90vw',
 		height: '90vh',
 	},
-	section: {
+	myCompany: {
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'flex-start',
 		alignItems: 'flex-start',
-		flexGrow: 1,
+		margin: '20px',
 	},
 	text: {
 		display: 'flex',
 		flexDirection: 'column',
-		fontSize: 13,
+		fontSize: 12,
 		padding: 5,
+	},
+	strong: {
+		fontWeight: 800,
+		fontSize: 20,
+		marginBottom: '10px',
 	},
 });
 export default function MyDocument() {
 	const router = useRouter();
 	const myCompanyInfo = useMyStore(state => state.companyInfo);
+	const allInvoices = useClientStore(state => state.invoices);
+	const allClients = useClientStore(state => state.clients);
 	const DynamicWrapper = dynamic(() => import('../../components/styledClientWrapper'), {
 		ssr: false,
 	});
 	const ref = router.query;
-	const allInvoices = useClientStore(state => state.invoices);
-
 	const invoiceArray = allInvoices.filter(ele => {
 		return ele.id === ref.InvoiceID;
 	});
 	const wantedInvoice = invoiceArray[0];
-
+	const wantedClient = allClients.filter(ele => {
+		return ele.CompanyName === wantedInvoice.invoiceClient;
+	});
+	console.log(wantedClient[0]);
 	return (
 		<DynamicWrapper>
 			<Head>
@@ -68,7 +77,7 @@ export default function MyDocument() {
 				<Document>
 					<Page size="A4" style={styles.page}>
 						<StyledCompanyDiv>
-							<View style={styles.section} aria="my daten">
+							<View style={styles.myCompany} aria="My Data">
 								<Text style={styles.text}>
 									<b>{myCompanyInfo[0]?.myCompany}</b>
 								</Text>
@@ -79,12 +88,15 @@ export default function MyDocument() {
 								<Text style={styles.text}>{myCompanyInfo[0]?.myCompanyCity}</Text>
 							</View>
 						</StyledCompanyDiv>
-						<View style={styles.section} aria="my daten">
-							<Text style={styles.text}>
-								<b>BILL TO</b>
-								<Text style={styles.text}>{wantedInvoice?.invoiceClient}</Text>
-							</Text>
-						</View>
+						<StyledClientDiv>
+							<View style={styles.myCompany} aria="Client Data">
+								<Text style={styles.strong}>BILL TO</Text>
+								<Text style={styles.text}>{wantedClient[0]?.CompanyName}</Text>
+								<Text style={styles.text}>{wantedClient[0]?.CompanyAdress}</Text>
+								<Text style={styles.text}>{wantedClient[0]?.CompanyZipCode} </Text>
+								<Text style={styles.text}>{wantedClient[0]?.CompanyCity}</Text>
+							</View>
+						</StyledClientDiv>
 					</Page>
 				</Document>
 			</PDFViewer>

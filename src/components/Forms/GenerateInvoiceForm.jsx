@@ -54,7 +54,7 @@ export default function GenerateInvoiceForm() {
 			invoicePaymentReference: data.client,
 		};
 		router.push({
-			pathname: '/invoice',
+			pathname: '/invoices/invoice',
 		});
 		addInvoice(invoiceModel);
 	};

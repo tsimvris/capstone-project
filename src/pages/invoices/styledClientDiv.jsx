@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-const StyledCompanyDiv = styled.div`
+const StyledClientDiv = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -7,4 +7,4 @@ const StyledCompanyDiv = styled.div`
 	width: 100vw;
 	margin: 20px;
 `;
-export default StyledCompanyDiv;
+export default StyledClientDiv;

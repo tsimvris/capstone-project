@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 
-import StyledEditButton from '../../components/Forms/StyledComponents/styledEditButton';
+import StyledSubmitButton from '../../components/Forms/StyledComponents/StyledSubmitButton';
 import Layout from '../../components/Layout';
 import StyledUl from '../../components/serviceUI/styledUL';
 import StyledButton from '../../components/styledButton';
@@ -58,7 +58,7 @@ export default function Invoice() {
 									Payment Reference:
 									<StyledSpan>{invoice.invoicePaymentReference}</StyledSpan>
 									<StyledShowPdfWrapper>
-										<StyledEditButton
+										<StyledSubmitButton
 											onClick={() => {
 												router.push({
 													pathname: `/invoices/${invoice.id}`,
@@ -67,7 +67,7 @@ export default function Invoice() {
 											}}
 										>
 											Show PDF
-										</StyledEditButton>
+										</StyledSubmitButton>
 									</StyledShowPdfWrapper>
 								</StyledInvoiceParagraph>
 							</li>

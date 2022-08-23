@@ -34,7 +34,6 @@ export default function Profile() {
 		if (e.target.files[0]) {
 			setImage(e.target.files[0]);
 		}
-		console.log(image);
 	};
 
 	const handleSubmit = () => {
