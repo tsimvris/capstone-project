@@ -14,14 +14,20 @@ import StyledLoginForm from '../components/login/styledLoginForm';
 import StyledSignupLink from '../components/login/StyledSignupLink';
 import StyledSpan from '../components/menu/StyledSpan';
 import useMyStore from '../hooks/useMyStore';
-
+import useUserStore from '../hooks/useUserStore';
 export default function Homepage() {
+	const users = useUserStore(state => state.users);
 	const DynamicWrapper = dynamic(() => import('../components/login/styledLoginWrapper'), {
 		ssr: false,
 	});
+	console.log(users);
 	const addLogo = useMyStore(state => state.addLogo);
 	const myLogo = useMyStore(state => state.myLogo);
 	const router = useRouter();
+	const defaultLogo = '/defaultLogo.svg';
+	if (myLogo.length === 0) {
+		addLogo(defaultLogo);
+	}
 	const {
 		register,
 		formState: {errors},
@@ -30,19 +36,20 @@ export default function Homepage() {
 		criteriaMode: 'all',
 	});
 	const onSubmit = data => {
-		const user = {
+		const loginUser = {
 			username: data.username,
 			password: data.password,
 		};
-		router.push({
-			pathname: '/dashboard',
+		const match = users.filter(user => {
+			return user.username === loginUser.username && user.password === loginUser.password;
 		});
-		console.log(user);
+		if (match.length === 1) {
+			router.push('/dashboard');
+		} else {
+			alert('The username or password you entered is incorrect');
+		}
 	};
-	const defaultLogo = '/defaultLogo.svg';
-	if (myLogo.length === 0) {
-		addLogo(defaultLogo);
-	}
+
 	return (
 		<>
 			<Head>

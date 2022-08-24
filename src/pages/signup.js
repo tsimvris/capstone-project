@@ -39,7 +39,6 @@ export default function Signup() {
 			pathname: '/',
 		});
 		addUser(user);
-		console.log(user);
 	};
 	const defaultLogo = '/defaultLogo.svg';
 	if (myLogo.length === 0) {
