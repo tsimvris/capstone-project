@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 const StyledSubmitButton = styled.button`
 	width: 238px;
@@ -22,6 +22,17 @@ const StyledSubmitButton = styled.button`
 		font-size: 18px;
 		text-decoration: none;
 	}
+
+	${({variant = 'login'}) =>
+		variant === 'login' &&
+		css`
+			background-color: #1a73e8;
+			color: white;
+			&:hover {
+				background-color: transparent;
+				color: #1a73e8;
+			}
+		`}
 `;
 
 export default StyledSubmitButton;

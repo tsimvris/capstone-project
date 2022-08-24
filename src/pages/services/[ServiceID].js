@@ -156,7 +156,9 @@ export default function EditServices() {
 							/>
 						</StyledFieldset>
 					</StyledLabel>
-					<StyledSubmitButton type="submit">Save</StyledSubmitButton>
+					<StyledSubmitButton variant="default" type="submit">
+						Save
+					</StyledSubmitButton>
 				</StyledForm>
 			</StyledWrapper>
 		</Layout>

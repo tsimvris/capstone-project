@@ -61,6 +61,7 @@ export default function Invoice() {
 									<StyledSpan>{invoice.invoicePaymentReference}</StyledSpan>
 									<StyledShowPdfWrapper>
 										<StyledSubmitButton
+											variant="default"
 											onClick={() => {
 												router.push({
 													pathname: `/invoices/${invoice.id}`,

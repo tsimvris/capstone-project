@@ -1,36 +1,126 @@
+import {ErrorMessage} from '@hookform/error-message';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
+import {useRouter} from 'next/router';
+import {useForm} from 'react-hook-form';
 
-import StyledLoginForm from '../components/Forms/StyledLoginForm';
-import Layout from '../components/Layout';
-import StyledLoginWrapper from '../components/login/styledLoginWrapper';
+import StyledError from '../components/errors/styledError';
+import StyledInput from '../components/Forms/StyledComponents/styledInput';
+import StyledLabel from '../components/Forms/StyledComponents/styledLabel';
+import StyledSubmitButton from '../components/Forms/StyledComponents/styledSubmitButton';
+import StyledLoginForm from '../components/login/styledLoginForm';
+import StyledSignupLink from '../components/login/StyledSignupLink';
+import StyledSpan from '../components/menu/StyledSpan';
 import useMyStore from '../hooks/useMyStore';
+
 export default function Homepage() {
-	const DynamicWrapper = dynamic(
-		() => import('../components/Forms/StyledComponents/styledFormWrapper'),
-		{
-			ssr: false,
-		}
-	);
+	const DynamicWrapper = dynamic(() => import('../components/login/styledLoginWrapper'), {
+		ssr: false,
+	});
 	const addLogo = useMyStore(state => state.addLogo);
 	const myLogo = useMyStore(state => state.myLogo);
-
+	const router = useRouter();
+	const {
+		register,
+		formState: {errors},
+		handleSubmit,
+	} = useForm({
+		criteriaMode: 'all',
+	});
+	const onSubmit = data => {
+		const user = {
+			username: data.username,
+			password: data.password,
+		};
+		router.push({
+			pathname: '/dashboard',
+		});
+		console.log(user);
+	};
 	const defaultLogo = '/defaultLogo.svg';
 	if (myLogo.length === 0) {
 		addLogo(defaultLogo);
 	}
 	return (
-		<Layout>
+		<>
 			<Head>
 				<title key="title">Dashy Login</title>
 				<meta key="description" name="description" content="This is my Capstone project" />
 				<link rel="icon" href="/Dashy.webp" />
 			</Head>
 			<DynamicWrapper>
-				<StyledLoginWrapper>
-					<StyledLoginForm />
-				</StyledLoginWrapper>
+				<StyledLoginForm onSubmit={handleSubmit(onSubmit)}>
+					<Image
+						src="/defaultLogo.svg"
+						alt="Company Logo"
+						height="100px"
+						width="100px"
+						style={{borderRadius: '50%'}}
+					/>
+					<h2>Welcome to Dashy</h2>
+					<StyledLabel>
+						Username
+						<StyledInput
+							placeholder="username"
+							type="text"
+							{...register('username', {
+								required: {value: true, message: 'This is required.'},
+								minLength: {
+									value: 3,
+									message: 'Please enter a Valid Service Name.',
+								},
+							})}
+						/>
+						<ErrorMessage
+							errors={errors}
+							name="username"
+							render={({messages}) =>
+								messages &&
+								Object.entries(messages).map(([type, message]) => (
+									<StyledError key={type}>{message}</StyledError>
+								))
+							}
+						/>
+					</StyledLabel>
+					<StyledLabel>
+						Password
+						<StyledInput
+							placeholder="**********"
+							type="password"
+							{...register('password', {
+								required: {value: true, message: 'This is required.'},
+								minLength: {
+									value: 8,
+									message: 'Min length is 8 characters.',
+								},
+							})}
+						/>
+						<ErrorMessage
+							errors={errors}
+							name="password"
+							render={({messages}) =>
+								messages &&
+								Object.entries(messages).map(([type, message]) => (
+									<StyledError key={type}>{message}</StyledError>
+								))
+							}
+						/>
+					</StyledLabel>
+
+					<StyledSubmitButton variant="login" type="submit">
+						Login
+					</StyledSubmitButton>
+
+					<p>Not a member?</p>
+					<Link href="/signup">
+						<StyledSignupLink>
+							<StyledSpan>Signup Now</StyledSpan>
+						</StyledSignupLink>
+					</Link>
+				</StyledLoginForm>
 			</DynamicWrapper>
-		</Layout>
+		</>
 	);
 }
