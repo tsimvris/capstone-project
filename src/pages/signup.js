@@ -112,7 +112,6 @@ export default function Signup() {
 					<StyledLabel>
 						Confirm your Password
 						<StyledInput
-							value={true}
 							placeholder="**********"
 							type="passwordRepeat"
 							{...register('passwordRepeat', {
@@ -138,6 +137,7 @@ export default function Signup() {
 					<StyledSignupLabel>
 						I accept the Terms & Conditions
 						<StyledSignupCheckbox
+							value={true}
 							type="checkbox"
 							{...register('checkbox', {
 								required: {value: true, message: 'This is required.'},
