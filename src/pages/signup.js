@@ -13,8 +13,9 @@ import StyledLoginForm from '../components/login/StyledLoginForm';
 import StyledSignupCheckbox from '../components/login/StyledSignupCheckbox';
 import StyledSignupLabel from '../components/login/StyledSignupLabel';
 import useMyStore from '../hooks/useMyStore';
-
+import useUserStore from '../hooks/useUserStore';
 export default function Signup() {
+	const addUser = useUserStore(state => state.addUser);
 	const DynamicWrapper = dynamic(() => import('../components/login/styledLoginWrapper'), {
 		ssr: false,
 	});
@@ -32,12 +33,12 @@ export default function Signup() {
 		const user = {
 			username: data.username,
 			password: data.password,
-			passwordRepeat: data.passwordRepeat,
 			checkbox: data.checkbox,
 		};
 		router.push({
 			pathname: '/',
 		});
+		addUser(user);
 		console.log(user);
 	};
 	const defaultLogo = '/defaultLogo.svg';
@@ -101,30 +102,6 @@ export default function Signup() {
 						<ErrorMessage
 							errors={errors}
 							name="password"
-							render={({messages}) =>
-								messages &&
-								Object.entries(messages).map(([type, message]) => (
-									<StyledError key={type}>{message}</StyledError>
-								))
-							}
-						/>
-					</StyledLabel>
-					<StyledLabel>
-						Confirm your Password
-						<StyledInput
-							placeholder="**********"
-							type="passwordRepeat"
-							{...register('passwordRepeat', {
-								required: {value: true, message: 'This is required.'},
-								minLength: {
-									value: 8,
-									message: 'Please enter a valid Password.',
-								},
-							})}
-						/>
-						<ErrorMessage
-							errors={errors}
-							name="passwordRepeat"
 							render={({messages}) =>
 								messages &&
 								Object.entries(messages).map(([type, message]) => (

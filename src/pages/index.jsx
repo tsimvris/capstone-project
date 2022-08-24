@@ -108,7 +108,6 @@ export default function Homepage() {
 							}
 						/>
 					</StyledLabel>
-
 					<StyledSubmitButton variant="login" type="submit">
 						Login
 					</StyledSubmitButton>
