@@ -15,9 +15,7 @@ import StyledSignupCheckbox from '../components/login/StyledSignupCheckbox';
 import StyledSignupLabel from '../components/login/StyledSignupLabel';
 import {useFetch} from '../hooks/useFetch';
 import useMyStore from '../hooks/useMyStore';
-import useUserStore from '../hooks/useUserStore';
 export default function Signup() {
-	const signupUser = useUserStore(state => state.signupUser);
 	const DynamicWrapper = dynamic(() => import('../components/login/styledLoginWrapper'), {
 		ssr: false,
 	});
@@ -39,7 +37,6 @@ export default function Signup() {
 			password: data.password,
 			isLoggedIn: false,
 		};
-		signupUser(userCredential);
 		await fetchApi('/api/postApi', {
 			method: 'POST',
 			body: JSON.stringify(userCredential),

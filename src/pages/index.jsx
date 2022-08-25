@@ -24,12 +24,10 @@ export async function getServerSideProps() {
 	};
 }
 export default function Homepage({users}) {
-	const registeredUsers = useUserStore(state => state.registeredUsers);
 	const setLogedinUser = useUserStore(state => state.setLogedinUser);
 	const DynamicWrapper = dynamic(() => import('../components/login/styledLoginWrapper'), {
 		ssr: false,
 	});
-	console.log(users);
 
 	const addLogo = useMyStore(state => state.addLogo);
 	const myLogo = useMyStore(state => state.myLogo);
@@ -50,11 +48,8 @@ export default function Homepage({users}) {
 			username: data.username,
 			password: data.password,
 		};
-		const match = registeredUsers.filter(registeredUser => {
-			return (
-				registeredUser.username === loginUser.username &&
-				registeredUser.password === loginUser.password
-			);
+		const match = users.filter(user => {
+			return user.username === loginUser.username && user.password === loginUser.password;
 		});
 		if (match.length === 1) {
 			setLogedinUser(loginUser);
