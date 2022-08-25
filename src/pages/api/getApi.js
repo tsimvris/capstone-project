@@ -1,5 +1,5 @@
 import {dbConnect} from '../../../backend/dbConnect';
-import {getUserById} from '../../services/findUserById';
+import {getUserById} from '../../services/getAllUsers';
 
 export default async function getHandler(req, res) {
 	const {id} = req.query;
