@@ -12,6 +12,7 @@ import {RiMoneyEuroCircleFill} from 'react-icons/ri';
 
 import StyledLink from '../components/menu/StyledLink';
 import useMyStore from '../hooks/useMyStore';
+import useUserStore from '../hooks/useUserStore';
 
 import StyledImageContainer from './menu/StyledImageContainer';
 import StyledMenuBox from './menu/styledMenuBox';
@@ -20,6 +21,7 @@ import StyledNavBarButton from './menu/styledNavBarButton';
 import StyledSpan from './menu/StyledSpan';
 export default function Header() {
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+	const setLogedinUser = useUserStore(state => state.setLogedinUser);
 	const myLogo = useMyStore(state => state.myLogo);
 	const router = useRouter();
 	return (
@@ -92,6 +94,17 @@ export default function Header() {
 								<StyledSpan>Profile</StyledSpan>
 							</StyledLink>
 						</Link>
+						<StyledLink
+							onClick={() => {
+								setLogedinUser(null);
+								router.push({
+									pathname: '/',
+								});
+							}}
+						>
+							<CgProfile />
+							<StyledSpan>Logout</StyledSpan>
+						</StyledLink>
 					</StyledMenuBox>
 				</Drawer>
 			</StyledNavBar>

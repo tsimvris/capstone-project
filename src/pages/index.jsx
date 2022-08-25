@@ -16,11 +16,11 @@ import StyledSpan from '../components/menu/StyledSpan';
 import useMyStore from '../hooks/useMyStore';
 import useUserStore from '../hooks/useUserStore';
 export default function Homepage() {
-	const users = useUserStore(state => state.users);
+	const registeredUsers = useUserStore(state => state.registeredUsers);
+	const setLogedinUser = useUserStore(state => state.setLogedinUser);
 	const DynamicWrapper = dynamic(() => import('../components/login/styledLoginWrapper'), {
 		ssr: false,
 	});
-	console.log(users);
 	const addLogo = useMyStore(state => state.addLogo);
 	const myLogo = useMyStore(state => state.myLogo);
 	const router = useRouter();
@@ -40,10 +40,14 @@ export default function Homepage() {
 			username: data.username,
 			password: data.password,
 		};
-		const match = users.filter(user => {
-			return user.username === loginUser.username && user.password === loginUser.password;
+		const match = registeredUsers.filter(registeredUser => {
+			return (
+				registeredUser.username === loginUser.username &&
+				registeredUser.password === loginUser.password
+			);
 		});
 		if (match.length === 1) {
+			setLogedinUser(loginUser);
 			router.push('/dashboard');
 		} else {
 			alert('The username or password you entered is incorrect');

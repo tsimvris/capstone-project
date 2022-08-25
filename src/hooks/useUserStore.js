@@ -4,10 +4,16 @@ import {persist} from 'zustand/middleware';
 const useUserStore = create(
 	persist(
 		set => ({
-			users: [],
-			addUser: user => {
+			registeredUsers: [],
+			logedInUser: {},
+			signupUser: user => {
 				set(state => {
-					return {users: [...state.users, user]};
+					return {registeredUsers: [...state.registeredUsers, user]};
+				});
+			},
+			setLogedinUser: user => {
+				set(() => {
+					return {logedInUser: user};
 				});
 			},
 		}),

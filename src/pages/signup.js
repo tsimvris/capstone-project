@@ -15,7 +15,7 @@ import StyledSignupLabel from '../components/login/StyledSignupLabel';
 import useMyStore from '../hooks/useMyStore';
 import useUserStore from '../hooks/useUserStore';
 export default function Signup() {
-	const addUser = useUserStore(state => state.addUser);
+	const signupUser = useUserStore(state => state.signupUser);
 	const DynamicWrapper = dynamic(() => import('../components/login/styledLoginWrapper'), {
 		ssr: false,
 	});
@@ -30,15 +30,16 @@ export default function Signup() {
 		criteriaMode: 'all',
 	});
 	const onSubmit = data => {
-		const user = {
+		const userCredential = {
 			username: data.username,
 			password: data.password,
 			checkbox: data.checkbox,
+			isLoggedIn: false,
 		};
 		router.push({
 			pathname: '/',
 		});
-		addUser(user);
+		signupUser(userCredential);
 	};
 	const defaultLogo = '/defaultLogo.svg';
 	if (myLogo.length === 0) {
