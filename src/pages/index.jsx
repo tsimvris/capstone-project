@@ -10,7 +10,7 @@ import StyledError from '../components/errors/styledError';
 import StyledInput from '../components/Forms/StyledComponents/styledInput';
 import StyledLabel from '../components/Forms/StyledComponents/styledLabel';
 import StyledSubmitButton from '../components/Forms/StyledComponents/styledSubmitButton';
-import StyledLoginForm from '../components/login/styledLoginForm';
+import StyledLoginForm from '../components/login/StyledLoginForm';
 import StyledSignupLink from '../components/login/StyledSignupLink';
 import StyledSpan from '../components/menu/StyledSpan';
 import useMyStore from '../hooks/useMyStore';
