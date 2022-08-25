@@ -16,6 +16,16 @@ const useUserStore = create(
 					return {logedInUser: user};
 				});
 			},
+			fetchedUsers: {results: []},
+			fetchUsers: async url => {
+				try {
+					const response = await fetch(url);
+					const data = await response.json();
+					set({fetchedUsers: data});
+				} catch (error) {
+					console.error(`There is an error: ${error}`);
+				}
+			},
 		}),
 		{
 			name: 'Users',
