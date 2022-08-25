@@ -1,4 +1,5 @@
 import {ErrorMessage} from '@hookform/error-message';
+import {nanoid} from 'nanoid';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -12,13 +13,13 @@ import StyledSubmitButton from '../components/Forms/StyledComponents/styledSubmi
 import StyledLoginForm from '../components/login/StyledLoginForm';
 import StyledSignupCheckbox from '../components/login/StyledSignupCheckbox';
 import StyledSignupLabel from '../components/login/StyledSignupLabel';
+import {useFetch} from '../hooks/useFetch';
 import useMyStore from '../hooks/useMyStore';
-import useUserStore from '../hooks/useUserStore';
 export default function Signup() {
-	const signupUser = useUserStore(state => state.signupUser);
 	const DynamicWrapper = dynamic(() => import('../components/login/styledLoginWrapper'), {
 		ssr: false,
 	});
+	const fetchApi = useFetch();
 	const addLogo = useMyStore(state => state.addLogo);
 	const myLogo = useMyStore(state => state.myLogo);
 	const router = useRouter();
@@ -29,17 +30,20 @@ export default function Signup() {
 	} = useForm({
 		criteriaMode: 'all',
 	});
-	const onSubmit = data => {
+	const onSubmit = async data => {
 		const userCredential = {
+			id: nanoid(),
 			username: data.username,
 			password: data.password,
-			checkbox: data.checkbox,
 			isLoggedIn: false,
 		};
+		await fetchApi('/api/postApi', {
+			method: 'POST',
+			body: JSON.stringify(userCredential),
+		});
 		router.push({
 			pathname: '/',
 		});
-		signupUser(userCredential);
 	};
 	const defaultLogo = '/defaultLogo.svg';
 	if (myLogo.length === 0) {

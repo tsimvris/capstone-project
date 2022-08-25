@@ -15,12 +15,20 @@ import StyledSignupLink from '../components/login/StyledSignupLink';
 import StyledSpan from '../components/menu/StyledSpan';
 import useMyStore from '../hooks/useMyStore';
 import useUserStore from '../hooks/useUserStore';
-export default function Homepage() {
-	const registeredUsers = useUserStore(state => state.registeredUsers);
+import {getAlluser} from '../services/getAllUsers';
+export async function getServerSideProps() {
+	const users = await getAlluser();
+
+	return {
+		props: {users},
+	};
+}
+export default function Homepage({users}) {
 	const setLogedinUser = useUserStore(state => state.setLogedinUser);
 	const DynamicWrapper = dynamic(() => import('../components/login/styledLoginWrapper'), {
 		ssr: false,
 	});
+
 	const addLogo = useMyStore(state => state.addLogo);
 	const myLogo = useMyStore(state => state.myLogo);
 	const router = useRouter();
@@ -40,11 +48,8 @@ export default function Homepage() {
 			username: data.username,
 			password: data.password,
 		};
-		const match = registeredUsers.filter(registeredUser => {
-			return (
-				registeredUser.username === loginUser.username &&
-				registeredUser.password === loginUser.password
-			);
+		const match = users.filter(user => {
+			return user.username === loginUser.username && user.password === loginUser.password;
 		});
 		if (match.length === 1) {
 			setLogedinUser(loginUser);
