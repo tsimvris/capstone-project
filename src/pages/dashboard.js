@@ -13,9 +13,13 @@ export default function HomePage() {
 				<meta key="description" name="description" content="This is my Capstone project" />
 				<link rel="icon" href="/Dashy.webp" />
 			</Head>
-			<h1>
-				Welcome back, <StyledLoginSpan> {logedInUser?.username}</StyledLoginSpan>
-			</h1>
+			{logedInUser ? (
+				<h1>
+					Welcome back, <StyledLoginSpan> {logedInUser?.username}</StyledLoginSpan>
+				</h1>
+			) : (
+				'You are not logged in'
+			)}
 		</Layout>
 	);
 }

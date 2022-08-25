@@ -17,7 +17,10 @@ import StyledSpan from '../components/styledSpan';
 import StyledUploadLabel from '../components/StyledUploadLabel';
 import {storage} from '../hooks/firebase';
 import useMyStore from '../hooks/useMyStore';
+import useUserStore from '../hooks/useUserStore';
 export default function Profile() {
+	const logedInUser = useUserStore(state => state.logedInUser);
+
 	const router = useRouter();
 	const [image, setImage] = useState('');
 	const myLogo = useMyStore(state => state.myLogo);
@@ -60,55 +63,63 @@ export default function Profile() {
 				<meta key="description" name="description" content="This is my Capstone project" />
 				<link rel="icon" href="/Dashy.webp" />
 			</Head>
-			<DynamicWrapper>
-				<StyledProfileWrapper>
-					<StyledImageContainer>
-						<Image
-							src={myLogo[0]}
-							alt="Company Logo"
-							height="150px"
-							width="150px"
-							style={{borderRadius: '50%'}}
-						/>
-					</StyledImageContainer>
+			{logedInUser ? (
+				<DynamicWrapper>
+					<StyledProfileWrapper>
+						<StyledImageContainer>
+							<Image
+								src={myLogo[0]}
+								alt="Company Logo"
+								height="150px"
+								width="150px"
+								style={{borderRadius: '50%'}}
+							/>
+						</StyledImageContainer>
 
-					<StyledUploadLabel>
-						Search for an Image
-						<StyledImageInput ref={ref} type="file" onChange={handleImageChange} />
-					</StyledUploadLabel>
-					{image?.name ? <p>Your selected file : {image?.name}</p> : ''}
+						<StyledUploadLabel>
+							Search for an Image
+							<StyledImageInput ref={ref} type="file" onChange={handleImageChange} />
+						</StyledUploadLabel>
+						{image?.name ? <p>Your selected file : {image?.name}</p> : ''}
 
-					<StyledChangePictureButton onClick={handleSubmit}>
-						Click to Upload
-					</StyledChangePictureButton>
-				</StyledProfileWrapper>
-				<StyledProfileWrapper>
-					<StyledH2Container>
-						<h2>Your Info :</h2>
-					</StyledH2Container>
-					<div>
-						<StyledParagraph>
-							Company Name : <StyledSpan>{myCompany[0]?.myCompany}</StyledSpan>
-							Company Adress :<StyledSpan>{myCompany[0]?.myCompanyAdress}</StyledSpan>
-							Company Postal Code :
-							<StyledSpan>{myCompany[0]?.myCompanyZipCode}</StyledSpan>
-							Company City : <StyledSpan>{myCompany[0]?.myCompanyCity}</StyledSpan>
-							Company Tax Id : <StyledSpan>{myCompany[0]?.myCompanyTaxID}</StyledSpan>
-							Bank : <StyledSpan>{myCompany[0]?.myBank}</StyledSpan>
-							IBAN : <StyledSpan>{myCompany[0]?.myIban}</StyledSpan>
-						</StyledParagraph>
-					</div>
-					<StyledEditButton
-						onClick={() => {
-							router.push({
-								pathname: '/create-my-company',
-							});
-						}}
-					>
-						Edit your Info
-					</StyledEditButton>
-				</StyledProfileWrapper>
-			</DynamicWrapper>
+						<StyledChangePictureButton onClick={handleSubmit}>
+							Click to Upload
+						</StyledChangePictureButton>
+					</StyledProfileWrapper>
+
+					<StyledProfileWrapper>
+						<StyledH2Container>
+							<h2>Your Info :</h2>
+						</StyledH2Container>
+						<div>
+							<StyledParagraph>
+								Company Name : <StyledSpan>{myCompany[0]?.myCompany}</StyledSpan>
+								Company Adress :
+								<StyledSpan>{myCompany[0]?.myCompanyAdress}</StyledSpan>
+								Company Postal Code :
+								<StyledSpan>{myCompany[0]?.myCompanyZipCode}</StyledSpan>
+								Company City :{' '}
+								<StyledSpan>{myCompany[0]?.myCompanyCity}</StyledSpan>
+								Company Tax Id :{' '}
+								<StyledSpan>{myCompany[0]?.myCompanyTaxID}</StyledSpan>
+								Bank : <StyledSpan>{myCompany[0]?.myBank}</StyledSpan>
+								IBAN : <StyledSpan>{myCompany[0]?.myIban}</StyledSpan>
+							</StyledParagraph>
+						</div>
+						<StyledEditButton
+							onClick={() => {
+								router.push({
+									pathname: '/create-my-company',
+								});
+							}}
+						>
+							Edit your Info
+						</StyledEditButton>
+					</StyledProfileWrapper>
+				</DynamicWrapper>
+			) : (
+				<DynamicWrapper> You are not logged in</DynamicWrapper>
+			)}
 		</Layout>
 	);
 }

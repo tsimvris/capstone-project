@@ -14,6 +14,7 @@ import StyledButton from '../../components/styledButton';
 import StyledWrapper from '../../components/styledClientWrapper';
 import StyledSearchWrapper from '../../components/styledSearchWrapper';
 import useClientStore from '../../hooks/useClientStore';
+import useUserStore from '../../hooks/useUserStore';
 
 export default function ClientsPage() {
 	const clients = useClientStore(state => state.clients);
@@ -22,6 +23,7 @@ export default function ClientsPage() {
 		ssr: false,
 	});
 	const [inputValue, setInputValue] = useState('');
+	const logedInUser = useUserStore(state => state.logedInUser);
 
 	const fuzzyResult = search(inputValue, clients, {
 		keySelector: obj => obj.CompanyName,
@@ -36,69 +38,73 @@ export default function ClientsPage() {
 				<meta key="description" name="description" content="This is my Capstone project" />
 				<link rel="icon" href="/Dashy.webp" />
 			</Head>
-			<StyledSearchWrapper>
-				<StyledSearchField
-					value={inputValue}
-					type="text"
-					placeholder="Search for a Client"
-					onChange={event => {
-						setInputValue(event.target.value);
-					}}
-				/>
-			</StyledSearchWrapper>
-			<DynamicWrapper>
-				<StyledUl>
-					{fuzzyResult?.map(result => {
-						return (
-							<StyledLi key={result.id}>
-								{result.CompanyName}
-								<StyledEditButton
-									onClick={() => {
-										router.push({
-											pathname: `/clients/${result.id}`,
-											query: {keyword: 'clientId'},
-										});
-									}}
-								>
-									Edit
-								</StyledEditButton>
-							</StyledLi>
-						);
-					})}
-				</StyledUl>
-				<StyledButton
-					onClick={() => {
-						router.push({
-							pathname: '/clients/create-new-client',
-						});
-					}}
-				>
-					Add new Client
-				</StyledButton>
-				<StyledWrapper>
+			{logedInUser ? (
+				<DynamicWrapper>
+					<StyledSearchWrapper>
+						<StyledSearchField
+							value={inputValue}
+							type="text"
+							placeholder="Search for a Client"
+							onChange={event => {
+								setInputValue(event.target.value);
+							}}
+						/>
+					</StyledSearchWrapper>
 					<StyledUl>
-						{clients
-							?.sort((a, b) => a.CompanyName?.localeCompare(b.CompanyName))
-							.map(client => {
-								return (
-									<StyledLi key={client.id}>
-										<StyledSpan>{client.CompanyName}</StyledSpan>
-										<StyledEditButton
-											onClick={() => {
-												router.push({
-													pathname: `/clients/${client.id}`,
-													query: {keyword: 'clientId'},
-												});
-											}}
-										>
-											Edit
-										</StyledEditButton>
-									</StyledLi>
-								);
-							})}
+						{fuzzyResult?.map(result => {
+							return (
+								<StyledLi key={result.id}>
+									{result.CompanyName}
+									<StyledEditButton
+										onClick={() => {
+											router.push({
+												pathname: `/clients/${result.id}`,
+												query: {keyword: 'clientId'},
+											});
+										}}
+									>
+										Edit
+									</StyledEditButton>
+								</StyledLi>
+							);
+						})}
 					</StyledUl>
-				</StyledWrapper>
-			</DynamicWrapper>
+					<StyledButton
+						onClick={() => {
+							router.push({
+								pathname: '/clients/create-new-client',
+							});
+						}}
+					>
+						Add new Client
+					</StyledButton>
+					<StyledWrapper>
+						<StyledUl>
+							{clients
+								?.sort((a, b) => a.CompanyName?.localeCompare(b.CompanyName))
+								.map(client => {
+									return (
+										<StyledLi key={client.id}>
+											<StyledSpan>{client.CompanyName}</StyledSpan>
+											<StyledEditButton
+												onClick={() => {
+													router.push({
+														pathname: `/clients/${client.id}`,
+														query: {keyword: 'clientId'},
+													});
+												}}
+											>
+												Edit
+											</StyledEditButton>
+										</StyledLi>
+									);
+								})}
+						</StyledUl>
+					</StyledWrapper>
+				</DynamicWrapper>
+			) : (
+				<DynamicWrapper> You are not logged in</DynamicWrapper>
+			)}
 		</Layout>
 	);
 }
