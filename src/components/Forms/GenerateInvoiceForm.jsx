@@ -189,7 +189,7 @@ export default function GenerateInvoiceForm() {
 						? ''
 						: 'In order to submit you must add your Company info at the Profile Page'}
 				</StyledInvoiceError>
-				<StyledSubmitButton name="submitButton" type="submit">
+				<StyledSubmitButton variant="default" name="submitButton" type="submit">
 					Submit
 				</StyledSubmitButton>
 				<StyledNotice>All input fields are required</StyledNotice>

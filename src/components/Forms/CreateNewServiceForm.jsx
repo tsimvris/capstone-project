@@ -150,7 +150,9 @@ export default function CreateNewServiceForm() {
 						/>
 					</StyledFieldset>
 				</StyledLabel>
-				<StyledSubmitButton type="submit">Submit</StyledSubmitButton>
+				<StyledSubmitButton variant="default" type="submit">
+					Submit
+				</StyledSubmitButton>
 				<StyledNotice>All input fields are required</StyledNotice>
 			</StyledForm>
 		</StyledWrapper>

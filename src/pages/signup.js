@@ -2,7 +2,6 @@ import {ErrorMessage} from '@hookform/error-message';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {useForm} from 'react-hook-form';
 
@@ -11,23 +10,18 @@ import StyledInput from '../components/Forms/StyledComponents/styledInput';
 import StyledLabel from '../components/Forms/StyledComponents/styledLabel';
 import StyledSubmitButton from '../components/Forms/StyledComponents/styledSubmitButton';
 import StyledLoginForm from '../components/login/StyledLoginForm';
-import StyledSignupLink from '../components/login/StyledSignupLink';
-import StyledSpan from '../components/menu/StyledSpan';
+import StyledSignupCheckbox from '../components/login/StyledSignupCheckbox';
+import StyledSignupLabel from '../components/login/StyledSignupLabel';
 import useMyStore from '../hooks/useMyStore';
 import useUserStore from '../hooks/useUserStore';
-export default function Homepage() {
-	const registeredUsers = useUserStore(state => state.registeredUsers);
-	const setLogedinUser = useUserStore(state => state.setLogedinUser);
+export default function Signup() {
+	const signupUser = useUserStore(state => state.signupUser);
 	const DynamicWrapper = dynamic(() => import('../components/login/styledLoginWrapper'), {
 		ssr: false,
 	});
 	const addLogo = useMyStore(state => state.addLogo);
 	const myLogo = useMyStore(state => state.myLogo);
 	const router = useRouter();
-	const defaultLogo = '/defaultLogo.svg';
-	if (myLogo.length === 0) {
-		addLogo(defaultLogo);
-	}
 	const {
 		register,
 		formState: {errors},
@@ -36,28 +30,25 @@ export default function Homepage() {
 		criteriaMode: 'all',
 	});
 	const onSubmit = data => {
-		const loginUser = {
+		const userCredential = {
 			username: data.username,
 			password: data.password,
+			checkbox: data.checkbox,
+			isLoggedIn: false,
 		};
-		const match = registeredUsers.filter(registeredUser => {
-			return (
-				registeredUser.username === loginUser.username &&
-				registeredUser.password === loginUser.password
-			);
+		router.push({
+			pathname: '/',
 		});
-		if (match.length === 1) {
-			setLogedinUser(loginUser);
-			router.push('/dashboard');
-		} else {
-			alert('The username or password you entered is incorrect');
-		}
+		signupUser(userCredential);
 	};
-
+	const defaultLogo = '/defaultLogo.svg';
+	if (myLogo.length === 0) {
+		addLogo(defaultLogo);
+	}
 	return (
 		<>
 			<Head>
-				<title key="title">Dashy Login</title>
+				<title key="title">Dashy Signup</title>
 				<meta key="description" name="description" content="This is my Capstone project" />
 				<link rel="icon" href="/Dashy.webp" />
 			</Head>
@@ -70,7 +61,7 @@ export default function Homepage() {
 						width="100px"
 						style={{borderRadius: '50%'}}
 					/>
-					<h2>Welcome to Dashy</h2>
+					<h2>Signup to Dashy</h2>
 					<StyledLabel>
 						Username
 						<StyledInput
@@ -80,7 +71,7 @@ export default function Homepage() {
 								required: {value: true, message: 'This is required.'},
 								minLength: {
 									value: 3,
-									message: 'Please enter a Valid Service Name.',
+									message: 'Please enter a valid username.',
 								},
 							})}
 						/>
@@ -119,16 +110,31 @@ export default function Homepage() {
 							}
 						/>
 					</StyledLabel>
-					<StyledSubmitButton variant="login" type="submit">
-						Login
-					</StyledSubmitButton>
 
-					<p>Not a member?</p>
-					<Link href="/signup">
-						<StyledSignupLink>
-							<StyledSpan>Signup Now</StyledSpan>
-						</StyledSignupLink>
-					</Link>
+					<StyledSignupLabel>
+						I accept the Terms & Conditions
+						<StyledSignupCheckbox
+							value={true}
+							type="checkbox"
+							{...register('checkbox', {
+								required: {value: true, message: 'This is required.'},
+							})}
+						/>
+						<ErrorMessage
+							errors={errors}
+							name="checkbox"
+							render={({messages}) =>
+								messages &&
+								Object.entries(messages).map(([type, message]) => (
+									<StyledError key={type}>{message}</StyledError>
+								))
+							}
+						/>
+					</StyledSignupLabel>
+
+					<StyledSubmitButton variant="login" type="submit">
+						Signup
+					</StyledSubmitButton>
 				</StyledLoginForm>
 			</DynamicWrapper>
 		</>
