@@ -37,7 +37,6 @@ export default function Signup() {
 			id: nanoid(),
 			username: data.username,
 			password: data.password,
-			checkbox: data.checkbox,
 			isLoggedIn: false,
 		};
 		signupUser(userCredential);
