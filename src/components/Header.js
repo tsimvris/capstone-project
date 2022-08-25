@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {useState} from 'react';
+import {BiLogOutCircle} from 'react-icons/bi';
 import {BsFillPeopleFill} from 'react-icons/bs';
 import {CgProfile} from 'react-icons/cg';
 import * as FaIcons from 'react-icons/fa';
@@ -102,7 +103,7 @@ export default function Header() {
 								});
 							}}
 						>
-							<CgProfile />
+							<BiLogOutCircle />
 							<StyledSpan>Logout</StyledSpan>
 						</StyledLink>
 					</StyledMenuBox>
