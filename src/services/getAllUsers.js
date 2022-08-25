@@ -8,3 +8,9 @@ export async function getAlluser() {
 		return {id, username, password, isLoggedIn};
 	});
 }
+export async function getUserById(id_) {
+	await dbConnect();
+	const user = await User.findById(id_);
+	const {id, username, password, isLoggedIn} = user;
+	return {id, username, password, isLoggedIn};
+}

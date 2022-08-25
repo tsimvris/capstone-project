@@ -15,12 +15,22 @@ import StyledSignupLink from '../components/login/StyledSignupLink';
 import StyledSpan from '../components/menu/StyledSpan';
 import useMyStore from '../hooks/useMyStore';
 import useUserStore from '../hooks/useUserStore';
-export default function Homepage() {
+import {getAlluser} from '../services/getAllUsers';
+export async function getServerSideProps() {
+	const users = await getAlluser();
+
+	return {
+		props: {users},
+	};
+}
+export default function Homepage({users}) {
 	const registeredUsers = useUserStore(state => state.registeredUsers);
 	const setLogedinUser = useUserStore(state => state.setLogedinUser);
 	const DynamicWrapper = dynamic(() => import('../components/login/styledLoginWrapper'), {
 		ssr: false,
 	});
+	console.log(users);
+
 	const addLogo = useMyStore(state => state.addLogo);
 	const myLogo = useMyStore(state => state.myLogo);
 	const router = useRouter();
