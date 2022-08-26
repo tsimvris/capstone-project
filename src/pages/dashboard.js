@@ -6,6 +6,7 @@ import {PieChart, Pie, Sector} from 'recharts';
 import StyledHeadlineWrapper from '../components/dashboard/StyledHeadlineWrapper';
 import Layout from '../components/Layout';
 import StyledLoginSpan from '../components/login/StyledLoginSpan';
+import useClientStore from '../hooks/useClientStore';
 import useUserStore from '../hooks/useUserStore';
 
 const data = [
@@ -68,6 +69,12 @@ const renderActiveShape = props => {
 export default function HomePage() {
 	const logedInUser = useUserStore(state => state.logedInUser);
 	const [activeIndex, setActiveIndex] = useState(0);
+	const invoices = useClientStore(state => state.invoices);
+	const clients = useClientStore(state => state.clients);
+	let gesamtUmsatz = 0;
+	invoices.map(invoice => {
+		gesamtUmsatz = gesamtUmsatz + invoice.invoiceTotal;
+	});
 	const onPieEnter = useCallback(
 		(_, index) => {
 			setActiveIndex(index);
@@ -90,12 +97,26 @@ export default function HomePage() {
 					</StyledHeadlineWrapper>
 					<br />
 					<StyledHeadlineWrapper>
+						<h3>Profit</h3>
+						<StyledLoginSpan>{gesamtUmsatz} €</StyledLoginSpan>
+					</StyledHeadlineWrapper>
+					<StyledHeadlineWrapper>
+						<h3>Invoices</h3>
+						<StyledLoginSpan>{invoices.length}</StyledLoginSpan>
+					</StyledHeadlineWrapper>
+
+					<StyledHeadlineWrapper>
+						<h3>Clients</h3>
+						<StyledLoginSpan>{clients.length}</StyledLoginSpan>
+					</StyledHeadlineWrapper>
+
+					<StyledHeadlineWrapper>
 						<StyledHeadlineWrapper>
 							<h2>Quartal Analyse</h2>
 						</StyledHeadlineWrapper>
 						<br />
 						<ComposedChart
-							width={330}
+							width={375}
 							height={200}
 							data={data22}
 							margin={{
@@ -107,6 +128,14 @@ export default function HomePage() {
 						>
 							<XAxis dataKey="name" />
 							<YAxis />
+							<YAxis
+								yAxisId="right"
+								type="number"
+								dataKey="Rechnungen"
+								name="weight"
+								orientation="right"
+								stroke="#fc5130"
+							/>
 							<Tooltip />
 							<Legend
 								width={100}
@@ -152,7 +181,7 @@ const data22 = [
 	{
 		name: 'August',
 		Rechnungen: 10,
-		'Umsatz*1000 €': `12.5`,
+		'Umsatz*1000 €': `12.543`,
 	},
 	{
 		name: 'September',
