@@ -32,7 +32,7 @@ const renderActiveShape = props => {
 
 	return (
 		<g>
-			<text x={cx} y={cy} dy={8} textAnchor="middle" fill="#413ea0">
+			<text x={cx} y={cy} dy={8} textAnchor="middle" fill="#fc5130">
 				{payload.name}
 			</text>
 			<Sector
@@ -51,16 +51,16 @@ const renderActiveShape = props => {
 				endAngle={endAngle}
 				innerRadius={outerRadius + 6}
 				outerRadius={outerRadius + 10}
-				fill="#413ea0"
+				fill="#fc5130"
 			/>
-			<path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke="#413ea0" fill="none" />
-			<circle cx={ex} cy={ey} r={2} fill="#413ea0" stroke="413ea0" />
+			<path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke="#fc5130" fill="none" />
+			<circle cx={ex} cy={ey} r={2} fill="#fc5130" stroke="fc5130" />
 			<text
 				x={ex + (cos >= 0 ? 1 : -1) * 12}
 				y={ey}
 				textAnchor={textAnchor}
-				fill="#413ea0"
-			>{`${value}`}</text>
+				fill="#fc5130"
+			>{`${value}€`}</text>
 		</g>
 	);
 };
@@ -90,6 +90,39 @@ export default function HomePage() {
 					</StyledHeadlineWrapper>
 					<br />
 					<StyledHeadlineWrapper>
+						<StyledHeadlineWrapper>
+							<h2>Quartal Analyse</h2>
+						</StyledHeadlineWrapper>
+						<br />
+						<ComposedChart
+							width={330}
+							height={200}
+							data={data22}
+							margin={{
+								top: 20,
+								right: 20,
+								bottom: 20,
+								left: 20,
+							}}
+						>
+							<XAxis dataKey="name" />
+							<YAxis />
+							<Tooltip />
+							<Legend
+								width={100}
+								wrapperStyle={{
+									top: 180,
+									width: 320,
+									lineHeight: '10px',
+								}}
+							/>
+
+							<Bar dataKey="Umsatz*1000 €" barSize={20} fill="#413ea0" />
+							<Line type="monotone" dataKey="Rechnungen" stroke="#fc5130" />
+						</ComposedChart>
+						<br />
+						<br />
+
 						<h2>Top 5 Clients</h2>
 					</StyledHeadlineWrapper>
 					<PieChart width={375} height={400}>
@@ -101,44 +134,11 @@ export default function HomePage() {
 							cy={150}
 							innerRadius={60}
 							outerRadius={80}
-							fill="#fc5130"
+							fill="#413ea0"
 							dataKey="value"
 							onMouseEnter={onPieEnter}
 						/>
 					</PieChart>
-					<br />
-					<StyledHeadlineWrapper>
-						<h2>Quartal Analyse</h2>
-					</StyledHeadlineWrapper>
-					<br />
-					<ComposedChart
-						width={330}
-						height={200}
-						data={data22}
-						margin={{
-							top: 20,
-							right: 20,
-							bottom: 20,
-							left: 20,
-						}}
-					>
-						<XAxis dataKey="name" />
-						<YAxis />
-						<Tooltip />
-						<Legend
-							width={100}
-							wrapperStyle={{
-								top: 180,
-								width: 320,
-								lineHeight: '10px',
-							}}
-						/>
-
-						<Bar dataKey="Umsatz*1000 €" barSize={80} fill="#fc5130" />
-						<Bar dataKey="Kunden" barSize={80} fill="#413ea0" />
-						<Line type="monotone" dataKey="Rechnungen" stroke="#000" />
-					</ComposedChart>
-					<br /> <br />
 					<br />
 				</>
 			) : (
@@ -151,23 +151,17 @@ export default function HomePage() {
 const data22 = [
 	{
 		name: 'August',
-		Rechnungen: 12,
+		Rechnungen: 10,
 		'Umsatz*1000 €': `12.5`,
-		Kunden: 8,
-		value: '50',
 	},
 	{
 		name: 'September',
-		Rechnungen: 8,
+		Rechnungen: 14,
 		'Umsatz*1000 €': `8.5`,
-		Kunden: 4,
-		value: '45',
 	},
 	{
 		name: 'Oktober',
-		Rechnungen: 14,
+		Rechnungen: 12,
 		'Umsatz*1000 €': `9.5`,
-		Kunden: 5,
-		value: '85',
 	},
 ];
