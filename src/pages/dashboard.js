@@ -1,8 +1,10 @@
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import {BsEnvelopeOpen} from 'react-icons/bs';
 import {FaRegMoneyBillAlt} from 'react-icons/fa';
 import {FiUsers} from 'react-icons/fi';
 
+import LineChart from '../chartData/lineChart';
 import StyledHeadlineWrapper from '../components/dashboard/StyledHeadlineWrapper';
 import StyledInfoBox from '../components/dashboard/StyledInfoBox';
 import StyledInfoWrapper from '../components/dashboard/StyledInfoWrapper';
@@ -20,7 +22,9 @@ export default function HomePage() {
 	invoices?.map(invoice => {
 		totalProfit = totalProfit + invoice.invoiceTotal;
 	});
-
+	const DynamicWrapper = dynamic(() => import('../components/dashboard/StyledDashboardWrapper'), {
+		ssr: false,
+	});
 	return (
 		<Layout>
 			<Head>
@@ -29,7 +33,7 @@ export default function HomePage() {
 				<link rel="icon" href="/Dashy.webp" />
 			</Head>
 			{logedInUser ? (
-				<>
+				<DynamicWrapper>
 					<StyledHeadlineWrapper>
 						<h1>
 							Welcome back <StyledLoginSpan> {logedInUser?.username}</StyledLoginSpan>
@@ -57,10 +61,11 @@ export default function HomePage() {
 						<StyledHeadlineWrapper>
 							<h2>Quartal Analyse</h2>
 						</StyledHeadlineWrapper>
+						<LineChart />
 
 						<h2>Top 5 Clients</h2>
 					</StyledHeadlineWrapper>
-				</>
+				</DynamicWrapper>
 			) : (
 				'You are not logged in'
 			)}
