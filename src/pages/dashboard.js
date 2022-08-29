@@ -4,7 +4,8 @@ import {BsEnvelopeOpen} from 'react-icons/bs';
 import {FaRegMoneyBillAlt} from 'react-icons/fa';
 import {FiUsers} from 'react-icons/fi';
 
-import LineChart from '../chartData/lineChart';
+import LineChart from '../charts/lineChart';
+import PieChart from '../charts/pieChart';
 import StyledHeadlineWrapper from '../components/dashboard/StyledHeadlineWrapper';
 import StyledInfoBox from '../components/dashboard/StyledInfoBox';
 import StyledInfoWrapper from '../components/dashboard/StyledInfoWrapper';
@@ -64,6 +65,7 @@ export default function HomePage() {
 						<LineChart />
 
 						<h2>Top 5 Clients</h2>
+						<PieChart />
 					</StyledHeadlineWrapper>
 				</DynamicWrapper>
 			) : (

@@ -17,7 +17,7 @@ const mock = [
 		invoices: 14,
 	},
 ];
-const colors = [{color: 'red'}, {color: 'blue'}, {color: 'green'}];
+const colors = [{color: '#764ba2'}, {color: '#fc5130'}, {color: 'green'}];
 export const pieData = {
 	labels: mock.map(item => item.month),
 	datasets: [

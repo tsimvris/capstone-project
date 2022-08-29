@@ -1,23 +1,22 @@
 const mock = [
 	{
 		month: 'Aug.',
-		income: 5750,
+		income: 5839,
 		invoices: 12,
 	},
 
 	{
 		month: 'Sept.',
-		income: 4750,
+		income: 4364,
 		invoices: 9,
 	},
 
 	{
 		month: 'Okt.',
-		income: 6320,
+		income: 6843,
 		invoices: 14,
 	},
 ];
-const min = Math.min(...mock.map(item => item.invoices)) - 2;
 
 export const barData = {
 	labels: mock.map(item => item.month),
@@ -52,14 +51,12 @@ export const options = {
 			enabled: true,
 		},
 		legend: {
+			position: 'bottom',
 			labels: {
-				boxWidth: 5,
+				boxWidth: 30,
 				boxHeight: 10,
 				usePointStyle: true,
 				pointStyle: 'rectRounded',
-				font: {
-					size: 10,
-				},
 			},
 		},
 	},
@@ -74,6 +71,8 @@ export const options = {
 		y: {
 			type: 'linear',
 			display: true,
+			min: 0,
+			max: Math.ceil(Math.max(...mock.map(item => item.income)) / 1000) * 1000 + 1000,
 			position: 'left',
 			ticks: {
 				font: {
@@ -91,7 +90,9 @@ export const options = {
 				drawOnChartArea: false,
 			},
 			type: 'linear',
-			min: min,
+			min: Math.min(...mock.map(item => item.invoices)) - 2,
+			max: Math.max(...mock.map(item => item.invoices)) + 2,
+
 			display: true,
 			position: 'right',
 			ticks: {
