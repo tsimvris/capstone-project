@@ -1,20 +1,150 @@
 import Head from 'next/head';
 import {useCallback, useState} from 'react';
+import {BsEnvelopeOpen} from 'react-icons/bs';
+import {FaRegMoneyBillAlt} from 'react-icons/fa';
+import {FiUsers} from 'react-icons/fi';
 import {ComposedChart, Line, Bar, XAxis, YAxis, Tooltip, Legend} from 'recharts';
 import {PieChart, Pie, Sector} from 'recharts';
 
 import StyledHeadlineWrapper from '../components/dashboard/StyledHeadlineWrapper';
+import StyledInfoBox from '../components/dashboard/StyledInfoBox';
+import StyledInfoWrapper from '../components/dashboard/StyledInfoWrapper';
+import StyledSpan from '../components/dashboard/StyledSpan';
 import Layout from '../components/Layout';
 import StyledLoginSpan from '../components/login/StyledLoginSpan';
 import useClientStore from '../hooks/useClientStore';
 import useUserStore from '../hooks/useUserStore';
 
-const data = [
-	{name: 'Kunde A', value: 2400},
-	{name: 'Kunde B', value: 1300},
-	{name: 'Kunde C', value: 2300},
-	{name: 'Kunde D', value: 1200},
-	{name: 'Kunde E', value: 1200},
+export default function HomePage() {
+	const logedInUser = useUserStore(state => state.logedInUser);
+	const [activeIndex, setActiveIndex] = useState(0);
+	const invoices = useClientStore(state => state.invoices);
+	const clients = useClientStore(state => state.clients);
+	let totalProfit = 0;
+	invoices?.map(invoice => {
+		totalProfit = totalProfit + invoice.invoiceTotal;
+	});
+	const onPieEnter = useCallback(
+		(_, index) => {
+			setActiveIndex(index);
+		},
+		[setActiveIndex]
+	);
+	return (
+		<Layout>
+			<Head>
+				<title key="title">Dashy</title>
+				<meta key="description" name="description" content="This is my Capstone project" />
+				<link rel="icon" href="/Dashy.webp" />
+			</Head>
+			{logedInUser ? (
+				<>
+					<StyledHeadlineWrapper>
+						<h1>
+							Welcome back <StyledLoginSpan> {logedInUser?.username}</StyledLoginSpan>
+						</h1>
+					</StyledHeadlineWrapper>
+
+					<StyledInfoWrapper>
+						<StyledInfoBox>
+							<BsEnvelopeOpen /> Invoices
+							<StyledSpan>{invoices?.length}</StyledSpan>
+						</StyledInfoBox>
+						<StyledInfoBox>
+							<FaRegMoneyBillAlt />
+							Profit
+							<StyledSpan>{totalProfit}€</StyledSpan>
+						</StyledInfoBox>
+						<StyledInfoBox>
+							<FiUsers />
+							Clients
+							<StyledSpan>{clients?.length}</StyledSpan>
+						</StyledInfoBox>
+					</StyledInfoWrapper>
+
+					<StyledHeadlineWrapper>
+						<StyledHeadlineWrapper>
+							<h2>Quartal Analyse</h2>
+						</StyledHeadlineWrapper>
+						<br />
+						<ComposedChart
+							width={320}
+							height={200}
+							data={data22}
+							margin={{
+								top: 20,
+								right: 20,
+								bottom: 20,
+								left: 20,
+							}}
+						>
+							<XAxis dataKey="name" />
+							<YAxis stroke="#fc5130" />
+
+							<Tooltip />
+							<Legend
+								width={100}
+								wrapperStyle={{
+									top: 180,
+									width: 320,
+									lineHeight: '10px',
+								}}
+							/>
+
+							<Bar dataKey="Umsatz*1000 €" barSize={20} fill="#413ea0" />
+							<Line type="monotone" dataKey="Rechnungen" stroke="#fc5130" />
+						</ComposedChart>
+						<br />
+						<br />
+
+						<h2>Top 5 Clients</h2>
+					</StyledHeadlineWrapper>
+					<PieChart width={375} height={400}>
+						<Pie
+							activeIndex={activeIndex}
+							activeShape={renderActiveShape}
+							data={topClients}
+							cx={184}
+							cy={150}
+							innerRadius={60}
+							outerRadius={80}
+							fill="#413ea0"
+							dataKey="totalIncome"
+							onMouseEnter={onPieEnter}
+						/>
+					</PieChart>
+					<br />
+				</>
+			) : (
+				'You are not logged in'
+			)}
+		</Layout>
+	);
+}
+
+const data22 = [
+	{
+		name: 'Aug.',
+		Rechnungen: 10,
+		'Umsatz*1000 €': `12.543`,
+	},
+	{
+		name: 'Sept.',
+		Rechnungen: 14,
+		'Umsatz*1000 €': `8.5`,
+	},
+	{
+		name: 'Okt.',
+		Rechnungen: 12,
+		'Umsatz*1000 €': `9.5`,
+	},
+];
+const topClients = [
+	{name: 'Kunde A', totalIncome: 2400},
+	{name: 'Kunde B', totalIncome: 1300},
+	{name: 'Kunde C', totalIncome: 2300},
+	{name: 'Kunde D', totalIncome: 1200},
+	{name: 'Kunde E', totalIncome: 1200},
 ];
 
 const renderActiveShape = props => {
@@ -65,132 +195,3 @@ const renderActiveShape = props => {
 		</g>
 	);
 };
-
-export default function HomePage() {
-	const logedInUser = useUserStore(state => state.logedInUser);
-	const [activeIndex, setActiveIndex] = useState(0);
-	const invoices = useClientStore(state => state.invoices);
-	const clients = useClientStore(state => state.clients);
-	let gesamtUmsatz = 0;
-	invoices.map(invoice => {
-		gesamtUmsatz = gesamtUmsatz + invoice.invoiceTotal;
-	});
-	const onPieEnter = useCallback(
-		(_, index) => {
-			setActiveIndex(index);
-		},
-		[setActiveIndex]
-	);
-	return (
-		<Layout>
-			<Head>
-				<title key="title">Dashy</title>
-				<meta key="description" name="description" content="This is my Capstone project" />
-				<link rel="icon" href="/Dashy.webp" />
-			</Head>
-			{logedInUser ? (
-				<>
-					<StyledHeadlineWrapper>
-						<h1>
-							Welcome back <StyledLoginSpan> {logedInUser?.username}</StyledLoginSpan>
-						</h1>
-					</StyledHeadlineWrapper>
-					<br />
-					<StyledHeadlineWrapper>
-						<h3>Profit</h3>
-						<StyledLoginSpan>{gesamtUmsatz} €</StyledLoginSpan>
-					</StyledHeadlineWrapper>
-					<StyledHeadlineWrapper>
-						<h3>Invoices</h3>
-						<StyledLoginSpan>{invoices.length}</StyledLoginSpan>
-					</StyledHeadlineWrapper>
-
-					<StyledHeadlineWrapper>
-						<h3>Clients</h3>
-						<StyledLoginSpan>{clients.length}</StyledLoginSpan>
-					</StyledHeadlineWrapper>
-
-					<StyledHeadlineWrapper>
-						<StyledHeadlineWrapper>
-							<h2>Quartal Analyse</h2>
-						</StyledHeadlineWrapper>
-						<br />
-						<ComposedChart
-							width={375}
-							height={200}
-							data={data22}
-							margin={{
-								top: 20,
-								right: 20,
-								bottom: 20,
-								left: 20,
-							}}
-						>
-							<XAxis dataKey="name" />
-							<YAxis />
-							<YAxis
-								yAxisId="right"
-								type="number"
-								dataKey="Rechnungen"
-								name="weight"
-								orientation="right"
-								stroke="#fc5130"
-							/>
-							<Tooltip />
-							<Legend
-								width={100}
-								wrapperStyle={{
-									top: 180,
-									width: 320,
-									lineHeight: '10px',
-								}}
-							/>
-
-							<Bar dataKey="Umsatz*1000 €" barSize={20} fill="#413ea0" />
-							<Line type="monotone" dataKey="Rechnungen" stroke="#fc5130" />
-						</ComposedChart>
-						<br />
-						<br />
-
-						<h2>Top 5 Clients</h2>
-					</StyledHeadlineWrapper>
-					<PieChart width={375} height={400}>
-						<Pie
-							activeIndex={activeIndex}
-							activeShape={renderActiveShape}
-							data={data}
-							cx={187}
-							cy={150}
-							innerRadius={60}
-							outerRadius={80}
-							fill="#413ea0"
-							dataKey="value"
-							onMouseEnter={onPieEnter}
-						/>
-					</PieChart>
-					<br />
-				</>
-			) : (
-				'You are not logged in'
-			)}
-		</Layout>
-	);
-}
-
-const data22 = [
-	{
-		name: 'August',
-		Rechnungen: 10,
-		'Umsatz*1000 €': `12.543`,
-	},
-	{
-		name: 'September',
-		Rechnungen: 14,
-		'Umsatz*1000 €': `8.5`,
-	},
-	{
-		name: 'Oktober',
-		Rechnungen: 12,
-		'Umsatz*1000 €': `9.5`,
-	},
-];
