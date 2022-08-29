@@ -1,7 +1,7 @@
 import useClientStore from '../../hooks/useClientStore';
 let clientsWithInvoices = [];
 
-export default function FindClientsWithInvoices() {
+export const FindClientsWithInvoices = () => {
 	const invoices = useClientStore(state => state.invoices);
 	const clients = useClientStore(state => state.clients);
 	invoices.forEach(invoice => {
@@ -18,6 +18,9 @@ export default function FindClientsWithInvoices() {
 			.filter(invoice => invoice.invoiceClient === client.CompanyName)
 			.map(invoice => invoice.invoiceTotal);
 		client.income = ClientInvoiceTotals.reduce((a, b) => a + b, 0);
-		console.log(client);
 	});
-}
+	const topClients = clients.sort(function (a, b) {
+		return b.income - a.income;
+	});
+	return topClients;
+};
