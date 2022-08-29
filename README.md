@@ -3,7 +3,7 @@
 ## Tech-Stack
 
 -   [Next.js](https://nextjs.org/)
--   [Recharts](https://recharts.org/en-US)
+-   [Chart.js](https://www.chartjs.org/)
 -   [React-PDF](https://react-pdf.org/)
 -   [MongoDB](https://www.mongodb.com/)
 -   [Mongoose](https://mongoosejs.com/)

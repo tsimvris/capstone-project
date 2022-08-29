@@ -23,6 +23,7 @@
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.10.1",
     "@react-pdf/renderer": "^2.3.0",
+    "chart.js": "^3.9.1",
     "fast-fuzzy": "^1.11.2",
     "firebase": "^9.9.3",
     "mongoose": "^6.5.3",
