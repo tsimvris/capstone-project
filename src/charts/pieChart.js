@@ -16,6 +16,7 @@ import styled from 'styled-components';
 
 import {pieData} from './chartData/pie-data';
 import {options} from './chartData/pie-data';
+import FindClientsWithInvoices from './chartData/topClientsManipulate';
 ChartJS.register(
 	CategoryScale,
 	BarElement,
@@ -37,6 +38,7 @@ const StyledChartDiv = styled.div`
 export default function PieChart() {
 	return (
 		<StyledChartDiv>
+			<FindClientsWithInvoices />;
 			<Pie data={pieData} options={options} />
 		</StyledChartDiv>
 	);
