@@ -29,7 +29,7 @@ export const barData = {
 			borderColor: '#764ba2',
 			borderWidth: 3,
 			pointRadius: 2.3,
-			tension: 0.4,
+			tension: 0.5,
 			yAxisID: 'y1',
 		},
 		{
@@ -37,7 +37,6 @@ export const barData = {
 			label: 'Income/Month',
 			data: mock.map(month => month.income),
 			backgroundColor: '#fc5130',
-			tension: 0.4,
 			yAxisID: 'y',
 		},
 	],
@@ -82,7 +81,7 @@ export const options = {
 			title: {
 				display: true,
 				align: 'center',
-				text: 'Income',
+				text: '',
 			},
 		},
 		y1: {
@@ -99,11 +98,6 @@ export const options = {
 				font: {
 					size: 10,
 				},
-			},
-			title: {
-				display: true,
-				align: 'center',
-				text: 'Invoices',
 			},
 		},
 	},

@@ -10,6 +10,7 @@ const StyledInfoBox = styled.div`
 	svg {
 		width: 24px;
 		height: 24px;
+		color: #fc5130;
 	}
 `;
 export default StyledInfoBox;

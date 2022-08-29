@@ -14,8 +14,8 @@ import {
 import {Pie} from 'react-chartjs-2';
 import styled from 'styled-components';
 
-import {pieData} from '../chartData/pie-data';
-import {config} from '../chartData/pie-data';
+import {pieData} from './chartData/pie-data';
+import {options} from './chartData/pie-data';
 ChartJS.register(
 	CategoryScale,
 	BarElement,
@@ -31,13 +31,13 @@ ChartJS.register(
 
 const StyledChartDiv = styled.div`
 	height: auto;
-	margin: 24px 12px;
+	margin: 24px 8px 48px 8px;
 `;
 
 export default function PieChart() {
 	return (
 		<StyledChartDiv>
-			<Pie data={pieData} options={config} />
+			<Pie data={pieData} options={options} />
 		</StyledChartDiv>
 	);
 }

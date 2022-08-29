@@ -6,7 +6,7 @@ const StyledInfoWrapper = styled.div`
 	justify-content: center;
 	gap: 20px;
 	width: 95vw;
-	margin: 24px auto;
+	margin: 48px auto;
 	padding: 10px;
 	border-radius: 20px;
 	box-shadow: inset 5px 5px 8px #cbced1, inset -5px -5px 8px #fff;
