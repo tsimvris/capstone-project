@@ -1,11 +1,8 @@
 import {
 	Chart as ChartJS,
-	BarElement,
 	CategoryScale,
 	TimeScale,
 	LinearScale,
-	PointElement,
-	LineElement,
 	ArcElement,
 	Title,
 	Tooltip,
@@ -16,18 +13,7 @@ import styled from 'styled-components';
 
 import useClientStore from '../hooks/useClientStore';
 
-ChartJS.register(
-	CategoryScale,
-	BarElement,
-	TimeScale,
-	ArcElement,
-	LinearScale,
-	PointElement,
-	LineElement,
-	Title,
-	Tooltip,
-	Legend
-);
+ChartJS.register(CategoryScale, TimeScale, ArcElement, LinearScale, Title, Tooltip, Legend);
 
 const StyledChartDiv = styled.div`
 	height: auto;

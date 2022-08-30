@@ -65,7 +65,7 @@ export default function LineChart() {
 		datasets: [
 			{
 				type: 'line',
-				label: 'Invoice Taxes',
+				label: 'Taxes',
 				data: formedData.map(item => item.invoiceTaxes),
 				backgroundColor: '#764ba2',
 				borderColor: '#764ba2',
@@ -76,7 +76,7 @@ export default function LineChart() {
 			},
 			{
 				type: 'line',
-				label: 'Invoice Price Per Hour',
+				label: 'Price Per Hour',
 				data: formedData.map(item => item.invoicePricePerHour),
 				backgroundColor: '#34E5FF',
 				borderColor: '#34E5FF',
