@@ -125,11 +125,7 @@ export default function LineChart() {
 		},
 		scales: {
 			x: {
-				ticks: {
-					font: {
-						size: 10,
-					},
-				},
+				ticks: false,
 			},
 			y: {
 				type: 'linear',
