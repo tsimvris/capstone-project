@@ -54,14 +54,19 @@ export default function PieChart() {
 		client.income = ClientInvoiceTotals.reduce((a, b) => a + b, 0);
 	});
 
-	let topClients = clients.sort(function (a, b) {
+	let sortedClients = clients.sort(function (a, b) {
 		return b.income - a.income;
 	});
-	console.log();
-	let mock = [];
+	let topClients = [];
+	for (let i = 0; i < 5; i++) {
+		if (sortedClients[i]?.income > 0) {
+			topClients.push(sortedClients[i]);
+		}
+	}
+	let formedData = [];
 	topClients.map(client => {
 		let clientObj = {client: client.CompanyName, income: client.income};
-		mock.push(clientObj);
+		formedData.push(clientObj);
 	});
 	const colors = [
 		{color: '#fc5130'},
@@ -71,11 +76,11 @@ export default function PieChart() {
 		{color: '#34E5FF'},
 	];
 	const pieData = {
-		labels: mock.map(item => item.client),
+		labels: formedData.map(item => item.client),
 		datasets: [
 			{
-				label: 'Dataset 1',
-				data: mock.map(month => month.income),
+				label: 'Kundenumsatz',
+				data: formedData.map(month => month.income),
 				backgroundColor: colors.map(item => item.color),
 			},
 		],
@@ -103,7 +108,11 @@ export default function PieChart() {
 	};
 	return (
 		<StyledChartDiv>
-			<Pie data={pieData} options={options} />
+			{topClients.length > 2 ? (
+				<Pie data={pieData} options={options} />
+			) : (
+				'No data to be shown'
+			)}
 		</StyledChartDiv>
 	);
 }
