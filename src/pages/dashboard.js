@@ -3,6 +3,7 @@ import Head from 'next/head';
 import {BsEnvelopeOpen} from 'react-icons/bs';
 import {FaRegMoneyBillAlt} from 'react-icons/fa';
 import {FiUsers} from 'react-icons/fi';
+import {MdMiscellaneousServices} from 'react-icons/md';
 
 import LineChart from '../charts/lineChart';
 import PieChart from '../charts/pieChart';
@@ -13,15 +14,17 @@ import StyledSpan from '../components/dashboard/StyledSpan';
 import Layout from '../components/Layout';
 import StyledLoginSpan from '../components/login/StyledLoginSpan';
 import useClientStore from '../hooks/useClientStore';
+import useServiceStore from '../hooks/useServiceStore';
 import useUserStore from '../hooks/useUserStore';
 
 export default function HomePage() {
 	const logedInUser = useUserStore(state => state.logedInUser);
 	const invoices = useClientStore(state => state.invoices);
 	const clients = useClientStore(state => state.clients);
+	const services = useServiceStore(state => state.services);
 	let totalProfit = 0;
 	invoices?.map(invoice => {
-		totalProfit = totalProfit + invoice.invoiceTotal;
+		totalProfit = totalProfit + invoice.invoiceSubtotal;
 	});
 	const DynamicWrapper = dynamic(() => import('../components/dashboard/StyledDashboardWrapper'), {
 		ssr: false,
@@ -43,6 +46,16 @@ export default function HomePage() {
 
 					<StyledInfoWrapper>
 						<StyledInfoBox>
+							<FiUsers />
+							Clients
+							<StyledSpan>{clients?.length}</StyledSpan>
+						</StyledInfoBox>
+						<StyledInfoBox>
+							<MdMiscellaneousServices />
+							Services
+							<StyledSpan>{services?.length}</StyledSpan>
+						</StyledInfoBox>
+						<StyledInfoBox>
 							<BsEnvelopeOpen /> Invoices
 							<StyledSpan>{invoices?.length}</StyledSpan>
 						</StyledInfoBox>
@@ -50,11 +63,6 @@ export default function HomePage() {
 							<FaRegMoneyBillAlt />
 							Profit
 							<StyledSpan>{totalProfit}€</StyledSpan>
-						</StyledInfoBox>
-						<StyledInfoBox>
-							<FiUsers />
-							Clients
-							<StyledSpan>{clients?.length}</StyledSpan>
 						</StyledInfoBox>
 					</StyledInfoWrapper>
 
