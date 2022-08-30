@@ -96,7 +96,6 @@ export default function LineChart() {
 				tension: 0.5,
 				yAxisID: 'y1',
 			},
-
 			{
 				type: 'bar',
 				label: 'Invoice Total',
