@@ -60,11 +60,11 @@ export default function HomePage() {
 
 					<StyledHeadlineWrapper>
 						<StyledHeadlineWrapper>
-							<h2>Quartal Analyse</h2>
+							<h2>Biggest Invoices</h2>
 						</StyledHeadlineWrapper>
 						<LineChart />
 
-						<h2>Top 5 Clients</h2>
+						<h2>Top Clients</h2>
 						<PieChart />
 					</StyledHeadlineWrapper>
 				</DynamicWrapper>
