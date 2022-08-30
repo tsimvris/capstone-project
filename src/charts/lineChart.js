@@ -1,8 +1,32 @@
-import Chart from 'chart.js/auto';
+import {
+	Chart as ChartJS,
+	BarElement,
+	CategoryScale,
+	TimeScale,
+	LinearScale,
+	PointElement,
+	LineElement,
+	ArcElement,
+	Title,
+	Tooltip,
+	Legend,
+} from 'chart.js';
 import {Line} from 'react-chartjs-2';
 import styled from 'styled-components';
 
 import useClientStore from '../hooks/useClientStore';
+ChartJS.register(
+	CategoryScale,
+	BarElement,
+	TimeScale,
+	ArcElement,
+	LinearScale,
+	PointElement,
+	LineElement,
+	Title,
+	Tooltip,
+	Legend
+);
 
 const StyledChartDiv = styled.div`
 	height: auto;
