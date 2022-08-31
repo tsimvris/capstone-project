@@ -31,6 +31,7 @@ export default function CreateNewClientForm() {
 			CompanyZipCode: data.postalCode,
 			CompanyCity: data.city,
 			CompanyTaxID: data.taxId,
+			income: 0,
 		};
 		addClient(client);
 		router.push({

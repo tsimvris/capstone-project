@@ -37,7 +37,7 @@ export default function Invoice() {
 							});
 						}}
 					>
-						Generate new Inoice
+						Generate new Invoice
 					</StyledButton>
 
 					<StyledUl>
