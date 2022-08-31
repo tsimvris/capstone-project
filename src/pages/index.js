@@ -25,10 +25,10 @@ export async function getServerSideProps() {
 }
 export default function Homepage({users}) {
 	const setLogedinUser = useUserStore(state => state.setLogedinUser);
+
 	const DynamicWrapper = dynamic(() => import('../components/login/styledLoginWrapper'), {
 		ssr: false,
 	});
-
 	const addLogo = useMyStore(state => state.addLogo);
 	const myLogo = useMyStore(state => state.myLogo);
 	const router = useRouter();
