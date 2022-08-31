@@ -1,6 +1,7 @@
 import {
 	Chart as ChartJS,
 	BarElement,
+	BarController,
 	CategoryScale,
 	TimeScale,
 	LinearScale,
@@ -17,6 +18,7 @@ import styled from 'styled-components';
 import useClientStore from '../hooks/useClientStore';
 ChartJS.register(
 	CategoryScale,
+	BarController,
 	BarElement,
 	TimeScale,
 	ArcElement,

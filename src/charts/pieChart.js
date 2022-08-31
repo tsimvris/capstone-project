@@ -6,6 +6,7 @@ import {
 	ArcElement,
 	Title,
 	Tooltip,
+	BarController,
 	Legend,
 } from 'chart.js';
 import {Pie} from 'react-chartjs-2';
@@ -13,7 +14,16 @@ import styled from 'styled-components';
 
 import useClientStore from '../hooks/useClientStore';
 
-ChartJS.register(CategoryScale, TimeScale, ArcElement, LinearScale, Title, Tooltip, Legend);
+ChartJS.register(
+	CategoryScale,
+	BarController,
+	TimeScale,
+	ArcElement,
+	LinearScale,
+	Title,
+	Tooltip,
+	Legend
+);
 
 const StyledChartDiv = styled.div`
 	height: auto;
