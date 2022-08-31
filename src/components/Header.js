@@ -73,36 +73,37 @@ export default function Header() {
 							<StyledMenuBox>
 								<Image width="130px" height="130px" src="/Dashy.svg" alt="logo" />
 								<Link href="/dashboard">
-									<StyledLink>
+									<StyledLink variant="default">
 										<ImHome />
 										<StyledSpan>Home</StyledSpan>
 									</StyledLink>
 								</Link>
 								<Link href="/clients/clients">
-									<StyledLink>
+									<StyledLink variant="default">
 										<BsFillPeopleFill />
 										<StyledSpan>Clients</StyledSpan>
 									</StyledLink>
 								</Link>
 								<Link href="/services/services">
-									<StyledLink>
+									<StyledLink variant="default">
 										<MdHomeRepairService />
 										<StyledSpan>Services</StyledSpan>
 									</StyledLink>
 								</Link>
 								<Link href="/invoices/invoice">
-									<StyledLink>
+									<StyledLink variant="default">
 										<RiMoneyEuroCircleFill />
 										<StyledSpan>Invoices</StyledSpan>
 									</StyledLink>
 								</Link>
 								<Link href="/profile">
-									<StyledLink>
+									<StyledLink variant="default">
 										<CgProfile />
 										<StyledSpan>Profile</StyledSpan>
 									</StyledLink>
 								</Link>
 								<StyledLink
+									variant="logout"
 									onClick={() => {
 										setLogedinUser(null);
 										router.push({
