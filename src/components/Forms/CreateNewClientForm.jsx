@@ -155,11 +155,11 @@ export default function CreateNewClientForm() {
 							required: {value: true, message: 'This field is required.'},
 							maxLength: {
 								value: 10,
-								message: 'Tax Id length is between 8 and 10 characters.',
+								message: 'Tax Id is between 8 and 10 characters.',
 							},
 							minLength: {
 								value: 8,
-								message: 'Tax Id length is between 8 and 10 characters.',
+								message: 'Tax Id is between 8 and 10 characters.',
 							},
 							pattern: {
 								value: '[0-9]?',

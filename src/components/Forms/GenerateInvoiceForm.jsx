@@ -17,6 +17,7 @@ import StyledLabel from './StyledComponents/styledLabel';
 import StyledRadioInput0 from './StyledComponents/StyledRadioInput0';
 import StyledRadioInput19 from './StyledComponents/StyledRadioInput19';
 import StyledRadioInput7 from './StyledComponents/StyledRadioInput7';
+import StyledSelect from './StyledComponents/StyledSelect';
 import StyledSubmitButton from './StyledComponents/styledSubmitButton';
 import StyledNotice from './styledNotice';
 
@@ -25,7 +26,6 @@ export default function GenerateInvoiceForm() {
 	const services = useServiceStore(state => state.services);
 	const addInvoice = useClientStore(state => state.addInvoice);
 	const myCompany = useMyStore(state => state.companyInfo);
-
 	const router = useRouter();
 	const {
 		register,
@@ -66,12 +66,7 @@ export default function GenerateInvoiceForm() {
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
 				<StyledLabel>
 					Select a Client
-					<StyledInput
-						list="clients"
-						{...register('client')}
-						placeholder="Select a Client"
-					/>
-					<datalist id="clients">
+					<StyledSelect {...register('client')}>
 						{clients.map(client => {
 							return (
 								<option key={client.id} value={client.CompanyName}>
@@ -79,16 +74,11 @@ export default function GenerateInvoiceForm() {
 								</option>
 							);
 						})}
-					</datalist>
+					</StyledSelect>
 				</StyledLabel>
 				<StyledLabel>
 					Select a Service
-					<StyledInput
-						list="services"
-						{...register('service')}
-						placeholder="Select a Service"
-					/>
-					<datalist id="services">
+					<StyledSelect {...register('service')}>
 						{services.map(service => {
 							return (
 								<option key={service.id} value={service.serviceName}>
@@ -96,7 +86,7 @@ export default function GenerateInvoiceForm() {
 								</option>
 							);
 						})}
-					</datalist>
+					</StyledSelect>
 				</StyledLabel>
 				<StyledLabel>
 					Worked Hours
