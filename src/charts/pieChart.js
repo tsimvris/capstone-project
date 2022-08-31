@@ -43,11 +43,12 @@ export default function PieChart() {
 			clientsWithInvoices.push(sortedClient);
 		}
 	});
+
 	clientsWithInvoices.forEach(client => {
-		const ClientInvoiceTotals = invoices
-			.filter(invoice => invoice.invoiceClient === client.CompanyName)
+		let clientInvoiceTotals = invoices
+			.filter(invoice => invoice.invoiceClient === client?.CompanyName)
 			.map(invoice => invoice.invoiceTotal);
-		client.income = ClientInvoiceTotals.reduce((a, b) => a + b, 0);
+		client.income = clientInvoiceTotals.reduce((a, b) => a + b, 0);
 	});
 
 	let sortedClients = clients.sort(function (a, b) {
