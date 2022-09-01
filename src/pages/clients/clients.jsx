@@ -39,7 +39,7 @@ export default function ClientsPage() {
 				<link rel="icon" href="/Dashy.webp" />
 			</Head>
 			{logedInUser ? (
-				<DynamicWrapper>
+				<>
 					<StyledSearchWrapper>
 						<StyledSearchField
 							value={inputValue}
@@ -50,58 +50,60 @@ export default function ClientsPage() {
 							}}
 						/>
 					</StyledSearchWrapper>
-					<StyledUl>
-						{fuzzyResult?.map(result => {
-							return (
-								<StyledLi key={result.id}>
-									{result.CompanyName}
-									<StyledEditButton
-										onClick={() => {
-											router.push({
-												pathname: `/clients/${result.id}`,
-												query: {keyword: 'clientId'},
-											});
-										}}
-									>
-										Edit
-									</StyledEditButton>
-								</StyledLi>
-							);
-						})}
-					</StyledUl>
-					<StyledButton
-						onClick={() => {
-							router.push({
-								pathname: '/clients/create-new-client',
-							});
-						}}
-					>
-						Add new Client
-					</StyledButton>
-					<StyledWrapper>
+					<DynamicWrapper>
 						<StyledUl>
-							{clients
-								?.sort((a, b) => a.CompanyName?.localeCompare(b.CompanyName))
-								.map(client => {
-									return (
-										<StyledLi key={client.id}>
-											<StyledSpan>{client.CompanyName}</StyledSpan>
-											<StyledEditButton
-												onClick={() => {
-													router.push({
-														pathname: `/clients/${client.id}`,
-														query: {keyword: 'clientId'},
-													});
-												}}
-											>
-												Edit
-											</StyledEditButton>
-										</StyledLi>
-									);
-								})}
+							{fuzzyResult?.map(result => {
+								return (
+									<StyledLi key={result.id}>
+										{result.CompanyName}
+										<StyledEditButton
+											onClick={() => {
+												router.push({
+													pathname: `/clients/${result.id}`,
+													query: {keyword: 'clientId'},
+												});
+											}}
+										>
+											Edit
+										</StyledEditButton>
+									</StyledLi>
+								);
+							})}
 						</StyledUl>
-					</StyledWrapper>
-				</DynamicWrapper>
+						<StyledButton
+							onClick={() => {
+								router.push({
+									pathname: '/clients/create-new-client',
+								});
+							}}
+						>
+							Add new Client
+						</StyledButton>
+						<StyledWrapper>
+							<StyledUl>
+								{clients
+									?.sort((a, b) => a.CompanyName?.localeCompare(b.CompanyName))
+									.map(client => {
+										return (
+											<StyledLi key={client.id}>
+												<StyledSpan>{client.CompanyName}</StyledSpan>
+												<StyledEditButton
+													onClick={() => {
+														router.push({
+															pathname: `/clients/${client.id}`,
+															query: {keyword: 'clientId'},
+														});
+													}}
+												>
+													Edit
+												</StyledEditButton>
+											</StyledLi>
+										);
+									})}
+							</StyledUl>
+						</StyledWrapper>
+					</DynamicWrapper>
+				</>
 			) : (
 				<DynamicWrapper> You are not logged in</DynamicWrapper>
 			)}
