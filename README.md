@@ -1,6 +1,20 @@
 # Dashy
 
+## Description
+
+Dashy is a business management Dashboard where you can add your Clients, Services and information about your Company.
+
+After that you can generate invoices convert and download them as PDF.
+
+Finally you can see statistics about your clients and invoices, helping you to control and manage your income and taxes lightly.
+
+![Presentation Design](https://user-images.githubusercontent.com/101249132/188405829-5136b0ae-c9db-4b0d-9848-ce4a11e33b08.jpg)
+
+
+
+
 ## Tech-Stack
+
 
 -   [Next.js](https://nextjs.org/)
 -   [Chart.js](https://www.chartjs.org/)
