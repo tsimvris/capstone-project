@@ -16,7 +16,12 @@ Finally you can see statistics about your clients and invoices, helping you to c
 ## Tech-Stack
 
 
+-   [React](https://reactjs.org/)			
 -   [Next.js](https://nextjs.org/)
+-   [Testing Library](https://testing-library.com/)
+-   [Jest](https://jestjs.io/)
+-   [Styled-Components](https://styled-components.com/)
+-   [Material-UI](https://mui.com/)
 -   [Chart.js](https://www.chartjs.org/)
 -   [React-PDF](https://react-pdf.org/)
 -   [MongoDB](https://www.mongodb.com/)
@@ -25,13 +30,9 @@ Finally you can see statistics about your clients and invoices, helping you to c
 -   [Mongoose](https://mongoosejs.com/)
 -   [Zustand](https://zustand-demo.pmnd.rs/)
 -   [React Hook Form](https://react-hook-form.com/)
--   [Styled-Components](https://styled-components.com/)
 -   [Figma](https://www.figma.com/)
--   [Material-UI](https://mui.com/)
 -   [Node.js](https://nodejs.org/en/)
 -   [Vercel](https://vercel.com/)
--   [Jest](https://jestjs.io/)
--   [Testing Library](https://testing-library.com/)
 -   [Stylelint](https://stylelint.io/)
 -   [Eslint](https://eslint.org/)
 -   [Prettier](https://prettier.io/)
